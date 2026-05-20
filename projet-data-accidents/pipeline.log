@@ -1,0 +1,133 @@
+[15:58:51] Pipeline démarré — 17 questions, depuis l'index 0
+[15:58:51] === [1/17] Q11 (agent: cc) ===
+Question 1.1 traitée.
+
+**Récap.**
+- `python/question11.py` : détection d'encodage en cascade (`utf-8` → `cp1252` → `latin-1`) sur le fichier entier, détection de séparateur sur la ligne d'en-tête, réécriture via `csv.reader`/`csv.writer` pour gérer proprement les champs quotés.
+- 44 fichiers convertis dans `data/utf8/`. Encodages rencontrés : **34 utf-8**, **8 cp1252**, **2 latin-1**. Séparateurs : **43× `,`**, **1× `\t`** (le piège `caracteristiques_2009.csv`, à la fois UTF-8 *et* tabulé).
+- `results/reponse11.txt` : résumé global + détail par fichier.
+- `report/dossier.md` : section Q1.1 remplie selon les 5 rubriques.
+[16:01:02] Exécution de question11...
+Conversion des fichiers BAAC 2005-2015 en UTF-8 + ','
+  source      : /home/rayan/Documents/Projets/projet-data-accidents/data/raw
+  destination : /home/rayan/Documents/Projets/projet-data-accidents/data/utf8
+
+  [OK] caracteristiques_2005.csv      enc=cp1252   sep=','     lignes=87027
+  [OK] caracteristiques_2006.csv      enc=cp1252   sep=','     lignes=82994
+  [OK] caracteristiques_2007.csv      enc=cp1252   sep=','     lignes=83851
+  [OK] caracteristiques_2008.csv      enc=cp1252   sep=','     lignes=76768
+  [OK] caracteristiques_2009.csv      enc=utf-8    sep='\t'    lignes=74410
+  [OK] caracteristiques_2010.csv      enc=latin-1  sep=','     lignes=69380
+  [OK] caracteristiques_2011.csv      enc=cp1252   sep=','     lignes=66975
+  [OK] caracteristiques_2012.csv      enc=cp1252   sep=','     lignes=62251
+  [OK] caracteristiques_2013.csv      enc=cp1252   sep=','     lignes=58398
+  [OK] caracteristiques_2014.csv      enc=cp1252   sep=','     lignes=59855
+  [OK] caracteristiques_2015.csv      enc=latin-1  sep=','     lignes=58655
+  [OK] lieux_2005.csv                 enc=utf-8    sep=','     lignes=87027
+  [OK] lieux_2006.csv                 enc=utf-8    sep=','     lignes=82994
+  [OK] lieux_2007.csv                 enc=utf-8    sep=','     lignes=83851
+  [OK] lieux_2008.csv                 enc=utf-8    sep=','     lignes=76768
+  [OK] lieux_2009.csv                 enc=utf-8    sep=','     lignes=74410
+  [OK] lieux_2010.csv                 enc=utf-8    sep=','     lignes=69380
+  [OK] lieux_2011.csv                 enc=utf-8    sep=','     lignes=66975
+  [OK] lieux_2012.csv                 enc=utf-8    sep=','     lignes=62251
+  [OK] lieux_2013.csv                 enc=utf-8    sep=','     lignes=58398
+  [OK] lieux_2014.csv                 enc=utf-8    sep=','     lignes=59855
+  [OK] lieux_2015.csv                 enc=utf-8    sep=','     lignes=58655
+  [OK] vehicules_2005.csv             enc=utf-8    sep=','     lignes=149765
+  [OK] vehicules_2006.csv             enc=utf-8    sep=','     lignes=142301
+  [OK] vehicules_2007.csv             enc=utf-8    sep=','     lignes=144131
+  [OK] vehicules_2008.csv             enc=utf-8    sep=','     lignes=131049
+  [OK] vehicules_2009.csv             enc=utf-8    sep=','     lignes=126348
+  [OK] vehicules_2010.csv             enc=utf-8    sep=','     lignes=117744
+  [OK] vehicules_2011.csv             enc=utf-8    sep=','     lignes=113855
+  [OK] vehicules_2012.csv             enc=utf-8    sep=','     lignes=105815
+  [OK] vehicules_2013.csv             enc=utf-8    sep=','     lignes=98926
+  [OK] vehicules_2014.csv             enc=utf-8    sep=','     lignes=101763
+  [OK] vehicules_2015.csv             enc=utf-8    sep=','     lignes=99779
+  [OK] usagers_2005.csv               enc=utf-8    sep=','     lignes=197499
+  [OK] usagers_2006.csv               enc=utf-8    sep=','     lignes=187086
+  [OK] usagers_2007.csv               enc=utf-8    sep=','     lignes=188458
+  [OK] usagers_2008.csv               enc=utf-8    sep=','     lignes=170961
+  [OK] usagers_2009.csv               enc=utf-8    sep=','     lignes=165963
+  [OK] usagers_2010.csv               enc=utf-8    sep=','     lignes=154193
+  [OK] usagers_2011.csv               enc=utf-8    sep=','     lignes=148544
+  [OK] usagers_2012.csv               enc=utf-8    sep=','     lignes=138629
+  [OK] usagers_2013.csv               enc=utf-8    sep=','     lignes=128695
+  [OK] usagers_2014.csv               enc=utf-8    sep=','     lignes=132187
+  [OK] usagers_2015.csv               enc=utf-8    sep=','     lignes=130379
+
+Résumé écrit dans /home/rayan/Documents/Projets/projet-data-accidents/results/reponse11.txt
+[iteration-clean 44a103d] feat: Q11 complété (agent: cc)
+ 5 files changed, 460 insertions(+), 1 deletion(-)
+ create mode 100644 python/common.py
+ create mode 100644 python/download_data.py
+ create mode 100644 python/question11.py
+ create mode 100644 results/reponse11.txt
+[16:01:06] --- Q11 TERMINÉ ---
+[16:01:06] === [2/17] Q12 (agent: cc) ===
+Q1.2 livrée. Bilan :
+
+- **`python/question12.py`** : lit chaque CSV de `data/utf8/`, compare l'en-tête au schéma documenté (présence + ordre), compte les lignes de données, produit 4 tableaux + une synthèse.
+- **`results/reponse12.txt`** : tous les 44 fichiers conformes (mêmes colonnes, même ordre). Cumuls — caracteristiques 780 553 ; lieux 780 553 ; vehicules 1 331 465 ; usagers 1 742 583.
+- **`report/dossier.md`** : section Q1.2 complétée avec les 5 rubriques, commentaires sur l'égalité caracteristiques == lieux par année (pré-Q2.3/2.4) et les ratios véhicules/usagers attendus.
+[16:03:09] Exécution de question12...
+Vérification de structure 2005-2015, source : /home/rayan/Documents/Projets/projet-data-accidents/data/utf8
+
+  [OK  ] caracteristiques_2005.csv        colonnes=16  lignes=   87026
+  [OK  ] caracteristiques_2006.csv        colonnes=16  lignes=   82993
+  [OK  ] caracteristiques_2007.csv        colonnes=16  lignes=   83850
+  [OK  ] caracteristiques_2008.csv        colonnes=16  lignes=   76767
+  [OK  ] caracteristiques_2009.csv        colonnes=16  lignes=   74409
+  [OK  ] caracteristiques_2010.csv        colonnes=16  lignes=   69379
+  [OK  ] caracteristiques_2011.csv        colonnes=16  lignes=   66974
+  [OK  ] caracteristiques_2012.csv        colonnes=16  lignes=   62250
+  [OK  ] caracteristiques_2013.csv        colonnes=16  lignes=   58397
+  [OK  ] caracteristiques_2014.csv        colonnes=16  lignes=   59854
+  [OK  ] caracteristiques_2015.csv        colonnes=16  lignes=   58654
+  [OK  ] lieux_2005.csv                   colonnes=18  lignes=   87026
+  [OK  ] lieux_2006.csv                   colonnes=18  lignes=   82993
+  [OK  ] lieux_2007.csv                   colonnes=18  lignes=   83850
+  [OK  ] lieux_2008.csv                   colonnes=18  lignes=   76767
+  [OK  ] lieux_2009.csv                   colonnes=18  lignes=   74409
+  [OK  ] lieux_2010.csv                   colonnes=18  lignes=   69379
+  [OK  ] lieux_2011.csv                   colonnes=18  lignes=   66974
+  [OK  ] lieux_2012.csv                   colonnes=18  lignes=   62250
+  [OK  ] lieux_2013.csv                   colonnes=18  lignes=   58397
+  [OK  ] lieux_2014.csv                   colonnes=18  lignes=   59854
+  [OK  ] lieux_2015.csv                   colonnes=18  lignes=   58654
+  [OK  ] vehicules_2005.csv               colonnes= 9  lignes=  149764
+  [OK  ] vehicules_2006.csv               colonnes= 9  lignes=  142300
+  [OK  ] vehicules_2007.csv               colonnes= 9  lignes=  144130
+  [OK  ] vehicules_2008.csv               colonnes= 9  lignes=  131048
+  [OK  ] vehicules_2009.csv               colonnes= 9  lignes=  126347
+  [OK  ] vehicules_2010.csv               colonnes= 9  lignes=  117743
+  [OK  ] vehicules_2011.csv               colonnes= 9  lignes=  113854
+  [OK  ] vehicules_2012.csv               colonnes= 9  lignes=  105814
+  [OK  ] vehicules_2013.csv               colonnes= 9  lignes=   98925
+  [OK  ] vehicules_2014.csv               colonnes= 9  lignes=  101762
+  [OK  ] vehicules_2015.csv               colonnes= 9  lignes=   99778
+  [OK  ] usagers_2005.csv                 colonnes=12  lignes=  197498
+  [OK  ] usagers_2006.csv                 colonnes=12  lignes=  187085
+  [OK  ] usagers_2007.csv                 colonnes=12  lignes=  188457
+  [OK  ] usagers_2008.csv                 colonnes=12  lignes=  170960
+  [OK  ] usagers_2009.csv                 colonnes=12  lignes=  165962
+  [OK  ] usagers_2010.csv                 colonnes=12  lignes=  154192
+  [OK  ] usagers_2011.csv                 colonnes=12  lignes=  148543
+  [OK  ] usagers_2012.csv                 colonnes=12  lignes=  138628
+  [OK  ] usagers_2013.csv                 colonnes=12  lignes=  128694
+  [OK  ] usagers_2014.csv                 colonnes=12  lignes=  132186
+  [OK  ] usagers_2015.csv                 colonnes=12  lignes=  130378
+
+Résumé écrit dans /home/rayan/Documents/Projets/projet-data-accidents/results/reponse12.txt
+[iteration-clean d6d5313] feat: Q12 complété (agent: cc)
+ 3 files changed, 354 insertions(+), 1 deletion(-)
+ create mode 100644 python/question12.py
+ create mode 100644 results/reponse12.txt
+[16:03:10] --- Q12 TERMINÉ ---
+[16:03:10] === [3/17] Q13 (agent: cc) ===
+You're out of extra usage · resets 4:20pm (UTC)
+[11:28:10] Pipeline CC démarré — questions cc uniquement, depuis l'index 2
+[11:28:10] Pipeline CC démarré — questions cc uniquement, depuis l'index 2
+[11:28:10] === [3/17] Q13 (claude) ===
+[11:28:10] === [3/17] Q13 (claude) ===

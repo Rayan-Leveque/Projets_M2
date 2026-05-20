@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Mimo Library
+  datasource:
+    url: ${MIMO_DB_URL}
+    username: ${MIMO_DB_USER}
+    password: ${MIMO_DB_PASSWORD}
+    driverClassName: org.h2.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      id.db_structure_naming_strategy: legacy
+  sql:
+    init:
+      mode: always
+  h2:
+    console:
+      enabled: true
+
+#http://localhost:8080/h2-console
+
+logging:
+  level:
+    edu.sorbonne: DEBUG
+

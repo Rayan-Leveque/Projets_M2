@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# OS
+.DS_Store
+
+# Données volumineuses (à télécharger localement depuis data.gouv.fr)
+data/raw/*
+data/utf8/*
+data/enriched/*
+!data/raw/.gitkeep
+!data/utf8/.gitkeep
+!data/enriched/.gitkeep
+# Sorties générées
+results/*.html
+results/*.png
+results/*.gif
+!results/.gitkeep
+
