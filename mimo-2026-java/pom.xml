@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.sorbonne.mimo</groupId>
-	<artifactId>library</artifactId>
+	<artifactId>games</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

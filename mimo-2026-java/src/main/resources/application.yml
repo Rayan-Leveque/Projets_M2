@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Mimo Library
+    name: Mimo Games
   datasource:
     url: ${MIMO_DB_URL}
     username: ${MIMO_DB_USER}

@@ -2,130 +2,136 @@
 -- Clean existing data (order matters due to foreign keys)
 -- ════════════════════════════════════════════════════════
 DELETE
-FROM books;
+FROM games;
 DELETE
 FROM publishers;
 DELETE
-FROM authors;
+FROM studios;
 
 -- ════════════════════════════════════════════════════════
--- Insert authors (ID auto‑generated)
+-- Insert studios (ID auto‑generated)
 -- ════════════════════════════════════════════════════════
-INSERT INTO authors (name, country, biography)
-VALUES ('J.K. Rowling', 'UK', 'British author, best known for the Harry Potter series.'),
-       ('Laure Moulin', 'France', 'Biographer and sister of Jean Moulin.'),
-       ('Antoine de Saint-Exupéry', 'France', 'French writer and aviator, author of The Little Prince.'),
-       ('George Orwell', 'UK', 'English novelist and essayist, famous for 1984 and Animal Farm.'),
-       ('Yuval Noah Harari', 'Israel', 'Israeli historian and author of Sapiens.'),
-       ('Albert Camus', 'France', 'French philosopher and author, Nobel Prize winner.'),
-       ('Frank Herbert', 'USA', 'American science fiction writer, creator of Dune.'),
-       ('Arthur Conan Doyle', 'UK', 'Scottish writer, creator of Sherlock Holmes.'),
-       ('James Clear', 'USA', 'American author and speaker on habits and decision making.'),
-       ('J.R.R. Tolkien', 'UK', 'English writer and philologist, author of The Lord of the Rings.'),
-       ('Marjane Satrapi', 'Iran', 'Iranian-born French graphic novelist, author of Persepolis.'),
-       ('Stephen Hawking', 'UK', 'English theoretical physicist and cosmologist.');
+INSERT INTO studios (name, country, description)
+VALUES ('Naughty Dog', 'USA', 'American studio known for The Last of Us and Uncharted.'),
+       ('Rockstar North', 'UK', 'Scottish studio behind the Grand Theft Auto series.'),
+       ('FromSoftware', 'Japan', 'Japanese studio famous for the Souls series and Elden Ring.'),
+       ('CD Projekt Red', 'Poland', 'Polish studio behind The Witcher and Cyberpunk 2077.'),
+       ('Nintendo EPD', 'Japan', 'Nintendo internal studio behind Zelda and Mario.'),
+       ('Mojang', 'Sweden', 'Swedish studio that created Minecraft.'),
+       ('Valve', 'USA', 'American studio behind Half-Life and Portal.'),
+       ('Santa Monica Studio', 'USA', 'American studio behind the God of War series.'),
+       ('Game Freak', 'Japan', 'Japanese studio developing the Pokémon games.'),
+       ('Insomniac Games', 'USA', 'American studio behind Marvel''s Spider-Man and Ratchet & Clank.'),
+       ('Ubisoft Montreal', 'Canada', 'Canadian studio behind Assassin''s Creed.'),
+       ('Square Enix', 'Japan', 'Japanese studio behind the Final Fantasy series.');
 
 -- ════════════════════════════════════════════════════════
 -- Insert publishers (ID auto‑generated)
 -- ════════════════════════════════════════════════════════
 INSERT INTO publishers (name, country)
-VALUES ('Gallimard', 'France'),
-       ('Livre de Poche', 'France'),
-       ('Penguin', 'USA'),
-       ('Flammarion', 'France'),
-       ('HarperCollins', 'USA'),
-       ('Robert Laffont', 'France'),
-       ('Hachette', 'France'),
-       ('Random House', 'USA'),
-       ('Del Rey', 'USA'),
-       ('L''Iconoclaste', 'France');
+VALUES ('Sony Interactive Entertainment', 'Japan'),
+       ('Nintendo', 'Japan'),
+       ('Bandai Namco', 'Japan'),
+       ('CD Projekt', 'Poland'),
+       ('Take-Two Interactive', 'USA'),
+       ('Microsoft', 'USA'),
+       ('Valve', 'USA'),
+       ('Ubisoft', 'France'),
+       ('Square Enix', 'Japan'),
+       ('Activision', 'USA');
 
 -- ════════════════════════════════════════════════════════
--- Insert books – foreign keys resolved by name lookup
+-- Insert games – foreign keys resolved by name lookup
 -- ════════════════════════════════════════════════════════
-INSERT INTO books (isbn, title, author_id, publisher_id, category)
-VALUES ('9782070429158', 'Harry Potter à l''école des sorciers',
-        (SELECT id FROM authors WHERE name = 'J.K. Rowling'),
-        (SELECT id FROM publishers WHERE name = 'Flammarion'),
-        'Fiction'),
+INSERT INTO games (code, title, studio_id, publisher_id, genre)
+VALUES ('TLOU-001', 'The Last of Us',
+        (SELECT id FROM studios WHERE name = 'Naughty Dog'),
+        (SELECT id FROM publishers WHERE name = 'Sony Interactive Entertainment'),
+        'Action'),
 
-       ('9782253151241', 'Jean Moulin : Biographie',
-        (SELECT id FROM authors WHERE name = 'Laure Moulin'),
-        (SELECT id FROM publishers WHERE name = 'Livre de Poche'),
-        'Biography'),
+       ('TLOU2-001', 'The Last of Us Part II',
+        (SELECT id FROM studios WHERE name = 'Naughty Dog'),
+        (SELECT id FROM publishers WHERE name = 'Sony Interactive Entertainment'),
+        'Action'),
 
-       ('9782070612758', 'Le Petit Prince',
-        (SELECT id FROM authors WHERE name = 'Antoine de Saint-Exupéry'),
-        (SELECT id FROM publishers WHERE name = 'Gallimard'),
-        'Fiction'),
+       ('UNCH4-001', 'Uncharted 4: A Thief''s End',
+        (SELECT id FROM studios WHERE name = 'Naughty Dog'),
+        (SELECT id FROM publishers WHERE name = 'Sony Interactive Entertainment'),
+        'Adventure'),
 
-       ('9780451524935', '1984',
-        (SELECT id FROM authors WHERE name = 'George Orwell'),
-        (SELECT id FROM publishers WHERE name = 'Penguin'),
-        'Fiction'),
+       ('GTAV-001', 'Grand Theft Auto V',
+        (SELECT id FROM studios WHERE name = 'Rockstar North'),
+        (SELECT id FROM publishers WHERE name = 'Take-Two Interactive'),
+        'Action'),
 
-       ('9782226257017', 'Sapiens : Une brève histoire de l''humanité',
-        (SELECT id FROM authors WHERE name = 'Yuval Noah Harari'),
-        (SELECT id FROM publishers WHERE name = 'Hachette'),
-        'History'),
+       ('ER-001', 'Elden Ring',
+        (SELECT id FROM studios WHERE name = 'FromSoftware'),
+        (SELECT id FROM publishers WHERE name = 'Bandai Namco'),
+        'RPG'),
 
-       ('9782070360024', 'L''Étranger',
-        (SELECT id FROM authors WHERE name = 'Albert Camus'),
-        (SELECT id FROM publishers WHERE name = 'Flammarion'),
-        'NonFiction'),
+       ('DS3-001', 'Dark Souls III',
+        (SELECT id FROM studios WHERE name = 'FromSoftware'),
+        (SELECT id FROM publishers WHERE name = 'Bandai Namco'),
+        'RPG'),
 
-       ('9782221002247', 'Dune',
-        (SELECT id FROM authors WHERE name = 'Frank Herbert'),
-        (SELECT id FROM publishers WHERE name = 'Robert Laffont'),
-        'SciFi'),
+       ('W3-001', 'The Witcher 3: Wild Hunt',
+        (SELECT id FROM studios WHERE name = 'CD Projekt Red'),
+        (SELECT id FROM publishers WHERE name = 'CD Projekt'),
+        'RPG'),
 
-       ('9782253006329', 'Une étude en rouge',
-        (SELECT id FROM authors WHERE name = 'Arthur Conan Doyle'),
-        (SELECT id FROM publishers WHERE name = 'Livre de Poche'),
-        'Fiction'),
+       ('CP77-001', 'Cyberpunk 2077',
+        (SELECT id FROM studios WHERE name = 'CD Projekt Red'),
+        (SELECT id FROM publishers WHERE name = 'CD Projekt'),
+        'RPG'),
 
-       ('9780857197689', 'Atomic Habits',
-        (SELECT id FROM authors WHERE name = 'James Clear'),
-        (SELECT id FROM publishers WHERE name = 'Random House'),
-        'NonFiction'),
+       ('BOTW-001', 'The Legend of Zelda: Breath of the Wild',
+        (SELECT id FROM studios WHERE name = 'Nintendo EPD'),
+        (SELECT id FROM publishers WHERE name = 'Nintendo'),
+        'Adventure'),
 
-       ('9782266154116', 'Le Seigneur des Anneaux',
-        (SELECT id FROM authors WHERE name = 'J.R.R. Tolkien'),
-        (SELECT id FROM publishers WHERE name = 'Del Rey'),
-        'Fiction'),
+       ('MK8-001', 'Mario Kart 8 Deluxe',
+        (SELECT id FROM studios WHERE name = 'Nintendo EPD'),
+        (SELECT id FROM publishers WHERE name = 'Nintendo'),
+        'Racing'),
 
-       ('9782844140586', 'Persépolis',
-        (SELECT id FROM authors WHERE name = 'Marjane Satrapi'),
-        (SELECT id FROM publishers WHERE name = 'L''Iconoclaste'),
-        'Fiction'),
+       ('MC-001', 'Minecraft',
+        (SELECT id FROM studios WHERE name = 'Mojang'),
+        (SELECT id FROM publishers WHERE name = 'Microsoft'),
+        'Simulation'),
 
-       ('9782081238626', 'Une brève histoire du temps',
-        (SELECT id FROM authors WHERE name = 'Stephen Hawking'),
-        (SELECT id FROM publishers WHERE name = 'Flammarion'),
-        'Science');
+       ('HL2-001', 'Half-Life 2',
+        (SELECT id FROM studios WHERE name = 'Valve'),
+        (SELECT id FROM publishers WHERE name = 'Valve'),
+        'Shooter'),
 
--- Additional books to create multiple publishers per author
-INSERT INTO books (isbn, title, author_id, publisher_id, category) VALUES
-       -- J.K. Rowling gets a second publisher (Gallimard)
-       ('9782070643035', 'Harry Potter et la Chambre des secrets',
-        (SELECT id FROM authors WHERE name = 'J.K. Rowling'),
-        (SELECT id FROM publishers WHERE name = 'Gallimard'),
-        'Fiction'),
+       ('GOW-001', 'God of War',
+        (SELECT id FROM studios WHERE name = 'Santa Monica Studio'),
+        (SELECT id FROM publishers WHERE name = 'Sony Interactive Entertainment'),
+        'Action'),
 
-       -- Stephen Hawking gets Penguin as second publisher
-       ('9780553804362', 'The Universe in a Nutshell',
-        (SELECT id FROM authors WHERE name = 'Stephen Hawking'),
-        (SELECT id FROM publishers WHERE name = 'Penguin'),
-        'Science'),
+       ('POKE-001', 'Pokémon Scarlet',
+        (SELECT id FROM studios WHERE name = 'Game Freak'),
+        (SELECT id FROM publishers WHERE name = 'Nintendo'),
+        'RPG'),
 
-       -- George Orwell gets HarperCollins (new publisher)
-       ('9780156262248', 'Homage to Catalonia',
-        (SELECT id FROM authors WHERE name = 'George Orwell'),
-        (SELECT id FROM publishers WHERE name = 'HarperCollins'),
-        'NonFiction'),
+       ('SM-001', 'Marvel''s Spider-Man',
+        (SELECT id FROM studios WHERE name = 'Insomniac Games'),
+        (SELECT id FROM publishers WHERE name = 'Sony Interactive Entertainment'),
+        'Action'),
 
-       -- J.R.R. Tolkien gets HarperCollins (second publisher)
-       ('9780261102217', 'The Hobbit',
-        (SELECT id FROM authors WHERE name = 'J.R.R. Tolkien'),
-        (SELECT id FROM publishers WHERE name = 'HarperCollins'),
-        'Fiction');
+       ('ACV-001', 'Assassin''s Creed Valhalla',
+        (SELECT id FROM studios WHERE name = 'Ubisoft Montreal'),
+        (SELECT id FROM publishers WHERE name = 'Ubisoft'),
+        'Action'),
+
+       ('FF7R-001', 'Final Fantasy VII Remake',
+        (SELECT id FROM studios WHERE name = 'Square Enix'),
+        (SELECT id FROM publishers WHERE name = 'Square Enix'),
+        'RPG'),
+
+-- FromSoftware gets a second publisher (Activision) to showcase the
+-- "distinct publishers per studio" search.
+       ('SEKIRO-001', 'Sekiro: Shadows Die Twice',
+        (SELECT id FROM studios WHERE name = 'FromSoftware'),
+        (SELECT id FROM publishers WHERE name = 'Activision'),
+        'Action');
