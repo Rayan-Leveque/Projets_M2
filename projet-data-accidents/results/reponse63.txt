@@ -1,0 +1,18 @@
+Question 6.3 — Top 10 des départements avec le plus d'accidents
+==============================================================
+
+Période cumulée : 2005-2015 (Groupe 1)
+Champ : France métropolitaine (DOM exclus)
+
+Rang  Dép.  Nom                         Nb accidents
+---------------------------------------------------
+1     75    Paris                              81016
+2     13    Bouches-du-Rhône                   48078
+3     93    Seine-Saint-Denis                  30779
+4     92    Hauts-de-Seine                     28388
+5     06    Alpes-Maritimes                    27038
+6     94    Val-de-Marne                       26668
+7     69    Rhône                              23658
+8     59    Nord                               22657
+9     33    Gironde                            20813
+10    91    Essonne                            16044

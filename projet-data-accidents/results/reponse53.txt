@@ -1,0 +1,51 @@
+Question 5.3 — Incohérence sur an_nais (année de naissance)
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched (table usagers)
+
+Règle d'incohérence appliquée :
+  - an_nais > 2015 (naissance après l'accident le plus tardif)  → incohérent
+  - an_nais < 1900 (plus de 105 ans à l'accident)          → incohérent
+Valeurs manquantes ignorées (vide, « 0 », « 00 », « . ») ainsi que toute
+valeur non numérique.
+
+Lignes usagers testées (an_nais renseignée) : 1740264
+Nombre total d'incohérences                 : 41  (0.002 %)
+  - naissance postérieure à 2015        : 0
+  - naissance antérieure à 1900          : 41
+
+Les 10 premiers cas
+--------------------------------------------------------------------
+annee Num_Acc       num_veh  an_nais   motif
+--------------------------------------------------------------------
+2005  200500003366  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500006218  A01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500007379  A01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500010227  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500015680  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500018076  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500022036  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500034480  B01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500034919  B01         1897   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+2005  200500047296  A01         1898   Naissance trop ancienne, > 105 ans (an_nais < 1900)
+
+Commentaires
+--------------------------------------------------------------------
+- Sur 1740264 lignes usagers où an_nais est renseignée, seules 41
+  présentent une incohérence (0.002 %) : l'année de naissance y est
+  matériellement impossible au regard de la période 2005-2015. La
+  qualité de remplissage de an_nais est donc excellente.
+- Les bornes sont volontairement larges (1900 et 2015) : on ne retient que
+  les cas francs — la naissance dans le futur (strictement impossible) et
+  l'âge supérieur à 105 ans (extrême et quasi certainement fautif). On évite
+  ainsi de qualifier d'« incohérent » un centenaire réel.
+- Dans cette fenêtre, toutes les anomalies sont des années antérieures à 1900,
+  typiques d'erreurs de saisie ou de relevé (p. ex. 1789, 1066, ou une
+  inversion de chiffres) ; aucune naissance postérieure à 2015 n'apparaît.
+- Les valeurs manquantes (cellule vide, « 0 ») sont écartées du test : ce
+  sont des non-réponses, pas des incohérences. Les y inclure gonflerait
+  artificiellement le compte.
+- Le rapport complet (reponse53_complet.csv) liste chaque ligne fautive avec
+  son Num_Acc et son num_veh, ce qui permet de remonter à l'usager précis et
+  de croiser au besoin avec les autres tables.

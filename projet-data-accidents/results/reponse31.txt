@@ -1,0 +1,104 @@
+Question 3.1 — Répartition en % des attributs énumérés (usagers)
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+Total usagers cumulés : 1742583
+
+Pour chaque attribut, le dénominateur du pourcentage est le
+nombre total d'usagers ; les valeurs sont triées par effectif
+décroissant. secu est un code brut à 2 caractères (1er =
+équipement, 2e = utilisation), décodé pour la lisibilité.
+
+Attribut « catu »  (4 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   74.52 %    1298592  1 - Conducteur
+   17.04 %     296906  2 - Passager
+    8.27 %     144060  3 - Piéton
+    0.17 %       3025  4 - Piéton en roller ou trottinette
+
+Attribut « grav »  (4 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   40.76 %     710234  1 - Indemne
+   35.59 %     620122  4 - Blessé léger
+   20.96 %     365293  3 - Blessé hospitalisé
+    2.69 %      46934  2 - Tué
+
+Attribut « sexe »  (2 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   66.89 %    1165632  1 - Masculin
+   33.11 %     576951  2 - Féminin
+
+Attribut « trajet »  (8 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   36.65 %     638681  5 - Promenade - loisirs
+   29.28 %     510144  0 - Non renseigné
+   12.91 %     224916  1 - Domicile - travail
+    9.85 %     171643  4 - Utilisation professionnelle
+    6.77 %     117921  9 - Autre
+    2.53 %      44070  3 - Courses - achats
+    2.00 %      34849  2 - Domicile - école
+    0.02 %        359  '' (valeur absente)
+
+Attribut « secu »  (26 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   55.28 %     963364  '11'   → Ceinture - Oui
+   18.29 %     318639  '21'   → Casque - Oui
+    8.00 %     139384  '13'   → Ceinture - Non déterminable
+    5.46 %      95173  '93'   → Autre - Non déterminable
+    3.92 %      68374  '00'   → (code hors documentation)
+    2.01 %      35048  '23'   → Casque - Non déterminable
+    1.96 %      34098  ''     → (valeur absente)
+    1.75 %      30574  '12'   → Ceinture - Non
+    1.02 %      17841  '22'   → Casque - Non
+    0.68 %      11910  '31'   → Dispositif enfants - Oui
+    0.35 %       6162  '91'   → Autre - Oui
+    0.32 %       5631  '10'   → (code hors documentation)
+    0.31 %       5445  '92'   → Autre - Non
+    0.19 %       3277  '1'    → (code hors documentation)
+    0.12 %       2066  '41'   → Équipement réfléchissant - Oui
+    0.10 %       1801  '43'   → Équipement réfléchissant - Non déterminable
+    0.07 %       1270  '42'   → Équipement réfléchissant - Non
+    0.04 %        754  '20'   → (code hors documentation)
+    0.04 %        680  '33'   → Dispositif enfants - Non déterminable
+    0.04 %        640  '32'   → Dispositif enfants - Non
+    0.01 %        226  '2'    → (code hors documentation)
+    0.01 %        141  '3'    → (code hors documentation)
+    0.00 %         73  '90'   → (code hors documentation)
+    0.00 %          9  '30'   → (code hors documentation)
+    0.00 %          2  '40'   → (code hors documentation)
+    0.00 %          1  '01'   → (code hors documentation)
+
+Attribut « locp »  (10 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   92.39 %    1610054  0 - Sans objet
+    2.14 %      37300  4 - Sur passage piéton avec signalisation lumineuse
+    1.95 %      34033  2 - À -50 m du passage piéton
+    1.43 %      24962  3 - Sur passage piéton sans signalisation lumineuse
+    1.22 %      21314  1 - À +50 m du passage piéton
+    0.51 %       8970  5 - Sur trottoir
+    0.16 %       2817  6 - Sur accotement
+    0.09 %       1575  '' (valeur absente)
+    0.08 %       1392  8 - Sur contre-allée
+    0.01 %        166  7 - Sur refuge ou BAU
+
+Attribut « actp »  (9 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   91.90 %    1601498  0 - Non renseigné ou sans objet
+    6.10 %     106359  3 - Traversant
+    0.57 %       9869  9 - Autre
+    0.49 %       8610  5 - Jouant - courant
+    0.45 %       7761  1 - Sens du véhicule heurtant
+    0.22 %       3905  2 - Sens inverse du véhicule heurtant
+    0.15 %       2583  4 - Masqué
+    0.10 %       1679  '' (valeur absente)
+    0.02 %        319  6 - Avec animal
+
+Attribut « etatp »  (5 valeur(s) distincte(s))
+--------------------------------------------------------------------
+   92.00 %    1603128  0 - Non renseigné
+    6.00 %     104480  1 - Seul
+    1.57 %      27300  2 - Accompagné
+    0.35 %       6064  3 - En groupe
+    0.09 %       1611  '' (valeur absente)
+

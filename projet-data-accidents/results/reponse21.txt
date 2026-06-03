@@ -1,0 +1,83 @@
+Question 2.1 — Intégrité référentielle : usagers → vehicules
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+
+Méthode : pour chaque année, on construit l'ensemble des couples
+(Num_Acc, num_veh) présents dans vehicules_{annee}.csv puis on
+parcourt usagers_{annee}.csv en vérifiant que chaque (Num_Acc,
+num_veh) côté usagers existe bien dans cet ensemble.
+
+1. Récapitulatif par année
+--------------------------------------------------------------------
+année       usagers   couples véh.   violations    dont num_veh vide
+2005         197498         149764            2                    0
+2006         187085         142300            5                    0
+2007         188457         144130           11                    0
+2008         170960         131048            4                    0
+2009         165962         126347            0                    0
+2010         154192         117743            0                    0
+2011         148543         113854            0                    0
+2012         138628         105814            0                    0
+2013         128694          98925            0                    0
+2014         132186         101762            0                    0
+2015         130378          99778            0                    0
+--------------------------------------------------------------------
+TOTAL       1742583        1331465           22                    0
+
+Taux global de violations : 0.0013 %
+
+2. Fichier de violations
+--------------------------------------------------------------------
+22 ligne(s) écrite(s) dans reponse21_violations.csv
+Colonnes : annee, Num_Acc, num_veh
+
+Échantillon (20 premières violations) :
+  2005  Num_Acc=200500086196  num_veh=A03
+  2005  Num_Acc=200500087663  num_veh=D01
+  2006  Num_Acc=200600004519  num_veh=A03
+  2006  Num_Acc=200600051940  num_veh=A02
+  2006  Num_Acc=200600080450  num_veh=E01
+  2006  Num_Acc=200600083626  num_veh=C02
+  2006  Num_Acc=200600083626  num_veh=C02
+  2007  Num_Acc=200700026223  num_veh=A02
+  2007  Num_Acc=200700082289  num_veh=F01
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2007  Num_Acc=200700083469  num_veh=B02
+  2008  Num_Acc=200800028239  num_veh=A02
+  2008  Num_Acc=200800075490  num_veh=F01
+
+3. Analyse / commentaires
+--------------------------------------------------------------------
+22 violations détectées sur 1742583 usagers (0.0013 %),
+concentrées sur les 4 premières années (2005-2008) ; à
+partir de 2009, l'intégrité référentielle est parfaite.
+
+Aucune violation n'est dûe à un num_veh vide (0
+cas) : il s'agit donc à chaque fois d'un num_veh non vide
+qui ne correspond à aucun véhicule enregistré pour ce
+Num_Acc. Inspection manuelle de quelques cas (cf. dossier) :
+ - 200500086196 (2005) : véhicules A01, B02 ; un piéton est
+   pourtant rattaché à 'A03' inexistant — probable erreur
+   de saisie de la lettre du véhicule heurtant.
+ - 200700083469 (2007) : autobus B01 + VL A01 ; les 9
+   passagers du bus sont ventilés sur B01 et B02, alors
+   que B02 n'a pas été créé côté véhicules — visiblement
+   le saisisseur a inventé un second véhicule pour
+   distribuer les passagers, sans déclarer ce véhicule.
+
+Ces violations relèvent toutes de la saisie manuelle (BAAC
+rempli sur procès-verbal) et n'affectent que 22 usagers sur
+1,7 M, soit un taux négligeable. Elles seront ignorées dans
+les analyses suivantes car aucune n'introduit de biais
+statistique perceptible. La liste exhaustive est disponible
+dans reponse21_violations.csv pour qui voudrait les exclure
+explicitement.

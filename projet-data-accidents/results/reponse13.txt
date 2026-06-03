@@ -1,0 +1,205 @@
+Question 1.3 — Enrichissement des codes énumérés
+============================================================
+
+Période : 2005-2015 (Groupe 1)
+Source       : /home/rayan/bench-claude/data/utf8
+Destination  : /home/rayan/bench-claude/data/enriched
+
+Nombre de fichiers enrichis : 44
+
+1. Récapitulatif par fichier
+------------------------------------------------------------
+Fichier                            Lignes   Enrichis  Hors map.   Absents
+caracteristiques_2005.csv           87026     435121          9         0
+caracteristiques_2006.csv           82993     414965          0         0
+caracteristiques_2007.csv           83850     419243          7         0
+caracteristiques_2008.csv           76767     383834          1         0
+caracteristiques_2009.csv           74409     372038          0         7
+caracteristiques_2010.csv           69379     346889          0         6
+caracteristiques_2011.csv           66974     334851          0        19
+caracteristiques_2012.csv           62250     311247          0         3
+caracteristiques_2013.csv           58397     291972          0        13
+caracteristiques_2014.csv           59854     299166         88        16
+caracteristiques_2015.csv           58654     293269          1         0
+lieux_2005.csv                      87026     676130      20077         1
+lieux_2006.csv                      82993     643364      20580         0
+lieux_2007.csv                      83850     651396      19404         0
+lieux_2008.csv                      76767     590886      23250         0
+lieux_2009.csv                      74409     574255      20249       768
+lieux_2010.csv                      69379     536607      18053       372
+lieux_2011.csv                      66974     517242      17633       917
+lieux_2012.csv                      62250     478688      17429      1883
+lieux_2013.csv                      58397     447948      18601       627
+lieux_2014.csv                      59854     461102      16818       912
+lieux_2015.csv                      58654     446406      21830       996
+vehicules_2005.csv                 149764     742740     155844         0
+vehicules_2006.csv                 142300     703701     150099         0
+vehicules_2007.csv                 144130     711650     153130         0
+vehicules_2008.csv                 131048     647326     138962         0
+vehicules_2009.csv                 126347     624650     132917       515
+vehicules_2010.csv                 117743     582758     123534       166
+vehicules_2011.csv                 113854     565097     117733       294
+vehicules_2012.csv                 105814     524567     110076       241
+vehicules_2013.csv                  98925     488640     104723       187
+vehicules_2014.csv                 101762     502650     107723       199
+vehicules_2015.csv                  99778     490654     107824       190
+usagers_2005.csv                   197498    1382486          0         0
+usagers_2006.csv                   187085    1309595          0         0
+usagers_2007.csv                   188457    1319199          0         0
+usagers_2008.csv                   170960    1196720          0         0
+usagers_2009.csv                   165962    1159886          0      1848
+usagers_2010.csv                   154192    1078580          0       764
+usagers_2011.csv                   148543    1039053          0       748
+usagers_2012.csv                   138628     969829          0       567
+usagers_2013.csv                   128694     900424          0       434
+usagers_2014.csv                   132186     924765          0       537
+usagers_2015.csv                   130378     912320          0       326
+
+2. Synthèse par colonne énumérée (cumul 2005-2015)
+------------------------------------------------------------
+
+  caracteristiques :
+    colonne     enrichies    hors map.    absents
+    lum            780553            0          0
+    agg            780553            0          0
+    int            780447          106          0
+    atm            780498            0         55
+    col            780544            0          9
+
+  lieux :
+    colonne     enrichies    hors map.    absents
+    catr           780552            0          1
+    circ           739434        40433        686
+    vosp           779123            0       1430
+    prof           721185        58463        905
+    plan           727085        52570        898
+    surf           755897        23785        871
+    infra          779577            0        976
+    situ           741171        38673        709
+
+  vehicules :
+    colonne     enrichies    hors map.    absents
+    senc            35087      1296378          0
+    catv          1331465            0          0
+    obs           1330741            0        724
+    obsm          1330914            0        551
+    choc          1331247            0        218
+    manv          1224979       106187        299
+
+  usagers :
+    colonne     enrichies    hors map.    absents
+    catu          1742583            0          0
+    grav          1742583            0          0
+    sexe          1742583            0          0
+    trajet        1742224            0        359
+    locp          1741008            0       1575
+    actp          1740904            0       1679
+    etatp         1740972            0       1611
+
+3. Échantillons avant/après (fichier 2010)
+------------------------------------------------------------
+
+  caracteristiques_2010.csv :
+    lum      '1'      → 1 - Plein jour
+    agg      '2'      → 2 - En agglomération
+    int      '1'      → 1 - Hors intersection
+    atm      '1'      → 1 - Normale
+    col      '6'      → 6 - Autre collision
+    agg      '1'      → 1 - Hors agglomération
+    col      '5'      → 5 - Trois véhicules et plus - collisions multiples
+    col      '2'      → 2 - Deux véhicules - par l'arrière
+    lum      '2'      → 2 - Crépuscule ou aube
+    col      '4'      → 4 - Trois véhicules et plus - en chaîne
+    col      '1'      → 1 - Deux véhicules - frontale
+    lum      '5'      → 5 - Nuit avec éclairage public allumé
+    int      '2'      → 2 - Intersection en X
+    col      '3'      → 3 - Deux véhicules - par le côté
+    int      '6'      → 6 - Giratoire
+
+  lieux_2010.csv :
+    catr     '3'      → 3 - Route départementale
+    circ     '2'      → 2 - Bidirectionnelle
+    vosp     '0'      → 0 - Sans objet
+    prof     '1'      → 1 - Plat
+    plan     '1'      → 1 - Partie rectiligne
+    surf     '1'      → 1 - Normale
+    infra    '0'      → 0 - Aucun
+    situ     '1'      → 1 - Sur chaussée
+    catr     '2'      → 2 - Route nationale
+    circ     '3'      → 3 - À chaussées séparées
+    infra    '5'      → 5 - Carrefour aménagé
+    plan     '4'      → 4 - En S
+    catr     '9'      → 9 - Autre
+    plan     '3'      → 3 - Courbe à droite
+    surf     '2'      → 2 - Mouillée
+
+  vehicules_2010.csv :
+    catv     '30'     → 30 - Scooter ≤ 50 cm³
+    obs      '01'     → 01 - Véhicule en stationnement
+    obsm     '0'      → 0 - Aucun
+    choc     '1'      → 1 - Avant
+    manv     '01'     → 01 - Sans changement de direction
+    catv     '07'     → 07 - VL seul
+    obs      '00'     → 00 - Sans objet
+    obsm     '1'      → 1 - Piéton
+    catv     '33'     → 33 - Motocyclette > 125 cm³
+    obsm     '2'      → 2 - Véhicule
+    manv     '17'     → 17 - Dépassant à gauche
+    obsm     '9'      → 9 - Autre
+    choc     '3'      → 3 - Avant gauche
+    manv     '23'     → 23 - Arrêté (hors stationnement)
+    choc     '6'      → 6 - Arrière gauche
+
+  usagers_2010.csv :
+    catu     '1'      → 1 - Conducteur
+    grav     '3'      → 3 - Blessé hospitalisé
+    sexe     '1'      → 1 - Masculin
+    trajet   '5'      → 5 - Promenade - loisirs
+    locp     '0'      → 0 - Sans objet
+    actp     '0'      → 0 - Non renseigné ou sans objet
+    etatp    '0'      → 0 - Non renseigné
+    grav     '1'      → 1 - Indemne
+    sexe     '2'      → 2 - Féminin
+    catu     '3'      → 3 - Piéton
+    trajet   '0'      → 0 - Non renseigné
+    locp     '4'      → 4 - Sur passage piéton avec signalisation lumineuse
+    actp     '3'      → 3 - Traversant
+    etatp    '1'      → 1 - Seul
+    trajet   '3'      → 3 - Courses - achats
+
+4. Vérification ciblée — colonne catv (vehicules)
+------------------------------------------------------------
+    code          occurrences statut
+    07                 825576 enrichi
+    33                  88829 enrichi
+    02                  76460 enrichi
+    10                  64621 enrichi
+    30                  55965 enrichi
+    01                  53423 enrichi
+    32                  27509 enrichi
+    31                  25678 enrichi
+    05                  21816 enrichi
+    14                  14361 enrichi
+    34                  11921 enrichi
+    17                  10855 enrichi
+    15                  10827 enrichi
+    37                   8334 enrichi
+    04                   7463 enrichi
+    99                   5239 enrichi
+    13                   4889 enrichi
+    03                   4572 enrichi
+    21                   2577 enrichi
+    38                   2295 enrichi
+    18                   2075 enrichi
+    36                   1487 enrichi
+    40                   1405 enrichi
+    20                   1292 enrichi
+    16                    614 enrichi
+    35                    347 enrichi
+    09                    300 enrichi
+    39                    297 enrichi
+    19                    183 enrichi
+    08                    120 enrichi
+    12                     79 enrichi
+    06                     39 enrichi
+    11                     17 enrichi

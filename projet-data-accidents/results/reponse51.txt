@@ -1,0 +1,61 @@
+Question 5.1 — Incohérence entre lum (luminosité) et hrmn
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+
+Règle d'incohérence appliquée :
+  - « 1 - Plein jour » mais heure hors de [8 h ; 19 h]  → incohérent
+  - « 3/4/5 - Nuit … » mais heure dans [10 h ; 16 h]  → incohérent
+  (« 2 - Crépuscule ou aube » non testé : heures intermédiaires par nature.)
+Heure extraite par int(hrmn)//100 (HHMM non zéro-paddé).
+
+Accidents testés (hrmn renseignée) : 780553
+Nombre total d'incohérences        : 37790  (4.841 %)
+  - plein jour déclaré la nuit      : 36493
+  - nuit déclarée en pleine journée : 1297
+
+Les 10 premiers cas
+--------------------------------------------------------------------
+annee Num_Acc         hrmn   h   lum / motif
+--------------------------------------------------------------------
+2005  200500000127     645   6   1 - Plein jour
+                              → Plein jour déclaré mais heure nocturne
+2005  200500000165    1330  13   3 - Nuit sans éclairage public
+                              → Nuit déclarée mais heure en pleine journée
+2005  200500000248    1030  10   3 - Nuit sans éclairage public
+                              → Nuit déclarée mais heure en pleine journée
+2005  200500000292     745   7   1 - Plein jour
+                              → Plein jour déclaré mais heure nocturne
+2005  200500000293     730   7   1 - Plein jour
+                              → Plein jour déclaré mais heure nocturne
+2005  200500000322    2215  22   1 - Plein jour
+                              → Plein jour déclaré mais heure nocturne
+2005  200500000383    1630  16   3 - Nuit sans éclairage public
+                              → Nuit déclarée mais heure en pleine journée
+2005  200500000386    1130  11   3 - Nuit sans éclairage public
+                              → Nuit déclarée mais heure en pleine journée
+2005  200500000391    1400  14   3 - Nuit sans éclairage public
+                              → Nuit déclarée mais heure en pleine journée
+2005  200500000402    2200  22   1 - Plein jour
+                              → Plein jour déclaré mais heure nocturne
+
+Commentaires
+--------------------------------------------------------------------
+- Sur 780553 accidents datés, seuls 37790 présentent une incohérence
+  franche entre la luminosité déclarée et l'heure, soit 4.841 %. La
+  cohérence lum × hrmn est donc globalement très bonne : les forces de
+  l'ordre renseignent ces deux champs de façon concordante.
+- Les bornes sont volontairement prudentes : la plage de jour retenue
+  [8 h ; 19 h] et le cœur de journée [10 h ; 16 h] laissent une marge autour
+  du lever et du coucher du soleil, qui varient fortement selon la saison
+  (en décembre il fait nuit dès 17 h, en juin encore jour à 21 h). On ne
+  signale ainsi que les cas nets et on évite les faux positifs saisonniers.
+- Le crépuscule/aube (« 2 - … ») est exclu du test : c'est par construction
+  une luminosité d'heure intermédiaire, qu'aucune borne fixe ne peut
+  qualifier d'incohérente sans connaître la date précise.
+- Interprétation des cas restants : ils relèvent soit d'une erreur de
+  saisie (luminosité ou heure mal reportée), soit d'une situation réelle
+  mais rare (p. ex. tunnel, brouillard très dense, éclipse) — non
+  distinguables à partir des seuls champs lum et hrmn. Le rapport complet
+  (reponse51_complet.csv) permet de les inspecter un par un.

@@ -1,0 +1,29 @@
+[..]   2005
+  [OK] 2005 : 82654 accidents cumulés (métropole)
+[..]   2006
+  [OK] 2006 : 160906 accidents cumulés (métropole)
+[..]   2007
+  [OK] 2007 : 240124 accidents cumulés (métropole)
+[..]   2008
+  [OK] 2008 : 312337 accidents cumulés (métropole)
+[..]   2009
+  [OK] 2009 : 382532 accidents cumulés (métropole)
+[..]   2010
+  [OK] 2010 : 447982 accidents cumulés (métropole)
+[..]   2011
+  [OK] 2011 : 510995 accidents cumulés (métropole)
+[..]   2012
+  [OK] 2012 : 569234 accidents cumulés (métropole)
+[..]   2013
+  [OK] 2013 : 623946 accidents cumulés (métropole)
+[..]   2014
+  [OK] 2014 : 680250 accidents cumulés (métropole)
+[..]   2015
+  [OK] 2015 : 733867 accidents cumulés (métropole)
+
+Accidents à atm non exploitable (ignorés)  : 21
+Accidents à surf non exploitable (ignorés) : 23375
+
+Total accidents exploités (métropole, 2005-2015) : 733867
+Couple le plus fréquent : atm « 1 - Normale » × surf « 1 - Normale » (560 189 accidents, 76.3 %)
+Heatmap écrite dans /home/rayan/bench-claude/results/reponse64.png

@@ -1,0 +1,56 @@
+Question 5.2 — Incohérence entre obsm (obstacle mobile) et choc (point de choc)
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched (table vehicules)
+
+Règle d'incohérence appliquée :
+  - obsm = obstacle mobile réellement heurté (« 1 », « 2 », « 4 », « 5 », « 6 » ou « 9 »)
+  - mais choc = « 0 - Aucun » (aucun point de choc enregistré)  → incohérent
+  (Cas inverse non testé : un choc sans obstacle mobile peut venir d'un
+   obstacle fixe, renseigné dans obs.)
+Lignes vides (obsm ou choc non renseigné) : ignorées.
+
+Lignes véhicules testées (obsm et choc renseignés) : 1330827
+Nombre total d'incohérences                        : 39648  (2.979 %)
+
+Répartition par obstacle mobile heurté :
+  - 2 - Véhicule             : 27521
+  - 1 - Piéton               : 10361
+  - 9 - Autre                : 1478
+  - 6 - Animal sauvage       : 127
+  - 5 - Animal domestique    : 114
+  - 4 - Véhicule sur rail    : 47
+
+Les 10 premiers cas
+--------------------------------------------------------------------
+annee Num_Acc       num_veh obsm                      choc
+--------------------------------------------------------------------
+2005  200500000004  B02     2 - Véhicule              0 - Aucun
+2005  200500000050  A01     4 - Véhicule sur rail     0 - Aucun
+2005  200500000255  B02     2 - Véhicule              0 - Aucun
+2005  200500000342  A01     2 - Véhicule              0 - Aucun
+2005  200500000392  C03     2 - Véhicule              0 - Aucun
+2005  200500000524  B02     2 - Véhicule              0 - Aucun
+2005  200500000543  A01     9 - Autre                 0 - Aucun
+2005  200500000549  A01     2 - Véhicule              0 - Aucun
+2005  200500000658  B02     2 - Véhicule              0 - Aucun
+2005  200500000696  A01     1 - Piéton                0 - Aucun
+
+Commentaires
+--------------------------------------------------------------------
+- Sur 1330827 lignes véhicules où obsm et choc sont tous deux renseignés,
+  39648 présentent une incohérence (2.979 %) : un obstacle mobile est
+  déclaré heurté alors qu'aucun point de choc n'est enregistré sur le
+  véhicule. Logiquement, un impact aurait dû être reporté.
+- La règle est volontairement asymétrique : on ne signale que « obstacle
+  mobile sans choc ». Le cas inverse (choc sans obstacle mobile) n'est PAS
+  une anomalie, car le véhicule a pu heurter un obstacle fixe (mur,
+  glissière, arbre…), qui est codé dans obs et non dans obsm.
+- Ces incohérences relèvent presque toujours d'une erreur ou d'un oubli de
+  saisie sur le champ choc (laissé à « 0 - Aucun » par défaut), le champ
+  obsm étant lui correctement renseigné. Le taux faible confirme la bonne
+  qualité de remplissage de ces deux attributs.
+- Le rapport complet (reponse52_complet.csv) liste chaque ligne fautive avec
+  son Num_Acc et son num_veh, ce qui permet de remonter au véhicule précis
+  et de croiser au besoin avec les autres tables.

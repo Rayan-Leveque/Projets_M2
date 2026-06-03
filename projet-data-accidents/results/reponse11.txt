@@ -1,0 +1,65 @@
+Question 1.1 — Conversion UTF-8 + séparateur ','
+============================================================
+
+Période traitée : 2005-2015 (Groupe 1)
+Types de fichiers : caracteristiques, lieux, vehicules, usagers
+Source : /home/rayan/bench-claude/data/raw
+Destination : /home/rayan/bench-claude/data/utf8
+
+Nombre de fichiers convertis : 44
+
+Fichier                             Encodage       Sep.       Lignes
+----------------------------------------------------------------------
+caracteristiques_2005.csv           iso-8859-1     ,           87027
+caracteristiques_2006.csv           windows-1252   ,           82994
+caracteristiques_2007.csv           iso-8859-1     ,           83851
+caracteristiques_2008.csv           iso-8859-1     ,           76768
+caracteristiques_2009.csv           utf-8          TAB         74410
+caracteristiques_2010.csv           iso-8859-1     ,           69380
+caracteristiques_2011.csv           iso-8859-1     ,           66975
+caracteristiques_2012.csv           iso-8859-1     ,           62251
+caracteristiques_2013.csv           iso-8859-1     ,           58398
+caracteristiques_2014.csv           iso-8859-1     ,           59855
+caracteristiques_2015.csv           iso-8859-1     ,           58655
+lieux_2005.csv                      utf-8          ,           87027
+lieux_2006.csv                      utf-8          ,           82994
+lieux_2007.csv                      utf-8          ,           83851
+lieux_2008.csv                      utf-8          ,           76768
+lieux_2009.csv                      utf-8          ,           74410
+lieux_2010.csv                      utf-8          ,           69380
+lieux_2011.csv                      utf-8          ,           66975
+lieux_2012.csv                      utf-8          ,           62251
+lieux_2013.csv                      utf-8          ,           58398
+lieux_2014.csv                      utf-8          ,           59855
+lieux_2015.csv                      utf-8          ,           58655
+vehicules_2005.csv                  utf-8          ,          149765
+vehicules_2006.csv                  utf-8          ,          142301
+vehicules_2007.csv                  utf-8          ,          144131
+vehicules_2008.csv                  utf-8          ,          131049
+vehicules_2009.csv                  utf-8          ,          126348
+vehicules_2010.csv                  utf-8          ,          117744
+vehicules_2011.csv                  utf-8          ,          113855
+vehicules_2012.csv                  utf-8          ,          105815
+vehicules_2013.csv                  utf-8          ,           98926
+vehicules_2014.csv                  utf-8          ,          101763
+vehicules_2015.csv                  utf-8          ,           99779
+usagers_2005.csv                    utf-8          ,          197499
+usagers_2006.csv                    utf-8          ,          187086
+usagers_2007.csv                    utf-8          ,          188458
+usagers_2008.csv                    utf-8          ,          170961
+usagers_2009.csv                    utf-8          ,          165963
+usagers_2010.csv                    utf-8          ,          154193
+usagers_2011.csv                    utf-8          ,          148544
+usagers_2012.csv                    utf-8          ,          138629
+usagers_2013.csv                    utf-8          ,          128695
+usagers_2014.csv                    utf-8          ,          132187
+usagers_2015.csv                    utf-8          ,          130379
+
+Synthèse des encodages détectés :
+  - iso-8859-1 : 9 fichier(s)
+  - utf-8 : 34 fichier(s)
+  - windows-1252 : 1 fichier(s)
+
+Synthèse des séparateurs source :
+  - ',' : 43 fichier(s)
+  - 'TAB' : 1 fichier(s)

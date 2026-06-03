@@ -1,0 +1,86 @@
+Question 2.2 — Intégrité référentielle : vehicules → usagers
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+
+Méthode : pour chaque année, on construit l'ensemble des couples
+(Num_Acc, num_veh) présents dans usagers_{annee}.csv puis on
+parcourt vehicules_{annee}.csv en vérifiant que chaque (Num_Acc,
+num_veh) côté véhicule existe bien dans cet ensemble. Tout
+véhicule dont la clé n'est pas trouvée est un véhicule "sans
+usager".
+
+1. Récapitulatif par année
+--------------------------------------------------------------------
+année     véhicules   couples usa.   violations    dont num_veh vide
+2005         149764         147779         1987                    0
+2006         142300         140264         2040                    0
+2007         144130         141975         2158                    0
+2008         131048         129052         2000                    0
+2009         126347         124708         1639                    0
+2010         117743         116141         1602                    0
+2011         113854         112211         1643                    0
+2012         105814         104217         1597                    0
+2013          98925          97348         1577                    0
+2014         101762         100063         1699                    0
+2015          99778          98140         1638                    0
+--------------------------------------------------------------------
+TOTAL       1331465        1311898        19580                    0
+
+Taux global de violations : 1.4706 %
+
+2. Fichier de violations
+--------------------------------------------------------------------
+19580 ligne(s) écrite(s) dans reponse22_violations.csv
+Colonnes : annee, Num_Acc, num_veh
+
+Échantillon (20 premières violations) :
+  2005  Num_Acc=200500000170  num_veh=B02
+  2005  Num_Acc=200500000471  num_veh=A01
+  2005  Num_Acc=200500000524  num_veh=B02
+  2005  Num_Acc=200500000815  num_veh=A01
+  2005  Num_Acc=200500000832  num_veh=B02
+  2005  Num_Acc=200500001849  num_veh=A01
+  2005  Num_Acc=200500001947  num_veh=A01
+  2005  Num_Acc=200500002131  num_veh=A01
+  2005  Num_Acc=200500002137  num_veh=A01
+  2005  Num_Acc=200500002170  num_veh=A01
+  2005  Num_Acc=200500002212  num_veh=B01
+  2005  Num_Acc=200500002334  num_veh=A01
+  2005  Num_Acc=200500002359  num_veh=A01
+  2005  Num_Acc=200500002370  num_veh=B01
+  2005  Num_Acc=200500002380  num_veh=A01
+  2005  Num_Acc=200500002387  num_veh=A01
+  2005  Num_Acc=200500002393  num_veh=A01
+  2005  Num_Acc=200500002400  num_veh=A01
+  2005  Num_Acc=200500002401  num_veh=A01
+  2005  Num_Acc=200500002405  num_veh=B01
+
+3. Analyse / commentaires
+--------------------------------------------------------------------
+19580 véhicule(s) sans aucun usager rattaché,
+sur 1331465 véhicules cumulés (1.4706 %).
+
+Interprétation : un véhicule sans usager peut paraître
+anormal puisqu'un véhicule est *forcément* conduit par
+quelqu'un. Le cas connu correspond aux **conducteurs en
+fuite** : la procédure BAAC enregistre le véhicule heurtant
+(numéro, type) parce qu'il est mentionné par les témoins ou
+déduit des dégâts, mais aucun usager n'est saisi côté
+victime — la fiche conducteur reste vide tant que le fuyard
+n'est pas identifié. Ces lignes ne sont donc pas de simples
+erreurs de saisie : elles portent une information utile (un
+véhicule a été impliqué sans qu'on connaisse son
+conducteur).
+
+Aucune violation n'est dûe à un num_veh vide (0
+cas) : la clé est toujours non vide côté véhicules.
+
+Décision pour les questions suivantes : ces véhicules "sans
+usager" ne seront PAS supprimés ; ils restent comptabilisés
+dans les analyses sur les véhicules (Q3, Q4, Q6) mais
+n'apparaîtront évidemment pas dans les analyses centrées sur
+les usagers (gravité, âge, sexe). La liste exhaustive est
+disponible dans reponse22_violations.csv pour qui voudrait
+les isoler explicitement (étude de la fuite, p. ex.).

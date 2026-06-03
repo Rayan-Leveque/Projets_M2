@@ -1,0 +1,54 @@
+Question 2.4 (facultative) — Cardinalité : chaque accident sur un seul lieu
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+
+Méthode : pour chaque année, on compte le nombre de lignes de
+lieux_{annee}.csv pour chaque Num_Acc (un Counter), puis on
+parcourt caracteristiques_{annee}.csv en vérifiant que chaque
+accident possède exactement un lieu. Un accident dont le nombre
+de lieux vaut 0 (aucun lieu) ou >= 2 (plusieurs lieux) est une
+violation de la cardinalité « un et un seul lieu ».
+
+1. Récapitulatif par année
+--------------------------------------------------------------------
+année       accidents   violations   dont sans lieu   dont multi-lieux
+2005            87026            0                0                  0
+2006            82993            0                0                  0
+2007            83850            0                0                  0
+2008            76767            0                0                  0
+2009            74409            0                0                  0
+2010            69379            0                0                  0
+2011            66974            0                0                  0
+2012            62250            0                0                  0
+2013            58397            0                0                  0
+2014            59854            0                0                  0
+2015            58654            0                0                  0
+--------------------------------------------------------------------
+TOTAL          780553            0                0                  0
+
+Taux global de violations : 0.0000 %
+
+2. Fichier de violations
+--------------------------------------------------------------------
+Aucune violation détectée. Le fichier reponse24_violations.csv est vide (en-tête seul).
+
+3. Analyse / commentaires
+--------------------------------------------------------------------
+Chaque accident des caractéristiques se déroule sur un et un
+seul lieu, sur l'ensemble de la période 2005-2015. La relation
+caracteristiques → lieux est donc une vraie relation 1-à-1.
+
+C'est le résultat attendu et il complète Q2.3 : Q2.3 montrait
+que tout lieu référence un accident existant (aucun lieu
+orphelin), et que chaque année nb_lieux == nb_accidents ; la
+présente question confirme le sens manquant — aucun accident
+n'est sans lieu (0) ni dupliqué sur plusieurs lieux (>= 2).
+Les deux contrôles réunis établissent la bijection
+accident ⟷ lieu.
+
+Conséquence pour la suite : une jointure caracteristiques ⋈
+lieux sur Num_Acc ne crée ni perte ni duplication de lignes ;
+les analyses spatiales (Q6) et de voirie (Q3) peuvent
+fusionner les deux fichiers en toute sûreté.

@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_812d69d58b13cd85b8daf3b956f95a94 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_812d69d58b13cd85b8daf3b956f95a94" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_812d69d58b13cd85b8daf3b956f95a94 = L.map(
+                "map_812d69d58b13cd85b8daf3b956f95a94",
+                {
+                    center: [46.5, 2.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f51a7d91c288608973e6166de3dd596f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f51a7d91c288608973e6166de3dd596f.addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+            var circle_marker_c2e85e1c71a834516c53835fda2f50ca = L.circleMarker(
+                [50.45, 2.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_b3d29fbe93bf7ea260b328ab647df494 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1a5d047bf432b7a4f28b52c83bfc760e = $(`<div id="html_1a5d047bf432b7a4f28b52c83bfc760e" style="width: 100.0%; height: 100.0%;">Pas-de-Calais (62) : 9838 accidents</div>`)[0];
+                popup_b3d29fbe93bf7ea260b328ab647df494.setContent(html_1a5d047bf432b7a4f28b52c83bfc760e);
+            
+        
+
+        circle_marker_c2e85e1c71a834516c53835fda2f50ca.bindPopup(popup_b3d29fbe93bf7ea260b328ab647df494)
+        ;
+
+        
+    
+    
+            var circle_marker_a45639e2c947a642f96c17e161223c4e = L.circleMarker(
+                [49.95, 2.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_8e2067806009ed21be94ffae1f567d68 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dabc2b4c7c4ea3ea8a7c61b11847f6ca = $(`<div id="html_dabc2b4c7c4ea3ea8a7c61b11847f6ca" style="width: 100.0%; height: 100.0%;">Somme (80) : 6766 accidents</div>`)[0];
+                popup_8e2067806009ed21be94ffae1f567d68.setContent(html_dabc2b4c7c4ea3ea8a7c61b11847f6ca);
+            
+        
+
+        circle_marker_a45639e2c947a642f96c17e161223c4e.bindPopup(popup_8e2067806009ed21be94ffae1f567d68)
+        ;
+
+        
+    
+    
+            var circle_marker_b4e124b436ab70201ca7c7d8173b2f92 = L.circleMarker(
+                [49.55, 3.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0afcdca392663b60ccae213c1c74cb4f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5424e6f0d25c8e16e3854020bf296a32 = $(`<div id="html_5424e6f0d25c8e16e3854020bf296a32" style="width: 100.0%; height: 100.0%;">Aisne (02) : 3635 accidents</div>`)[0];
+                popup_0afcdca392663b60ccae213c1c74cb4f.setContent(html_5424e6f0d25c8e16e3854020bf296a32);
+            
+        
+
+        circle_marker_b4e124b436ab70201ca7c7d8173b2f92.bindPopup(popup_0afcdca392663b60ccae213c1c74cb4f)
+        ;
+
+        
+    
+    
+            var circle_marker_1243a8a032813f082fc970298f202f0d = L.circleMarker(
+                [49.4, 2.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_f14a7688a7ea76dbdee509c559f316a8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_18607c888b310f28e12e128de026a256 = $(`<div id="html_18607c888b310f28e12e128de026a256" style="width: 100.0%; height: 100.0%;">Oise (60) : 5445 accidents</div>`)[0];
+                popup_f14a7688a7ea76dbdee509c559f316a8.setContent(html_18607c888b310f28e12e128de026a256);
+            
+        
+
+        circle_marker_1243a8a032813f082fc970298f202f0d.bindPopup(popup_f14a7688a7ea76dbdee509c559f316a8)
+        ;
+
+        
+    
+    
+            var circle_marker_a43f78271aa45b3d5ed84b02a127532d = L.circleMarker(
+                [49.65, 1.05],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_eb11c2bb699a93164310a69b03e19ef0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c324081a9d4df6f2a30d187d51d31e50 = $(`<div id="html_c324081a9d4df6f2a30d187d51d31e50" style="width: 100.0%; height: 100.0%;">Seine-Maritime (76) : 10234 accidents</div>`)[0];
+                popup_eb11c2bb699a93164310a69b03e19ef0.setContent(html_c324081a9d4df6f2a30d187d51d31e50);
+            
+        
+
+        circle_marker_a43f78271aa45b3d5ed84b02a127532d.bindPopup(popup_eb11c2bb699a93164310a69b03e19ef0)
+        ;
+
+        
+    
+    
+            var circle_marker_06f1e992d5f08d946abc34adc24412f1 = L.circleMarker(
+                [49.15, 1.1],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_16205eb8619417e04a6900558c615e0b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5410a6d14f56e4795b9d96ddaf094cc4 = $(`<div id="html_5410a6d14f56e4795b9d96ddaf094cc4" style="width: 100.0%; height: 100.0%;">Eure (27) : 4657 accidents</div>`)[0];
+                popup_16205eb8619417e04a6900558c615e0b.setContent(html_5410a6d14f56e4795b9d96ddaf094cc4);
+            
+        
+
+        circle_marker_06f1e992d5f08d946abc34adc24412f1.bindPopup(popup_16205eb8619417e04a6900558c615e0b)
+        ;
+
+        
+    
+    
+            var circle_marker_86491b56cd478729f871d5b3a37655bf = L.circleMarker(
+                [48.1, -1.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_1d7e780cb670e06b1aebb97b4167f3d2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6659baf0ca9dbdb7f0bce2251fa6cf3f = $(`<div id="html_6659baf0ca9dbdb7f0bce2251fa6cf3f" style="width: 100.0%; height: 100.0%;">Ille-et-Vilaine (35) : 9449 accidents</div>`)[0];
+                popup_1d7e780cb670e06b1aebb97b4167f3d2.setContent(html_6659baf0ca9dbdb7f0bce2251fa6cf3f);
+            
+        
+
+        circle_marker_86491b56cd478729f871d5b3a37655bf.bindPopup(popup_1d7e780cb670e06b1aebb97b4167f3d2)
+        ;
+
+        
+    
+    
+            var circle_marker_7f89f817947a062350e8dc2d28d42993 = L.circleMarker(
+                [48.5, -2.85],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6291f3610bcb9e9e0339488c1f34f714 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_664e374f644190f7fceb487b06f37558 = $(`<div id="html_664e374f644190f7fceb487b06f37558" style="width: 100.0%; height: 100.0%;">Côtes-d'Armor (22) : 4974 accidents</div>`)[0];
+                popup_6291f3610bcb9e9e0339488c1f34f714.setContent(html_664e374f644190f7fceb487b06f37558);
+            
+        
+
+        circle_marker_7f89f817947a062350e8dc2d28d42993.bindPopup(popup_6291f3610bcb9e9e0339488c1f34f714)
+        ;
+
+        
+    
+    
+            var circle_marker_571dd78b214a7d6edd33031931de9480 = L.circleMarker(
+                [48.25, -4.05],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_fabb81133b306d9f463c764d4811aa31 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d00bac7e24011f8cb20b90e3eeba7e1 = $(`<div id="html_4d00bac7e24011f8cb20b90e3eeba7e1" style="width: 100.0%; height: 100.0%;">Finistère (29) : 7027 accidents</div>`)[0];
+                popup_fabb81133b306d9f463c764d4811aa31.setContent(html_4d00bac7e24011f8cb20b90e3eeba7e1);
+            
+        
+
+        circle_marker_571dd78b214a7d6edd33031931de9480.bindPopup(popup_fabb81133b306d9f463c764d4811aa31)
+        ;
+
+        
+    
+    
+            var circle_marker_6167174dfa3ec2a72c66e0f14220cdeb = L.circleMarker(
+                [47.85, -2.85],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_60a80ce6bbef80ba8169d9764a488103 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7ad5fcc01d2551ca5dcc1f5792e6ee6c = $(`<div id="html_7ad5fcc01d2551ca5dcc1f5792e6ee6c" style="width: 100.0%; height: 100.0%;">Morbihan (56) : 7251 accidents</div>`)[0];
+                popup_60a80ce6bbef80ba8169d9764a488103.setContent(html_7ad5fcc01d2551ca5dcc1f5792e6ee6c);
+            
+        
+
+        circle_marker_6167174dfa3ec2a72c66e0f14220cdeb.bindPopup(popup_60a80ce6bbef80ba8169d9764a488103)
+        ;
+
+        
+    
+    
+            var circle_marker_89f560231a6a93fb100cbaf1a5598f22 = L.circleMarker(
+                [49.1, -0.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_8fe38dc8423e4fbc102e9d902071576f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_19672761f0a92684f2737cd92406735d = $(`<div id="html_19672761f0a92684f2737cd92406735d" style="width: 100.0%; height: 100.0%;">Calvados (14) : 5233 accidents</div>`)[0];
+                popup_8fe38dc8423e4fbc102e9d902071576f.setContent(html_19672761f0a92684f2737cd92406735d);
+            
+        
+
+        circle_marker_89f560231a6a93fb100cbaf1a5598f22.bindPopup(popup_8fe38dc8423e4fbc102e9d902071576f)
+        ;
+
+        
+    
+    
+            var circle_marker_9c47b7d4c2659fe3bf68295ba5e30b28 = L.circleMarker(
+                [49.1, -1.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_4357b842e18c025b1f7c7a7aefd57a55 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6bc0cc8c064ce686ee05dd066a1b8299 = $(`<div id="html_6bc0cc8c064ce686ee05dd066a1b8299" style="width: 100.0%; height: 100.0%;">Manche (50) : 5522 accidents</div>`)[0];
+                popup_4357b842e18c025b1f7c7a7aefd57a55.setContent(html_6bc0cc8c064ce686ee05dd066a1b8299);
+            
+        
+
+        circle_marker_9c47b7d4c2659fe3bf68295ba5e30b28.bindPopup(popup_4357b842e18c025b1f7c7a7aefd57a55)
+        ;
+
+        
+    
+    
+            var circle_marker_f6c7abfbedb4d5ff6403807f6cfc935e = L.circleMarker(
+                [48.65, 0.1],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_83b13939f3c32bf5b789fc658c521638 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cb585b964d4462b468265706603e3505 = $(`<div id="html_cb585b964d4462b468265706603e3505" style="width: 100.0%; height: 100.0%;">Orne (61) : 2068 accidents</div>`)[0];
+                popup_83b13939f3c32bf5b789fc658c521638.setContent(html_cb585b964d4462b468265706603e3505);
+            
+        
+
+        circle_marker_f6c7abfbedb4d5ff6403807f6cfc935e.bindPopup(popup_83b13939f3c32bf5b789fc658c521638)
+        ;
+
+        
+    
+    
+            var circle_marker_ecd2eda9618fa3f84e749187a40b9986 = L.circleMarker(
+                [47.3, -1.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_70f1c122488a57cb609169cb97f51a86 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_298f1a393d06ff6b596824de7fc2c330 = $(`<div id="html_298f1a393d06ff6b596824de7fc2c330" style="width: 100.0%; height: 100.0%;">Loire-Atlantique (44) : 10900 accidents</div>`)[0];
+                popup_70f1c122488a57cb609169cb97f51a86.setContent(html_298f1a393d06ff6b596824de7fc2c330);
+            
+        
+
+        circle_marker_ecd2eda9618fa3f84e749187a40b9986.bindPopup(popup_70f1c122488a57cb609169cb97f51a86)
+        ;
+
+        
+    
+    
+            var circle_marker_9fb5af18eab1f31ea90b30c891e87862 = L.circleMarker(
+                [47.4, -0.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0d38853d7a5c5df963b0196a71162dce = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_24bee9e6fabf815af811c1668c7b13f3 = $(`<div id="html_24bee9e6fabf815af811c1668c7b13f3" style="width: 100.0%; height: 100.0%;">Maine-et-Loire (49) : 9485 accidents</div>`)[0];
+                popup_0d38853d7a5c5df963b0196a71162dce.setContent(html_24bee9e6fabf815af811c1668c7b13f3);
+            
+        
+
+        circle_marker_9fb5af18eab1f31ea90b30c891e87862.bindPopup(popup_0d38853d7a5c5df963b0196a71162dce)
+        ;
+
+        
+    
+    
+            var circle_marker_e2c196b529053e3ebdfd97f76a5c3b54 = L.circleMarker(
+                [48.1, -0.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_5d4afe30da91a0af64705c8d080a3249 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_956d42e46fc25f20dd2cdf186a020af5 = $(`<div id="html_956d42e46fc25f20dd2cdf186a020af5" style="width: 100.0%; height: 100.0%;">Mayenne (53) : 1597 accidents</div>`)[0];
+                popup_5d4afe30da91a0af64705c8d080a3249.setContent(html_956d42e46fc25f20dd2cdf186a020af5);
+            
+        
+
+        circle_marker_e2c196b529053e3ebdfd97f76a5c3b54.bindPopup(popup_5d4afe30da91a0af64705c8d080a3249)
+        ;
+
+        
+    
+    
+            var circle_marker_75cecd0343b3cfbb6872a6b927058d24 = L.circleMarker(
+                [47.95, 0.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_ff1a8b0f1f75a76374b8b40e9821b6eb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ea4bffde21fb99d67445bc593bbf7c77 = $(`<div id="html_ea4bffde21fb99d67445bc593bbf7c77" style="width: 100.0%; height: 100.0%;">Sarthe (72) : 4938 accidents</div>`)[0];
+                popup_ff1a8b0f1f75a76374b8b40e9821b6eb.setContent(html_ea4bffde21fb99d67445bc593bbf7c77);
+            
+        
+
+        circle_marker_75cecd0343b3cfbb6872a6b927058d24.bindPopup(popup_ff1a8b0f1f75a76374b8b40e9821b6eb)
+        ;
+
+        
+    
+    
+            var circle_marker_7da9b17550399246f4c78dbb4851a865 = L.circleMarker(
+                [46.7, -1.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_1e86e69704f1d8cd157fa653dea00b18 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d3d307fe3dff4444cda6f7832fde809 = $(`<div id="html_4d3d307fe3dff4444cda6f7832fde809" style="width: 100.0%; height: 100.0%;">Vendée (85) : 3787 accidents</div>`)[0];
+                popup_1e86e69704f1d8cd157fa653dea00b18.setContent(html_4d3d307fe3dff4444cda6f7832fde809);
+            
+        
+
+        circle_marker_7da9b17550399246f4c78dbb4851a865.bindPopup(popup_1e86e69704f1d8cd157fa653dea00b18)
+        ;
+
+        
+    
+    
+            var circle_marker_250bc883db8c9a39afd1af85af26175b = L.circleMarker(
+                [45.1, 0.75],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_89db08e2e2b040714e630fff6fc501ec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_349925ee001c1d98afebc92391745902 = $(`<div id="html_349925ee001c1d98afebc92391745902" style="width: 100.0%; height: 100.0%;">Dordogne (24) : 3251 accidents</div>`)[0];
+                popup_89db08e2e2b040714e630fff6fc501ec.setContent(html_349925ee001c1d98afebc92391745902);
+            
+        
+
+        circle_marker_250bc883db8c9a39afd1af85af26175b.bindPopup(popup_89db08e2e2b040714e630fff6fc501ec)
+        ;
+
+        
+    
+    
+            var circle_marker_e68e2de7ea58a69fddaeb554069f80c9 = L.circleMarker(
+                [43.9, -0.75],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_bdfc1c0549ff38d3f5fe24edecddbcf4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_00d27add00626e5cebf0163e68ba2151 = $(`<div id="html_00d27add00626e5cebf0163e68ba2151" style="width: 100.0%; height: 100.0%;">Landes (40) : 2969 accidents</div>`)[0];
+                popup_bdfc1c0549ff38d3f5fe24edecddbcf4.setContent(html_00d27add00626e5cebf0163e68ba2151);
+            
+        
+
+        circle_marker_e68e2de7ea58a69fddaeb554069f80c9.bindPopup(popup_bdfc1c0549ff38d3f5fe24edecddbcf4)
+        ;
+
+        
+    
+    
+            var circle_marker_f30cef002a46da1c936eddc3cfb08d06 = L.circleMarker(
+                [44.35, 0.6],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_e81479e11011c6e220aef711829e0af7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9d3e44f6e2b13364581889ffad5bfb42 = $(`<div id="html_9d3e44f6e2b13364581889ffad5bfb42" style="width: 100.0%; height: 100.0%;">Lot-et-Garonne (47) : 3088 accidents</div>`)[0];
+                popup_e81479e11011c6e220aef711829e0af7.setContent(html_9d3e44f6e2b13364581889ffad5bfb42);
+            
+        
+
+        circle_marker_f30cef002a46da1c936eddc3cfb08d06.bindPopup(popup_e81479e11011c6e220aef711829e0af7)
+        ;
+
+        
+    
+    
+            var circle_marker_65093c0c6ee0be7c4e17a8b505a8ee38 = L.circleMarker(
+                [43.25, -0.75],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_70d4a0abfffea9b4632e5b76109e039c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b3392662e2ac5ac648b2c20ff19de591 = $(`<div id="html_b3392662e2ac5ac648b2c20ff19de591" style="width: 100.0%; height: 100.0%;">Pyrénées-Atlantiques (64) : 9712 accidents</div>`)[0];
+                popup_70d4a0abfffea9b4632e5b76109e039c.setContent(html_b3392662e2ac5ac648b2c20ff19de591);
+            
+        
+
+        circle_marker_65093c0c6ee0be7c4e17a8b505a8ee38.bindPopup(popup_70d4a0abfffea9b4632e5b76109e039c)
+        ;
+
+        
+    
+    
+            var circle_marker_f20e73d8e67d39843d8996d5ae8f64d1 = L.circleMarker(
+                [46.55, 0.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_90e129a6d60eb782543ac4df4ce0ef47 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3100ba62fc52c677a3a6bf42b55cb01b = $(`<div id="html_3100ba62fc52c677a3a6bf42b55cb01b" style="width: 100.0%; height: 100.0%;">Vienne (86) : 4162 accidents</div>`)[0];
+                popup_90e129a6d60eb782543ac4df4ce0ef47.setContent(html_3100ba62fc52c677a3a6bf42b55cb01b);
+            
+        
+
+        circle_marker_f20e73d8e67d39843d8996d5ae8f64d1.bindPopup(popup_90e129a6d60eb782543ac4df4ce0ef47)
+        ;
+
+        
+    
+    
+            var circle_marker_2aaec994d401266a80a37960bb3681cb = L.circleMarker(
+                [45.65, 0.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_df7b46eb54c4abc0d7074443b91c94d5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9d206d48856fa71227bf0c4b336494f5 = $(`<div id="html_9d206d48856fa71227bf0c4b336494f5" style="width: 100.0%; height: 100.0%;">Charente (16) : 2280 accidents</div>`)[0];
+                popup_df7b46eb54c4abc0d7074443b91c94d5.setContent(html_9d206d48856fa71227bf0c4b336494f5);
+            
+        
+
+        circle_marker_2aaec994d401266a80a37960bb3681cb.bindPopup(popup_df7b46eb54c4abc0d7074443b91c94d5)
+        ;
+
+        
+    
+    
+            var circle_marker_b6fc267a98a4ccc17656f4d25297b770 = L.circleMarker(
+                [45.75, -0.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_acb9dc25e9d7f6b68306416f9eb4f2ff = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c6fb33e5955f04e68544b87a539c6f9a = $(`<div id="html_c6fb33e5955f04e68544b87a539c6f9a" style="width: 100.0%; height: 100.0%;">Charente-Maritime (17) : 9322 accidents</div>`)[0];
+                popup_acb9dc25e9d7f6b68306416f9eb4f2ff.setContent(html_c6fb33e5955f04e68544b87a539c6f9a);
+            
+        
+
+        circle_marker_b6fc267a98a4ccc17656f4d25297b770.bindPopup(popup_acb9dc25e9d7f6b68306416f9eb4f2ff)
+        ;
+
+        
+    
+    
+            var circle_marker_e9062fc5efeef8529f338cb006a594a4 = L.circleMarker(
+                [46.55, -0.35],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6d9d5173d374e035214cb98e5d63e22a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c73145084b34ad915434a842f083628 = $(`<div id="html_5c73145084b34ad915434a842f083628" style="width: 100.0%; height: 100.0%;">Deux-Sèvres (79) : 2377 accidents</div>`)[0];
+                popup_6d9d5173d374e035214cb98e5d63e22a.setContent(html_5c73145084b34ad915434a842f083628);
+            
+        
+
+        circle_marker_e9062fc5efeef8529f338cb006a594a4.bindPopup(popup_6d9d5173d374e035214cb98e5d63e22a)
+        ;
+
+        
+    
+    
+            var circle_marker_61f33bdef0253c7e3224cee5459ceead = L.circleMarker(
+                [45.85, 1.25],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_57f18dac59078f64c4c7b143df832f16 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dffd91fac4fa84f973dfc7f0557ac6a3 = $(`<div id="html_dffd91fac4fa84f973dfc7f0557ac6a3" style="width: 100.0%; height: 100.0%;">Haute-Vienne (87) : 5806 accidents</div>`)[0];
+                popup_57f18dac59078f64c4c7b143df832f16.setContent(html_dffd91fac4fa84f973dfc7f0557ac6a3);
+            
+        
+
+        circle_marker_61f33bdef0253c7e3224cee5459ceead.bindPopup(popup_57f18dac59078f64c4c7b143df832f16)
+        ;
+
+        
+    
+    
+            var circle_marker_e7a097aa4e98ea5cdfa9ec0d2e499ebb = L.circleMarker(
+                [45.35, 1.85],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_5cd6c68664de52516588d941e7981cda = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1abfc80888cca41f9ce24bfba945cb31 = $(`<div id="html_1abfc80888cca41f9ce24bfba945cb31" style="width: 100.0%; height: 100.0%;">Corrèze (19) : 3026 accidents</div>`)[0];
+                popup_5cd6c68664de52516588d941e7981cda.setContent(html_1abfc80888cca41f9ce24bfba945cb31);
+            
+        
+
+        circle_marker_e7a097aa4e98ea5cdfa9ec0d2e499ebb.bindPopup(popup_5cd6c68664de52516588d941e7981cda)
+        ;
+
+        
+    
+    
+            var circle_marker_84810c560f184f741a09cf1a2fee3503 = L.circleMarker(
+                [46.05, 2.05],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_a21e2c453f519d990d704dd9fd59e52b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fb1bf4a32975b21181bf2cb70c3558b9 = $(`<div id="html_fb1bf4a32975b21181bf2cb70c3558b9" style="width: 100.0%; height: 100.0%;">Creuse (23) : 898 accidents</div>`)[0];
+                popup_a21e2c453f519d990d704dd9fd59e52b.setContent(html_fb1bf4a32975b21181bf2cb70c3558b9);
+            
+        
+
+        circle_marker_84810c560f184f741a09cf1a2fee3503.bindPopup(popup_a21e2c453f519d990d704dd9fd59e52b)
+        ;
+
+        
+    
+    
+            var circle_marker_feb9599704c260f97cdabe8e5db027ec = L.circleMarker(
+                [43.4, 1.45],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_f46cd184f21217052d10128ac078a050 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_426d3124c79421afdfc19f590eb96844 = $(`<div id="html_426d3124c79421afdfc19f590eb96844" style="width: 100.0%; height: 100.0%;">Haute-Garonne (31) : 13225 accidents</div>`)[0];
+                popup_f46cd184f21217052d10128ac078a050.setContent(html_426d3124c79421afdfc19f590eb96844);
+            
+        
+
+        circle_marker_feb9599704c260f97cdabe8e5db027ec.bindPopup(popup_f46cd184f21217052d10128ac078a050)
+        ;
+
+        
+    
+    
+            var circle_marker_5d1637d974a2539f917f4cbb2768080b = L.circleMarker(
+                [42.95, 1.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_daa39e937168a3836bf7e4e6f43c737e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_44a2d58829b213ecb8d59cc8c741a4c3 = $(`<div id="html_44a2d58829b213ecb8d59cc8c741a4c3" style="width: 100.0%; height: 100.0%;">Ariège (09) : 1172 accidents</div>`)[0];
+                popup_daa39e937168a3836bf7e4e6f43c737e.setContent(html_44a2d58829b213ecb8d59cc8c741a4c3);
+            
+        
+
+        circle_marker_5d1637d974a2539f917f4cbb2768080b.bindPopup(popup_daa39e937168a3836bf7e4e6f43c737e)
+        ;
+
+        
+    
+    
+            var circle_marker_6c4c79e5636ac58388f3bb0b0f799f1f = L.circleMarker(
+                [44.3, 2.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_99222bae3178dac29b086afe80b6fbc4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d5aa4a9e24f9dd72ee4e522cfa09c53b = $(`<div id="html_d5aa4a9e24f9dd72ee4e522cfa09c53b" style="width: 100.0%; height: 100.0%;">Aveyron (12) : 2067 accidents</div>`)[0];
+                popup_99222bae3178dac29b086afe80b6fbc4.setContent(html_d5aa4a9e24f9dd72ee4e522cfa09c53b);
+            
+        
+
+        circle_marker_6c4c79e5636ac58388f3bb0b0f799f1f.bindPopup(popup_99222bae3178dac29b086afe80b6fbc4)
+        ;
+
+        
+    
+    
+            var circle_marker_628e9701bf417e74592b6876ec50a61c = L.circleMarker(
+                [43.65, 0.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_bed9cdb7bfa71c78e09e68489bf74a1a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bc4d1b13c863f42e716ca1e07694e874 = $(`<div id="html_bc4d1b13c863f42e716ca1e07694e874" style="width: 100.0%; height: 100.0%;">Gers (32) : 1965 accidents</div>`)[0];
+                popup_bed9cdb7bfa71c78e09e68489bf74a1a.setContent(html_bc4d1b13c863f42e716ca1e07694e874);
+            
+        
+
+        circle_marker_628e9701bf417e74592b6876ec50a61c.bindPopup(popup_bed9cdb7bfa71c78e09e68489bf74a1a)
+        ;
+
+        
+    
+    
+            var circle_marker_bd43a159d43c2e02e8338412ef1ef6ce = L.circleMarker(
+                [44.6, 1.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_db7ba3c0cc7f91a9b2e95b91ad44da7c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73be42de086090a4ca95a7513ccddadf = $(`<div id="html_73be42de086090a4ca95a7513ccddadf" style="width: 100.0%; height: 100.0%;">Lot (46) : 1328 accidents</div>`)[0];
+                popup_db7ba3c0cc7f91a9b2e95b91ad44da7c.setContent(html_73be42de086090a4ca95a7513ccddadf);
+            
+        
+
+        circle_marker_bd43a159d43c2e02e8338412ef1ef6ce.bindPopup(popup_db7ba3c0cc7f91a9b2e95b91ad44da7c)
+        ;
+
+        
+    
+    
+            var circle_marker_77dfa6ea52ab4b07bbb56181e9188b00 = L.circleMarker(
+                [43.1, 0.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6fa40f3960828abb64fd2ad4369f9618 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3418999b6bea969fa9a499b2e46ab8bc = $(`<div id="html_3418999b6bea969fa9a499b2e46ab8bc" style="width: 100.0%; height: 100.0%;">Hautes-Pyrénées (65) : 2850 accidents</div>`)[0];
+                popup_6fa40f3960828abb64fd2ad4369f9618.setContent(html_3418999b6bea969fa9a499b2e46ab8bc);
+            
+        
+
+        circle_marker_77dfa6ea52ab4b07bbb56181e9188b00.bindPopup(popup_6fa40f3960828abb64fd2ad4369f9618)
+        ;
+
+        
+    
+    
+            var circle_marker_447af4835d0233f286b92a56f28363b6 = L.circleMarker(
+                [43.8, 2.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_30070f41f78a4343b44932b8c0f36370 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f26400779254a7381f5bf39e3daa9c8c = $(`<div id="html_f26400779254a7381f5bf39e3daa9c8c" style="width: 100.0%; height: 100.0%;">Tarn (81) : 2220 accidents</div>`)[0];
+                popup_30070f41f78a4343b44932b8c0f36370.setContent(html_f26400779254a7381f5bf39e3daa9c8c);
+            
+        
+
+        circle_marker_447af4835d0233f286b92a56f28363b6.bindPopup(popup_30070f41f78a4343b44932b8c0f36370)
+        ;
+
+        
+    
+    
+            var circle_marker_6e8c0703563e3ce67804a1b301b14b00 = L.circleMarker(
+                [44.1, 1.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_49ab5eb387a2251952244e91a76d1233 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5cf14609c6fffd6bc5d047a095012363 = $(`<div id="html_5cf14609c6fffd6bc5d047a095012363" style="width: 100.0%; height: 100.0%;">Tarn-et-Garonne (82) : 2499 accidents</div>`)[0];
+                popup_49ab5eb387a2251952244e91a76d1233.setContent(html_5cf14609c6fffd6bc5d047a095012363);
+            
+        
+
+        circle_marker_6e8c0703563e3ce67804a1b301b14b00.bindPopup(popup_49ab5eb387a2251952244e91a76d1233)
+        ;
+
+        
+    
+    
+            var circle_marker_7beee7f3cbc2c5a6e0193b84d5df6da9 = L.circleMarker(
+                [46.1, 5.35],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_b0a71ffd1749abf6a53fddbc138c55a4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c36f549d8a4ca4b69d09e1a86e0d709a = $(`<div id="html_c36f549d8a4ca4b69d09e1a86e0d709a" style="width: 100.0%; height: 100.0%;">Ain (01) : 4980 accidents</div>`)[0];
+                popup_b0a71ffd1749abf6a53fddbc138c55a4.setContent(html_c36f549d8a4ca4b69d09e1a86e0d709a);
+            
+        
+
+        circle_marker_7beee7f3cbc2c5a6e0193b84d5df6da9.bindPopup(popup_b0a71ffd1749abf6a53fddbc138c55a4)
+        ;
+
+        
+    
+    
+            var circle_marker_ce0b20971e0a52af56c6630467eaffd7 = L.circleMarker(
+                [44.75, 4.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6904aa222e5097266162324557330f21 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1505913de091bbf9938641534281a3d9 = $(`<div id="html_1505913de091bbf9938641534281a3d9" style="width: 100.0%; height: 100.0%;">Ardèche (07) : 2162 accidents</div>`)[0];
+                popup_6904aa222e5097266162324557330f21.setContent(html_1505913de091bbf9938641534281a3d9);
+            
+        
+
+        circle_marker_ce0b20971e0a52af56c6630467eaffd7.bindPopup(popup_6904aa222e5097266162324557330f21)
+        ;
+
+        
+    
+    
+            var circle_marker_f77e78841005467d2ae1f2fdee8e9879 = L.circleMarker(
+                [44.7, 5.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_c9da4bc8632b82d136a70aaed5e15b16 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cf06a6b1f9d6c0fbe93947beed56d263 = $(`<div id="html_cf06a6b1f9d6c0fbe93947beed56d263" style="width: 100.0%; height: 100.0%;">Drôme (26) : 5278 accidents</div>`)[0];
+                popup_c9da4bc8632b82d136a70aaed5e15b16.setContent(html_cf06a6b1f9d6c0fbe93947beed56d263);
+            
+        
+
+        circle_marker_f77e78841005467d2ae1f2fdee8e9879.bindPopup(popup_c9da4bc8632b82d136a70aaed5e15b16)
+        ;
+
+        
+    
+    
+            var circle_marker_36efcc9aa5e7a7c3250f7364351bd7a8 = L.circleMarker(
+                [45.2, 5.7],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6fe8ca9ae85b6fa3feefee7c848ebffe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f670c724673f8845a634fcf3af0c5a4a = $(`<div id="html_f670c724673f8845a634fcf3af0c5a4a" style="width: 100.0%; height: 100.0%;">Isère (38) : 8774 accidents</div>`)[0];
+                popup_6fe8ca9ae85b6fa3feefee7c848ebffe.setContent(html_f670c724673f8845a634fcf3af0c5a4a);
+            
+        
+
+        circle_marker_36efcc9aa5e7a7c3250f7364351bd7a8.bindPopup(popup_6fe8ca9ae85b6fa3feefee7c848ebffe)
+        ;
+
+        
+    
+    
+            var circle_marker_024a93ef01dc18967cd965174ec74707 = L.circleMarker(
+                [45.55, 4.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_41c363d3481589a1036255550532981b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1ab25b1d4874cea46e3c59e2ea99e677 = $(`<div id="html_1ab25b1d4874cea46e3c59e2ea99e677" style="width: 100.0%; height: 100.0%;">Loire (42) : 8681 accidents</div>`)[0];
+                popup_41c363d3481589a1036255550532981b.setContent(html_1ab25b1d4874cea46e3c59e2ea99e677);
+            
+        
+
+        circle_marker_024a93ef01dc18967cd965174ec74707.bindPopup(popup_41c363d3481589a1036255550532981b)
+        ;
+
+        
+    
+    
+            var circle_marker_f87e3b40a95a8c8c434a618d355906fe = L.circleMarker(
+                [45.45, 6.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_b8396a00ba904a6e788e3452b1e23566 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3caaa90536a1da1f07bc9e3790cb3ab0 = $(`<div id="html_3caaa90536a1da1f07bc9e3790cb3ab0" style="width: 100.0%; height: 100.0%;">Savoie (73) : 2336 accidents</div>`)[0];
+                popup_b8396a00ba904a6e788e3452b1e23566.setContent(html_3caaa90536a1da1f07bc9e3790cb3ab0);
+            
+        
+
+        circle_marker_f87e3b40a95a8c8c434a618d355906fe.bindPopup(popup_b8396a00ba904a6e788e3452b1e23566)
+        ;
+
+        
+    
+    
+            var circle_marker_7d444c84d474ea6d42b43204c49f1c1b = L.circleMarker(
+                [46.05, 6.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0dcedab5d4c2b0123f39e8c1977770a0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_15fd340c00196f98f6245b86a15cc5c0 = $(`<div id="html_15fd340c00196f98f6245b86a15cc5c0" style="width: 100.0%; height: 100.0%;">Haute-Savoie (74) : 5520 accidents</div>`)[0];
+                popup_0dcedab5d4c2b0123f39e8c1977770a0.setContent(html_15fd340c00196f98f6245b86a15cc5c0);
+            
+        
+
+        circle_marker_7d444c84d474ea6d42b43204c49f1c1b.bindPopup(popup_0dcedab5d4c2b0123f39e8c1977770a0)
+        ;
+
+        
+    
+    
+            var circle_marker_3a146cf56bf3f70b0821c74ffaed4204 = L.circleMarker(
+                [45.75, 3.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_21ed8d3b200706506bf8f95f44c571e5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73c4bccf14f29d10d18c249d54d1804c = $(`<div id="html_73c4bccf14f29d10d18c249d54d1804c" style="width: 100.0%; height: 100.0%;">Puy-de-Dôme (63) : 8195 accidents</div>`)[0];
+                popup_21ed8d3b200706506bf8f95f44c571e5.setContent(html_73c4bccf14f29d10d18c249d54d1804c);
+            
+        
+
+        circle_marker_3a146cf56bf3f70b0821c74ffaed4204.bindPopup(popup_21ed8d3b200706506bf8f95f44c571e5)
+        ;
+
+        
+    
+    
+            var circle_marker_afaffee1ef1d3b81e1720de095bb4415 = L.circleMarker(
+                [46.4, 3.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_893de224c3ed831ed2f5f086cbcc1953 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_be07e030c20b678e1fa3138adc7c1f18 = $(`<div id="html_be07e030c20b678e1fa3138adc7c1f18" style="width: 100.0%; height: 100.0%;">Allier (03) : 3201 accidents</div>`)[0];
+                popup_893de224c3ed831ed2f5f086cbcc1953.setContent(html_be07e030c20b678e1fa3138adc7c1f18);
+            
+        
+
+        circle_marker_afaffee1ef1d3b81e1720de095bb4415.bindPopup(popup_893de224c3ed831ed2f5f086cbcc1953)
+        ;
+
+        
+    
+    
+            var circle_marker_aabbcdb36452a5a0ca91042112f3bec3 = L.circleMarker(
+                [45.05, 2.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_64a7bde9bdaf867af9ee4d9497827118 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e7e78888ea01d67b3abb9a466f1e39c = $(`<div id="html_6e7e78888ea01d67b3abb9a466f1e39c" style="width: 100.0%; height: 100.0%;">Cantal (15) : 920 accidents</div>`)[0];
+                popup_64a7bde9bdaf867af9ee4d9497827118.setContent(html_6e7e78888ea01d67b3abb9a466f1e39c);
+            
+        
+
+        circle_marker_aabbcdb36452a5a0ca91042112f3bec3.bindPopup(popup_64a7bde9bdaf867af9ee4d9497827118)
+        ;
+
+        
+    
+    
+            var circle_marker_0dfd75ae067fa91bf1296eaec857b460 = L.circleMarker(
+                [45.1, 3.85],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_831cf677cf01502a3c98920f774db872 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5de869abdf69c652fbcb3ba62b403e72 = $(`<div id="html_5de869abdf69c652fbcb3ba62b403e72" style="width: 100.0%; height: 100.0%;">Haute-Loire (43) : 2116 accidents</div>`)[0];
+                popup_831cf677cf01502a3c98920f774db872.setContent(html_5de869abdf69c652fbcb3ba62b403e72);
+            
+        
+
+        circle_marker_0dfd75ae067fa91bf1296eaec857b460.bindPopup(popup_831cf677cf01502a3c98920f774db872)
+        ;
+
+        
+    
+    
+            var circle_marker_7a075992db4466377eaf890b188f7a18 = L.circleMarker(
+                [49.05, 6.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_bbf5dc072b4dd4e6df333352ba42a9cd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_27b100c1a67bd348f78a947730b1cafd = $(`<div id="html_27b100c1a67bd348f78a947730b1cafd" style="width: 100.0%; height: 100.0%;">Moselle (57) : 7422 accidents</div>`)[0];
+                popup_bbf5dc072b4dd4e6df333352ba42a9cd.setContent(html_27b100c1a67bd348f78a947730b1cafd);
+            
+        
+
+        circle_marker_7a075992db4466377eaf890b188f7a18.bindPopup(popup_bbf5dc072b4dd4e6df333352ba42a9cd)
+        ;
+
+        
+    
+    
+            var circle_marker_e3d226f010b7c4f5a24c77ff355fc97a = L.circleMarker(
+                [48.85, 6.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_3a13ab945414e055e0ea88c891537941 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_29f24f4e68ec6a8a15e1ecada30d264e = $(`<div id="html_29f24f4e68ec6a8a15e1ecada30d264e" style="width: 100.0%; height: 100.0%;">Meurthe-et-Moselle (54) : 8171 accidents</div>`)[0];
+                popup_3a13ab945414e055e0ea88c891537941.setContent(html_29f24f4e68ec6a8a15e1ecada30d264e);
+            
+        
+
+        circle_marker_e3d226f010b7c4f5a24c77ff355fc97a.bindPopup(popup_3a13ab945414e055e0ea88c891537941)
+        ;
+
+        
+    
+    
+            var circle_marker_53aef3619e279d3529c1a9a69aa63068 = L.circleMarker(
+                [49.0, 5.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_c28da1d872615305492f4dfe092f1da3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_105a50378aa9b3055dae2357baff7f1f = $(`<div id="html_105a50378aa9b3055dae2357baff7f1f" style="width: 100.0%; height: 100.0%;">Meuse (55) : 1675 accidents</div>`)[0];
+                popup_c28da1d872615305492f4dfe092f1da3.setContent(html_105a50378aa9b3055dae2357baff7f1f);
+            
+        
+
+        circle_marker_53aef3619e279d3529c1a9a69aa63068.bindPopup(popup_c28da1d872615305492f4dfe092f1da3)
+        ;
+
+        
+    
+    
+            var circle_marker_fa4cfd27d6c8eb10c1af86ac0573a258 = L.circleMarker(
+                [48.2, 6.45],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_2d916a0079d83066d3372264be64da80 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6aeeb382e7a97b87af4f6050f5b9a3c2 = $(`<div id="html_6aeeb382e7a97b87af4f6050f5b9a3c2" style="width: 100.0%; height: 100.0%;">Vosges (88) : 2888 accidents</div>`)[0];
+                popup_2d916a0079d83066d3372264be64da80.setContent(html_6aeeb382e7a97b87af4f6050f5b9a3c2);
+            
+        
+
+        circle_marker_fa4cfd27d6c8eb10c1af86ac0573a258.bindPopup(popup_2d916a0079d83066d3372264be64da80)
+        ;
+
+        
+    
+    
+            var circle_marker_f2c9b77ff649387c80ed813bfab90a2d = L.circleMarker(
+                [48.65, 7.6],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7eba16717914f84ddbc0e23a240b0930 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e2716d217476ba452062a46ff2df079e = $(`<div id="html_e2716d217476ba452062a46ff2df079e" style="width: 100.0%; height: 100.0%;">Bas-Rhin (67) : 10324 accidents</div>`)[0];
+                popup_7eba16717914f84ddbc0e23a240b0930.setContent(html_e2716d217476ba452062a46ff2df079e);
+            
+        
+
+        circle_marker_f2c9b77ff649387c80ed813bfab90a2d.bindPopup(popup_7eba16717914f84ddbc0e23a240b0930)
+        ;
+
+        
+    
+    
+            var circle_marker_b2b51651760b5feee8d2bbb6ca9a4da8 = L.circleMarker(
+                [47.85, 7.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_a90bc3d1bff97a78a4a5965fa7e906ec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2d59088c2c65ee240fead749680dbc8a = $(`<div id="html_2d59088c2c65ee240fead749680dbc8a" style="width: 100.0%; height: 100.0%;">Haut-Rhin (68) : 5460 accidents</div>`)[0];
+                popup_a90bc3d1bff97a78a4a5965fa7e906ec.setContent(html_2d59088c2c65ee240fead749680dbc8a);
+            
+        
+
+        circle_marker_b2b51651760b5feee8d2bbb6ca9a4da8.bindPopup(popup_a90bc3d1bff97a78a4a5965fa7e906ec)
+        ;
+
+        
+    
+    
+            var circle_marker_39da7dc776282ae97621cd28ce1d7d4c = L.circleMarker(
+                [48.95, 4.35],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0717945ece0c945eeb854dbfe78e22ab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_38df8ffeaf79ca09c051be06411fa1e6 = $(`<div id="html_38df8ffeaf79ca09c051be06411fa1e6" style="width: 100.0%; height: 100.0%;">Marne (51) : 4137 accidents</div>`)[0];
+                popup_0717945ece0c945eeb854dbfe78e22ab.setContent(html_38df8ffeaf79ca09c051be06411fa1e6);
+            
+        
+
+        circle_marker_39da7dc776282ae97621cd28ce1d7d4c.bindPopup(popup_0717945ece0c945eeb854dbfe78e22ab)
+        ;
+
+        
+    
+    
+            var circle_marker_c981e23ca8dc8c6927f1dc808d9ae16b = L.circleMarker(
+                [49.6, 4.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_c1c9e401e92bd7b0880ed374ec00bd5c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aa35b18cae0e4056862bf8e7baa0d7ed = $(`<div id="html_aa35b18cae0e4056862bf8e7baa0d7ed" style="width: 100.0%; height: 100.0%;">Ardennes (08) : 1558 accidents</div>`)[0];
+                popup_c1c9e401e92bd7b0880ed374ec00bd5c.setContent(html_aa35b18cae0e4056862bf8e7baa0d7ed);
+            
+        
+
+        circle_marker_c981e23ca8dc8c6927f1dc808d9ae16b.bindPopup(popup_c1c9e401e92bd7b0880ed374ec00bd5c)
+        ;
+
+        
+    
+    
+            var circle_marker_99afe07c81af092c68e74aad579009ed = L.circleMarker(
+                [48.3, 4.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_54fc2fe317edc603ee2439dad80751cc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_af10f1f9c1f271b08f6e988de21be5a7 = $(`<div id="html_af10f1f9c1f271b08f6e988de21be5a7" style="width: 100.0%; height: 100.0%;">Aube (10) : 2470 accidents</div>`)[0];
+                popup_54fc2fe317edc603ee2439dad80751cc.setContent(html_af10f1f9c1f271b08f6e988de21be5a7);
+            
+        
+
+        circle_marker_99afe07c81af092c68e74aad579009ed.bindPopup(popup_54fc2fe317edc603ee2439dad80751cc)
+        ;
+
+        
+    
+    
+            var circle_marker_97b6b70781ff0304ee647a5c56423ed3 = L.circleMarker(
+                [48.1, 5.25],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_115660a1e9b3d0fc65ea330e6bdac1bd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e47817c7b77371728ea675e6e2e64815 = $(`<div id="html_e47817c7b77371728ea675e6e2e64815" style="width: 100.0%; height: 100.0%;">Haute-Marne (52) : 2280 accidents</div>`)[0];
+                popup_115660a1e9b3d0fc65ea330e6bdac1bd.setContent(html_e47817c7b77371728ea675e6e2e64815);
+            
+        
+
+        circle_marker_97b6b70781ff0304ee647a5c56423ed3.bindPopup(popup_115660a1e9b3d0fc65ea330e6bdac1bd)
+        ;
+
+        
+    
+    
+            var circle_marker_291c12c27dfd042b49553e4a8be3bb7e = L.circleMarker(
+                [47.45, 4.75],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_199928f81167cbe6dbfdd5398dfc19ab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f2fdda8554141eff23c603dfab160de8 = $(`<div id="html_f2fdda8554141eff23c603dfab160de8" style="width: 100.0%; height: 100.0%;">Côte-d'Or (21) : 4791 accidents</div>`)[0];
+                popup_199928f81167cbe6dbfdd5398dfc19ab.setContent(html_f2fdda8554141eff23c603dfab160de8);
+            
+        
+
+        circle_marker_291c12c27dfd042b49553e4a8be3bb7e.bindPopup(popup_199928f81167cbe6dbfdd5398dfc19ab)
+        ;
+
+        
+    
+    
+            var circle_marker_ded111f6389917fca6dd5f245bdefad3 = L.circleMarker(
+                [47.1, 3.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_c3c6bc5dd63915b93fab6fe80ebcedaf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4bd57b156dccef1fbb9c1ccf37fb2feb = $(`<div id="html_4bd57b156dccef1fbb9c1ccf37fb2feb" style="width: 100.0%; height: 100.0%;">Nièvre (58) : 2356 accidents</div>`)[0];
+                popup_c3c6bc5dd63915b93fab6fe80ebcedaf.setContent(html_4bd57b156dccef1fbb9c1ccf37fb2feb);
+            
+        
+
+        circle_marker_ded111f6389917fca6dd5f245bdefad3.bindPopup(popup_c3c6bc5dd63915b93fab6fe80ebcedaf)
+        ;
+
+        
+    
+    
+            var circle_marker_abf1b95a0136d4b823b5dedf055519be = L.circleMarker(
+                [46.65, 4.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_2ae3e246e1f8a2a0efe38ed77f5fc37f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7eb0ba61a049ffc4d1e8bd769d2eaba1 = $(`<div id="html_7eb0ba61a049ffc4d1e8bd769d2eaba1" style="width: 100.0%; height: 100.0%;">Saône-et-Loire (71) : 4561 accidents</div>`)[0];
+                popup_2ae3e246e1f8a2a0efe38ed77f5fc37f.setContent(html_7eb0ba61a049ffc4d1e8bd769d2eaba1);
+            
+        
+
+        circle_marker_abf1b95a0136d4b823b5dedf055519be.bindPopup(popup_2ae3e246e1f8a2a0efe38ed77f5fc37f)
+        ;
+
+        
+    
+    
+            var circle_marker_5a85c6da89b746353186d2ef99859f23 = L.circleMarker(
+                [47.85, 3.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_491f0995071779515ac3760e88766708 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eebc90e80277fe1a1260ff1a0eefc183 = $(`<div id="html_eebc90e80277fe1a1260ff1a0eefc183" style="width: 100.0%; height: 100.0%;">Yonne (89) : 3166 accidents</div>`)[0];
+                popup_491f0995071779515ac3760e88766708.setContent(html_eebc90e80277fe1a1260ff1a0eefc183);
+            
+        
+
+        circle_marker_5a85c6da89b746353186d2ef99859f23.bindPopup(popup_491f0995071779515ac3760e88766708)
+        ;
+
+        
+    
+    
+            var circle_marker_c4b1c810c74e4be7a9be2da2a6af4e17 = L.circleMarker(
+                [47.15, 6.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7f7e0c46d8d010f5810784d1a9de6970 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_15cee15a378eb34ae37ace606c93f9e0 = $(`<div id="html_15cee15a378eb34ae37ace606c93f9e0" style="width: 100.0%; height: 100.0%;">Doubs (25) : 4685 accidents</div>`)[0];
+                popup_7f7e0c46d8d010f5810784d1a9de6970.setContent(html_15cee15a378eb34ae37ace606c93f9e0);
+            
+        
+
+        circle_marker_c4b1c810c74e4be7a9be2da2a6af4e17.bindPopup(popup_7f7e0c46d8d010f5810784d1a9de6970)
+        ;
+
+        
+    
+    
+            var circle_marker_8f87370fd79d412e2eae0669da7bff6d = L.circleMarker(
+                [46.65, 5.65],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_ab174aee0d474362c8cddcb6481bb6f5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8dd29caf3b6dd25f5c249047f58c5095 = $(`<div id="html_8dd29caf3b6dd25f5c249047f58c5095" style="width: 100.0%; height: 100.0%;">Jura (39) : 1442 accidents</div>`)[0];
+                popup_ab174aee0d474362c8cddcb6481bb6f5.setContent(html_8dd29caf3b6dd25f5c249047f58c5095);
+            
+        
+
+        circle_marker_8f87370fd79d412e2eae0669da7bff6d.bindPopup(popup_ab174aee0d474362c8cddcb6481bb6f5)
+        ;
+
+        
+    
+    
+            var circle_marker_9ec42f61c412a1b7dbfd04965e5f5141 = L.circleMarker(
+                [47.65, 6.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_23a263575623a7cfe5da50848d4ad634 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e8ca0f4b532e5898f56a929851ed0e5 = $(`<div id="html_6e8ca0f4b532e5898f56a929851ed0e5" style="width: 100.0%; height: 100.0%;">Haute-Saône (70) : 1510 accidents</div>`)[0];
+                popup_23a263575623a7cfe5da50848d4ad634.setContent(html_6e8ca0f4b532e5898f56a929851ed0e5);
+            
+        
+
+        circle_marker_9ec42f61c412a1b7dbfd04965e5f5141.bindPopup(popup_23a263575623a7cfe5da50848d4ad634)
+        ;
+
+        
+    
+    
+            var circle_marker_e230fb9a9453eddbd99771e51683e53a = L.circleMarker(
+                [47.65, 6.95],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7ddf0685fb8ec45df3e13394c49cec0e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_850ab2feb547be1af426e2e42649a7e0 = $(`<div id="html_850ab2feb547be1af426e2e42649a7e0" style="width: 100.0%; height: 100.0%;">Territoire de Belfort (90) : 2343 accidents</div>`)[0];
+                popup_7ddf0685fb8ec45df3e13394c49cec0e.setContent(html_850ab2feb547be1af426e2e42649a7e0);
+            
+        
+
+        circle_marker_e230fb9a9453eddbd99771e51683e53a.bindPopup(popup_7ddf0685fb8ec45df3e13394c49cec0e)
+        ;
+
+        
+    
+    
+            var circle_marker_1239603cc0ed44823d3dff62bcfbd4d7 = L.circleMarker(
+                [44.1, 6.25],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_fa86ee5d20f617662a4a55c9feb2c562 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_79ee605e19656dc8d7375fbefdb60079 = $(`<div id="html_79ee605e19656dc8d7375fbefdb60079" style="width: 100.0%; height: 100.0%;">Alpes-de-Haute-Provence (04) : 1591 accidents</div>`)[0];
+                popup_fa86ee5d20f617662a4a55c9feb2c562.setContent(html_79ee605e19656dc8d7375fbefdb60079);
+            
+        
+
+        circle_marker_1239603cc0ed44823d3dff62bcfbd4d7.bindPopup(popup_fa86ee5d20f617662a4a55c9feb2c562)
+        ;
+
+        
+    
+    
+            var circle_marker_f4aefff2d7222ac3b8c31cd62132c726 = L.circleMarker(
+                [44.65, 6.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7ef7b733340b92049af928b362d9a434 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_23111abecc4ea4f56e4b4d3992c6963a = $(`<div id="html_23111abecc4ea4f56e4b4d3992c6963a" style="width: 100.0%; height: 100.0%;">Hautes-Alpes (05) : 1410 accidents</div>`)[0];
+                popup_7ef7b733340b92049af928b362d9a434.setContent(html_23111abecc4ea4f56e4b4d3992c6963a);
+            
+        
+
+        circle_marker_f4aefff2d7222ac3b8c31cd62132c726.bindPopup(popup_7ef7b733340b92049af928b362d9a434)
+        ;
+
+        
+    
+    
+            var circle_marker_cf22b48f4adc9cb65ee2e189819a6b06 = L.circleMarker(
+                [43.45, 6.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7f32c8464d4d45f1918b099aad39027d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73dec3f4785b06c4c2f5c5dd0bab5db1 = $(`<div id="html_73dec3f4785b06c4c2f5c5dd0bab5db1" style="width: 100.0%; height: 100.0%;">Var (83) : 12175 accidents</div>`)[0];
+                popup_7f32c8464d4d45f1918b099aad39027d.setContent(html_73dec3f4785b06c4c2f5c5dd0bab5db1);
+            
+        
+
+        circle_marker_cf22b48f4adc9cb65ee2e189819a6b06.bindPopup(popup_7f32c8464d4d45f1918b099aad39027d)
+        ;
+
+        
+    
+    
+            var circle_marker_c0d2394cefc2e824642e5c70bfc10159 = L.circleMarker(
+                [44.0, 5.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_c97ee8514f0f2958666ca3c3ce49137f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f040bbc45f6be8fbcaccb2cf1ce0add6 = $(`<div id="html_f040bbc45f6be8fbcaccb2cf1ce0add6" style="width: 100.0%; height: 100.0%;">Vaucluse (84) : 4702 accidents</div>`)[0];
+                popup_c97ee8514f0f2958666ca3c3ce49137f.setContent(html_f040bbc45f6be8fbcaccb2cf1ce0add6);
+            
+        
+
+        circle_marker_c0d2394cefc2e824642e5c70bfc10159.bindPopup(popup_c97ee8514f0f2958666ca3c3ce49137f)
+        ;
+
+        
+    
+    
+            var circle_marker_21279a9116f426d0e558bdf366331104 = L.circleMarker(
+                [43.6, 3.45],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_83e2fd0b3e990cc97adb3d440ced4fb7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9562641f6bdb868ba45819e32bbf056c = $(`<div id="html_9562641f6bdb868ba45819e32bbf056c" style="width: 100.0%; height: 100.0%;">Hérault (34) : 13280 accidents</div>`)[0];
+                popup_83e2fd0b3e990cc97adb3d440ced4fb7.setContent(html_9562641f6bdb868ba45819e32bbf056c);
+            
+        
+
+        circle_marker_21279a9116f426d0e558bdf366331104.bindPopup(popup_83e2fd0b3e990cc97adb3d440ced4fb7)
+        ;
+
+        
+    
+    
+            var circle_marker_75cf213f0a9fa4abec03bb731655fdc3 = L.circleMarker(
+                [43.1, 2.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0f569663f6f50d1f989f1d370812d99d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4a0ef9719f732300f3e4b8bcc6fa089b = $(`<div id="html_4a0ef9719f732300f3e4b8bcc6fa089b" style="width: 100.0%; height: 100.0%;">Aude (11) : 4287 accidents</div>`)[0];
+                popup_0f569663f6f50d1f989f1d370812d99d.setContent(html_4a0ef9719f732300f3e4b8bcc6fa089b);
+            
+        
+
+        circle_marker_75cf213f0a9fa4abec03bb731655fdc3.bindPopup(popup_0f569663f6f50d1f989f1d370812d99d)
+        ;
+
+        
+    
+    
+            var circle_marker_cf71e2bcdcaa8e0c258544c0f1ff7cc7 = L.circleMarker(
+                [44.0, 4.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_14f922d9a5fefbc95c99aca53d31b46f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6c91206049f9c5ea104998cf6c1c1b3c = $(`<div id="html_6c91206049f9c5ea104998cf6c1c1b3c" style="width: 100.0%; height: 100.0%;">Gard (30) : 9807 accidents</div>`)[0];
+                popup_14f922d9a5fefbc95c99aca53d31b46f.setContent(html_6c91206049f9c5ea104998cf6c1c1b3c);
+            
+        
+
+        circle_marker_cf71e2bcdcaa8e0c258544c0f1ff7cc7.bindPopup(popup_14f922d9a5fefbc95c99aca53d31b46f)
+        ;
+
+        
+    
+    
+            var circle_marker_b221118049e57df1b62ab31cc4ad95b0 = L.circleMarker(
+                [44.55, 3.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_e56f0b20ea3ad7c930bdbfb9d6033b90 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6d727b1d18df97b83b1da14b37cdfb62 = $(`<div id="html_6d727b1d18df97b83b1da14b37cdfb62" style="width: 100.0%; height: 100.0%;">Lozère (48) : 890 accidents</div>`)[0];
+                popup_e56f0b20ea3ad7c930bdbfb9d6033b90.setContent(html_6d727b1d18df97b83b1da14b37cdfb62);
+            
+        
+
+        circle_marker_b221118049e57df1b62ab31cc4ad95b0.bindPopup(popup_e56f0b20ea3ad7c930bdbfb9d6033b90)
+        ;
+
+        
+    
+    
+            var circle_marker_0d322b888f435eccb60262b3eb8dee06 = L.circleMarker(
+                [42.6, 2.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7513c4090f3ceb5d3f08495226379f30 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2696e57d77db7c0b2abbfde34a4e5b64 = $(`<div id="html_2696e57d77db7c0b2abbfde34a4e5b64" style="width: 100.0%; height: 100.0%;">Pyrénées-Orientales (66) : 3204 accidents</div>`)[0];
+                popup_7513c4090f3ceb5d3f08495226379f30.setContent(html_2696e57d77db7c0b2abbfde34a4e5b64);
+            
+        
+
+        circle_marker_0d322b888f435eccb60262b3eb8dee06.bindPopup(popup_7513c4090f3ceb5d3f08495226379f30)
+        ;
+
+        
+    
+    
+            var circle_marker_4c36159eb60307c9c5b8928b8389be81 = L.circleMarker(
+                [41.85, 9.0],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_7b2918180b7ac69845140b71aecde68f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_109f1459b92db027039bca081916d70e = $(`<div id="html_109f1459b92db027039bca081916d70e" style="width: 100.0%; height: 100.0%;">Corse-du-Sud (2A) : 2717 accidents</div>`)[0];
+                popup_7b2918180b7ac69845140b71aecde68f.setContent(html_109f1459b92db027039bca081916d70e);
+            
+        
+
+        circle_marker_4c36159eb60307c9c5b8928b8389be81.bindPopup(popup_7b2918180b7ac69845140b71aecde68f)
+        ;
+
+        
+    
+    
+            var circle_marker_08eab962d6eefe93c3e22a1aed0d33ff = L.circleMarker(
+                [42.4, 9.2],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0684bc3bcad6cd0188b5dd058e9eee33 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d6d926c9e5a66983035258a22551db27 = $(`<div id="html_d6d926c9e5a66983035258a22551db27" style="width: 100.0%; height: 100.0%;">Haute-Corse (2B) : 3782 accidents</div>`)[0];
+                popup_0684bc3bcad6cd0188b5dd058e9eee33.setContent(html_d6d926c9e5a66983035258a22551db27);
+            
+        
+
+        circle_marker_08eab962d6eefe93c3e22a1aed0d33ff.bindPopup(popup_0684bc3bcad6cd0188b5dd058e9eee33)
+        ;
+
+        
+    
+    
+            var circle_marker_02561f2b08aa071d0cc66dc7b5068314 = L.circleMarker(
+                [48.85, 1.85],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_1a8ce3d8f9f04d62607488c0f5804397 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_22f91d4335bbf2ad8d81e3c3544c3cba = $(`<div id="html_22f91d4335bbf2ad8d81e3c3544c3cba" style="width: 100.0%; height: 100.0%;">Yvelines (78) : 13943 accidents</div>`)[0];
+                popup_1a8ce3d8f9f04d62607488c0f5804397.setContent(html_22f91d4335bbf2ad8d81e3c3544c3cba);
+            
+        
+
+        circle_marker_02561f2b08aa071d0cc66dc7b5068314.bindPopup(popup_1a8ce3d8f9f04d62607488c0f5804397)
+        ;
+
+        
+    
+    
+            var circle_marker_134428e6e7a8be580e08ff222f89c22e = L.circleMarker(
+                [49.1, 2.15],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_167cef25fcbe5732e283382de8002bdd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4025ca4df1eacd65976a41c5cbbc1785 = $(`<div id="html_4025ca4df1eacd65976a41c5cbbc1785" style="width: 100.0%; height: 100.0%;">Val-d'Oise (95) : 12353 accidents</div>`)[0];
+                popup_167cef25fcbe5732e283382de8002bdd.setContent(html_4025ca4df1eacd65976a41c5cbbc1785);
+            
+        
+
+        circle_marker_134428e6e7a8be580e08ff222f89c22e.bindPopup(popup_167cef25fcbe5732e283382de8002bdd)
+        ;
+
+        
+    
+    
+            var circle_marker_54f5d0feb55e24da55ea9da3e04ce7c3 = L.circleMarker(
+                [48.6, 2.95],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_a56ecfd6415410ae36bc286ed7c2649b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ef1a966064a9f6afaf0216177150d20 = $(`<div id="html_6ef1a966064a9f6afaf0216177150d20" style="width: 100.0%; height: 100.0%;">Seine-et-Marne (77) : 10674 accidents</div>`)[0];
+                popup_a56ecfd6415410ae36bc286ed7c2649b.setContent(html_6ef1a966064a9f6afaf0216177150d20);
+            
+        
+
+        circle_marker_54f5d0feb55e24da55ea9da3e04ce7c3.bindPopup(popup_a56ecfd6415410ae36bc286ed7c2649b)
+        ;
+
+        
+    
+    
+            var circle_marker_4daa499dee4d437bd15d6d76666a101a = L.circleMarker(
+                [47.85, 2.4],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_8779ef58537bbe7d4c52d0804d8a5f04 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0f753c1505adf99c83e057914e4d0133 = $(`<div id="html_0f753c1505adf99c83e057914e4d0133" style="width: 100.0%; height: 100.0%;">Loiret (45) : 5295 accidents</div>`)[0];
+                popup_8779ef58537bbe7d4c52d0804d8a5f04.setContent(html_0f753c1505adf99c83e057914e4d0133);
+            
+        
+
+        circle_marker_4daa499dee4d437bd15d6d76666a101a.bindPopup(popup_8779ef58537bbe7d4c52d0804d8a5f04)
+        ;
+
+        
+    
+    
+            var circle_marker_28325b738b3a46512a70595d096e0377 = L.circleMarker(
+                [47.05, 2.5],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_431964d276d273b1bc275670fb27ba05 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5edcc71c4a941bb920b4767511c4ef49 = $(`<div id="html_5edcc71c4a941bb920b4767511c4ef49" style="width: 100.0%; height: 100.0%;">Cher (18) : 3674 accidents</div>`)[0];
+                popup_431964d276d273b1bc275670fb27ba05.setContent(html_5edcc71c4a941bb920b4767511c4ef49);
+            
+        
+
+        circle_marker_28325b738b3a46512a70595d096e0377.bindPopup(popup_431964d276d273b1bc275670fb27ba05)
+        ;
+
+        
+    
+    
+            var circle_marker_c0606da661ebf5871cfff2ca36c69a1f = L.circleMarker(
+                [48.45, 1.3],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6d5711fa44294d2eedea5ca07c40ba05 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3e0c24b446d4ff568f70664be0f2dc29 = $(`<div id="html_3e0c24b446d4ff568f70664be0f2dc29" style="width: 100.0%; height: 100.0%;">Eure-et-Loir (28) : 4471 accidents</div>`)[0];
+                popup_6d5711fa44294d2eedea5ca07c40ba05.setContent(html_3e0c24b446d4ff568f70664be0f2dc29);
+            
+        
+
+        circle_marker_c0606da661ebf5871cfff2ca36c69a1f.bindPopup(popup_6d5711fa44294d2eedea5ca07c40ba05)
+        ;
+
+        
+    
+    
+            var circle_marker_3faa5b42d54aa635424a3f274a525e27 = L.circleMarker(
+                [46.75, 1.55],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_5f83be2c1c544ab6650a6bbb15e2bf0f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3a6a497aaf23bec353573c1f430385e = $(`<div id="html_a3a6a497aaf23bec353573c1f430385e" style="width: 100.0%; height: 100.0%;">Indre (36) : 3161 accidents</div>`)[0];
+                popup_5f83be2c1c544ab6650a6bbb15e2bf0f.setContent(html_a3a6a497aaf23bec353573c1f430385e);
+            
+        
+
+        circle_marker_3faa5b42d54aa635424a3f274a525e27.bindPopup(popup_5f83be2c1c544ab6650a6bbb15e2bf0f)
+        ;
+
+        
+    
+    
+            var circle_marker_702a107fe91880faf704a3aaeffa3da5 = L.circleMarker(
+                [47.25, 0.7],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_dc004516696f7f166cd94500c7c1b463 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fd3a806c30cc0547c9279c919651c30a = $(`<div id="html_fd3a806c30cc0547c9279c919651c30a" style="width: 100.0%; height: 100.0%;">Indre-et-Loire (37) : 6583 accidents</div>`)[0];
+                popup_dc004516696f7f166cd94500c7c1b463.setContent(html_fd3a806c30cc0547c9279c919651c30a);
+            
+        
+
+        circle_marker_702a107fe91880faf704a3aaeffa3da5.bindPopup(popup_dc004516696f7f166cd94500c7c1b463)
+        ;
+
+        
+    
+    
+            var circle_marker_55f27a54c323965b5a288ecbb9b2e1d5 = L.circleMarker(
+                [47.55, 1.45],
+                {"bubblingMouseEvents": true, "color": "#888888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888888", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_0861c813b710e61b879589075b455fed = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1877d1b96663ea7369ec30c799b34cef = $(`<div id="html_1877d1b96663ea7369ec30c799b34cef" style="width: 100.0%; height: 100.0%;">Loir-et-Cher (41) : 3700 accidents</div>`)[0];
+                popup_0861c813b710e61b879589075b455fed.setContent(html_1877d1b96663ea7369ec30c799b34cef);
+            
+        
+
+        circle_marker_55f27a54c323965b5a288ecbb9b2e1d5.bindPopup(popup_0861c813b710e61b879589075b455fed)
+        ;
+
+        
+    
+    
+            var circle_marker_bf707ffe7bbd0b09d3187ef51e5c157f = L.circleMarker(
+                [48.85, 2.35],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.0, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_a17c26958855754033dd68986b1e23f8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4520c2f5bb9103be12f30a3e50320f4a = $(`<div id="html_4520c2f5bb9103be12f30a3e50320f4a" style="width: 100.0%; height: 100.0%;"><b>#1 — Paris (75)</b><br>81016 accidents</div>`)[0];
+                popup_a17c26958855754033dd68986b1e23f8.setContent(html_4520c2f5bb9103be12f30a3e50320f4a);
+            
+        
+
+        circle_marker_bf707ffe7bbd0b09d3187ef51e5c157f.bindPopup(popup_a17c26958855754033dd68986b1e23f8)
+        ;
+
+        
+    
+    
+            circle_marker_bf707ffe7bbd0b09d3187ef51e5c157f.bindTooltip(
+                `<div>
+                     Paris : 81016
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5676e20104e849d45ce25823581ff789 = L.circleMarker(
+                [43.55, 5.1],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 26.99002666140022, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_82e6aca82ff27655da8ed94481598375 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d54071fbfe28da1dab6839ee9ec87548 = $(`<div id="html_d54071fbfe28da1dab6839ee9ec87548" style="width: 100.0%; height: 100.0%;"><b>#2 — Bouches-du-Rhône (13)</b><br>48078 accidents</div>`)[0];
+                popup_82e6aca82ff27655da8ed94481598375.setContent(html_d54071fbfe28da1dab6839ee9ec87548);
+            
+        
+
+        circle_marker_5676e20104e849d45ce25823581ff789.bindPopup(popup_82e6aca82ff27655da8ed94481598375)
+        ;
+
+        
+    
+    
+            circle_marker_5676e20104e849d45ce25823581ff789.bindTooltip(
+                `<div>
+                     Bouches-du-Rhône : 48078
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b9d179d3ef311faead55f4068d4888f3 = L.circleMarker(
+                [48.9, 2.45],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.157203515354993, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_251604197e44bba5c749272e6e9626c5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_53e672509a337b797f8f2b7b52ccfddb = $(`<div id="html_53e672509a337b797f8f2b7b52ccfddb" style="width: 100.0%; height: 100.0%;"><b>#3 — Seine-Saint-Denis (93)</b><br>30779 accidents</div>`)[0];
+                popup_251604197e44bba5c749272e6e9626c5.setContent(html_53e672509a337b797f8f2b7b52ccfddb);
+            
+        
+
+        circle_marker_b9d179d3ef311faead55f4068d4888f3.bindPopup(popup_251604197e44bba5c749272e6e9626c5)
+        ;
+
+        
+    
+    
+            circle_marker_b9d179d3ef311faead55f4068d4888f3.bindTooltip(
+                `<div>
+                     Seine-Saint-Denis : 30779
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9a77e9461e9ff3e81649319f76688815 = L.circleMarker(
+                [48.85, 2.25],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.212797472104278, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_953bd41495b09ca773cd38207e330e6f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d2498c9ddebd9ff67a3e8126cc3df9b5 = $(`<div id="html_d2498c9ddebd9ff67a3e8126cc3df9b5" style="width: 100.0%; height: 100.0%;"><b>#4 — Hauts-de-Seine (92)</b><br>28388 accidents</div>`)[0];
+                popup_953bd41495b09ca773cd38207e330e6f.setContent(html_d2498c9ddebd9ff67a3e8126cc3df9b5);
+            
+        
+
+        circle_marker_9a77e9461e9ff3e81649319f76688815.bindPopup(popup_953bd41495b09ca773cd38207e330e6f)
+        ;
+
+        
+    
+    
+            circle_marker_9a77e9461e9ff3e81649319f76688815.bindTooltip(
+                `<div>
+                     Hauts-de-Seine : 28388
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7500ac4d9f47122f75b9fcaff54715e2 = L.circleMarker(
+                [43.95, 7.1],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.679569467759457, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_a4615abc0b5c5e73eabf09b543053fba = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4208fb13c0818f3fe7ca5dcccc0bfd1e = $(`<div id="html_4208fb13c0818f3fe7ca5dcccc0bfd1e" style="width: 100.0%; height: 100.0%;"><b>#5 — Alpes-Maritimes (06)</b><br>27038 accidents</div>`)[0];
+                popup_a4615abc0b5c5e73eabf09b543053fba.setContent(html_4208fb13c0818f3fe7ca5dcccc0bfd1e);
+            
+        
+
+        circle_marker_7500ac4d9f47122f75b9fcaff54715e2.bindPopup(popup_a4615abc0b5c5e73eabf09b543053fba)
+        ;
+
+        
+    
+    
+            circle_marker_7500ac4d9f47122f75b9fcaff54715e2.bindTooltip(
+                `<div>
+                     Alpes-Maritimes : 27038
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e1c0493257d64b290469f7f2a9599b02 = L.circleMarker(
+                [48.8, 2.45],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.533425496198284, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_dc4b9a85cd7428f84a4071bd726c5b70 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_243ab8469d5da1f1513ea31c6566b1ab = $(`<div id="html_243ab8469d5da1f1513ea31c6566b1ab" style="width: 100.0%; height: 100.0%;"><b>#6 — Val-de-Marne (94)</b><br>26668 accidents</div>`)[0];
+                popup_dc4b9a85cd7428f84a4071bd726c5b70.setContent(html_243ab8469d5da1f1513ea31c6566b1ab);
+            
+        
+
+        circle_marker_e1c0493257d64b290469f7f2a9599b02.bindPopup(popup_dc4b9a85cd7428f84a4071bd726c5b70)
+        ;
+
+        
+    
+    
+            circle_marker_e1c0493257d64b290469f7f2a9599b02.bindTooltip(
+                `<div>
+                     Val-de-Marne : 26668
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_967eccfee086a94504f9a32663197d49 = L.circleMarker(
+                [45.75, 4.65],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.34452453836279, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_6197335a85b988ee06a25beff8cca2c3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bf10738128028160ed2fbc63d0d9007e = $(`<div id="html_bf10738128028160ed2fbc63d0d9007e" style="width: 100.0%; height: 100.0%;"><b>#7 — Rhône (69)</b><br>23658 accidents</div>`)[0];
+                popup_6197335a85b988ee06a25beff8cca2c3.setContent(html_bf10738128028160ed2fbc63d0d9007e);
+            
+        
+
+        circle_marker_967eccfee086a94504f9a32663197d49.bindPopup(popup_6197335a85b988ee06a25beff8cca2c3)
+        ;
+
+        
+    
+    
+            circle_marker_967eccfee086a94504f9a32663197d49.bindTooltip(
+                `<div>
+                     Rhône : 23658
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9d2910473a79517acca796187e6e2510 = L.circleMarker(
+                [50.5, 3.1],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.94914584773378, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_aa385785a077cdccdacee68dfd3acb3c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d43e11a7b9f1539c5c4e8956b5a92eb = $(`<div id="html_4d43e11a7b9f1539c5c4e8956b5a92eb" style="width: 100.0%; height: 100.0%;"><b>#8 — Nord (59)</b><br>22657 accidents</div>`)[0];
+                popup_aa385785a077cdccdacee68dfd3acb3c.setContent(html_4d43e11a7b9f1539c5c4e8956b5a92eb);
+            
+        
+
+        circle_marker_9d2910473a79517acca796187e6e2510.bindPopup(popup_aa385785a077cdccdacee68dfd3acb3c)
+        ;
+
+        
+    
+    
+            circle_marker_9d2910473a79517acca796187e6e2510.bindTooltip(
+                `<div>
+                     Nord : 22657
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_780afbad0e83b6dd9635ded4b639ae1a = L.circleMarker(
+                [44.85, -0.55],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.22079589216945, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_e63f32db06191144272b3f504b3322f5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ab13236475c653c8d5c8723c847837bb = $(`<div id="html_ab13236475c653c8d5c8723c847837bb" style="width: 100.0%; height: 100.0%;"><b>#9 — Gironde (33)</b><br>20813 accidents</div>`)[0];
+                popup_e63f32db06191144272b3f504b3322f5.setContent(html_ab13236475c653c8d5c8723c847837bb);
+            
+        
+
+        circle_marker_780afbad0e83b6dd9635ded4b639ae1a.bindPopup(popup_e63f32db06191144272b3f504b3322f5)
+        ;
+
+        
+    
+    
+            circle_marker_780afbad0e83b6dd9635ded4b639ae1a.bindTooltip(
+                `<div>
+                     Gironde : 20813
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b8f38063e5f3f31a69b631fc0f92abc7 = L.circleMarker(
+                [48.55, 2.25],
+                {"bubblingMouseEvents": true, "color": "#b30000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e34a33", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.337118593858003, "stroke": true, "weight": 2}
+            ).addTo(map_812d69d58b13cd85b8daf3b956f95a94);
+        
+    
+        var popup_321b3ffd994ddee7803cd3b1d71f507b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2d57571e99944c906666e47e9a1b5d44 = $(`<div id="html_2d57571e99944c906666e47e9a1b5d44" style="width: 100.0%; height: 100.0%;"><b>#10 — Essonne (91)</b><br>16044 accidents</div>`)[0];
+                popup_321b3ffd994ddee7803cd3b1d71f507b.setContent(html_2d57571e99944c906666e47e9a1b5d44);
+            
+        
+
+        circle_marker_b8f38063e5f3f31a69b631fc0f92abc7.bindPopup(popup_321b3ffd994ddee7803cd3b1d71f507b)
+        ;
+
+        
+    
+    
+            circle_marker_b8f38063e5f3f31a69b631fc0f92abc7.bindTooltip(
+                `<div>
+                     Essonne : 16044
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

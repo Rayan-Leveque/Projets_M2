@@ -1,0 +1,93 @@
+Question 1.2 — Vérification de la structure des fichiers BAAC
+============================================================
+
+Période traitée : 2005-2015 (Groupe 1)
+Source : /home/rayan/bench-claude/data/utf8
+
+Schémas attendus (colonnes réelles 2005-2015) :
+  - caracteristiques (16 colonnes) : Num_Acc, an, mois, jour, hrmn, lum, agg, int, atm, col, com, adr, gps, lat, long, dep
+  - lieux (18 colonnes) : Num_Acc, catr, voie, v1, v2, circ, nbv, pr, pr1, vosp, prof, plan, lartpc, larrout, surf, infra, situ, env1
+  - vehicules (9 colonnes) : Num_Acc, senc, catv, occutc, obs, obsm, choc, manv, num_veh
+  - usagers (12 colonnes) : Num_Acc, place, catu, grav, sexe, trajet, secu, locp, actp, etatp, an_nais, num_veh
+
+Tableau — caracteristiques (16 colonnes attendues)
+==================================================
+
+Année       Nb lignes   Nb colonnes    Cumul lignes
+----------------------------------------------------
+2005            87026            16           87026
+2006            82993            16          170019
+2007            83850            16          253869
+2008            76767            16          330636
+2009            74409            16          405045
+2010            69379            16          474424
+2011            66974            16          541398
+2012            62250            16          603648
+2013            58397            16          662045
+2014            59854            16          721899
+2015            58654            16          780553
+----------------------------------------------------
+TOTAL          780553
+
+Tableau — lieux (18 colonnes attendues)
+=======================================
+
+Année       Nb lignes   Nb colonnes    Cumul lignes
+----------------------------------------------------
+2005            87026            18           87026
+2006            82993            18          170019
+2007            83850            18          253869
+2008            76767            18          330636
+2009            74409            18          405045
+2010            69379            18          474424
+2011            66974            18          541398
+2012            62250            18          603648
+2013            58397            18          662045
+2014            59854            18          721899
+2015            58654            18          780553
+----------------------------------------------------
+TOTAL          780553
+
+Tableau — vehicules (9 colonnes attendues)
+==========================================
+
+Année       Nb lignes   Nb colonnes    Cumul lignes
+----------------------------------------------------
+2005           149764             9          149764
+2006           142300             9          292064
+2007           144130             9          436194
+2008           131048             9          567242
+2009           126347             9          693589
+2010           117743             9          811332
+2011           113854             9          925186
+2012           105814             9         1031000
+2013            98925             9         1129925
+2014           101762             9         1231687
+2015            99778             9         1331465
+----------------------------------------------------
+TOTAL         1331465
+
+Tableau — usagers (12 colonnes attendues)
+=========================================
+
+Année       Nb lignes   Nb colonnes    Cumul lignes
+----------------------------------------------------
+2005           197498            12          197498
+2006           187085            12          384583
+2007           188457            12          573040
+2008           170960            12          744000
+2009           165962            12          909962
+2010           154192            12         1064154
+2011           148543            12         1212697
+2012           138628            12         1351325
+2013           128694            12         1480019
+2014           132186            12         1612205
+2015           130378            12         1742583
+----------------------------------------------------
+TOTAL         1742583
+
+Cumul global (tous types, toutes années) : 4635154 lignes de données
+
+Synthèse des écarts de schéma
+------------------------------
+Aucun écart : tous les fichiers ont la structure attendue, dans le bon ordre.

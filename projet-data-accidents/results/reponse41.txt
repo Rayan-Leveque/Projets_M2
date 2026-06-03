@@ -1,0 +1,53 @@
+Question 4.1 — Taux de valeurs absentes par champ (véhicules)
+====================================================================
+
+Période : 2005-2015 (Groupe 1)
+Source  : /home/rayan/bench-claude/data/enriched
+Total véhicules cumulés : 1331465
+
+Marqueurs d'absence retenus : '' (vide), '.', '-1', '0', '00', '000'.
+Pour les colonnes enrichies (catv, obs, obsm, choc, manv) le
+test porte sur le code (partie avant « - »).
+Seuils : < 5% bien renseigné, 5-15% prudence, > 15% fragile.
+
+colonne     nb_manquants    taux_%   qualificatif
+--------------------------------------------------------------------
+occutc           1322304    99.31%   fragile
+senc             1296378    97.36%   fragile
+obs              1159679    87.10%   fragile
+obsm              292866    22.00%   fragile
+manv              106486     8.00%   prudence
+choc               88711     6.66%   prudence
+Num_Acc                0     0.00%   bien renseigné
+catv                   0     0.00%   bien renseigné
+num_veh                0     0.00%   bien renseigné
+
+Interprétation
+--------------------------------------------------------------------
+- Num_Acc et num_veh sont les identifiants de jointure : 0 % d'absence,
+  ce qui est attendu (sans eux la ligne serait inexploitable).
+- occutc (nombre d'occupants d'un transport en commun) affiche un taux
+  d'absence très élevé : '000' y domine, car la quasi-totalité des
+  véhicules ne sont pas des bus/cars. Ce n'est pas un défaut de saisie
+  mais un « sans objet » massif : la colonne n'est pertinente que pour
+  les catégories de transport en commun.
+- obs (obstacle fixe heurté) est très majoritairement « 00 - Sans objet » :
+  le code 0 est ici une vraie information (aucun obstacle fixe heurté),
+  comptée mécaniquement comme absente par notre convention. Le taux
+  élevé traduit donc surtout la rareté des chocs contre obstacle fixe.
+- obsm et choc utilisent aussi le code 0 (« Aucun »), documenté : leur
+  taux mêle absences réelles et « sans objet », à interpréter avec recul.
+- senc : le code '0' n'est pas documenté (seuls 1 et 2 le sont) ; on le
+  compte comme absent. Son taux reflète une saisie irrégulière du sens
+  de circulation, variable selon les années.
+- catv (catégorie de véhicule) est à 0 % : c'est l'attribut le mieux
+  renseigné, ce qui est rassurant car beaucoup d'analyses en dépendent.
+- manv (manœuvre) et choc se situent dans la zone de prudence (5-15 %) :
+  exploitables, mais en gardant à l'esprit cette part de non-saisie.
+
+Conclusion : la convention « 0 = absent » est volontairement stricte. Pour
+les champs où 0 est documenté (obs, obsm, choc, occutc), un taux élevé
+signale surtout du « sans objet » et non un défaut de remplissage ; ces
+champs restent exploitables en distinguant 0 des autres valeurs. Les champs
+réellement fragiles sont ceux dont l'absence n'est pas un « sans objet »
+légitime.
