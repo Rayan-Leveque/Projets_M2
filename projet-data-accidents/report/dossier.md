@@ -377,6 +377,8 @@ Le rendu matplotlib est configuré en mode hors écran (`matplotlib.use("Agg")`)
 
 **Résultat :** `results/reponse61.png` — graphique en barres verticales bleues (axe x = heure 0-23, axe y = nombre d'accidents), titre « Accidents par tranche horaire (2005-2015) », grille horizontale, taille 12×6 pouces. Bilan sur **757 263** accidents métropolitains :
 
+![Q6.1 — Nombre d'accidents par tranche horaire d'une heure (métropole, 2005-2015)](../results/reponse61.png)
+
 | Indicateur | Valeur |
 |------------|-------:|
 | Total accidents (métropole, 2005-2015) | 757 263 |
@@ -410,6 +412,8 @@ Les tranches sont de 5 ans : 18 tranches `0-4 … 85-89` plus une tranche ouvert
 
 **Résultat :** `results/reponse62.png` — barres groupées (axe x = tranche d'âge, 2 barres par tranche, axe y = nombre de tués cumulés), titre « Tués cumulés par tranche d'âge et par sexe (2005-2015) », taille 14×7 pouces. Bilan sur **44 820** tués métropolitains :
 
+![Q6.2 — Tués cumulés par tranche d'âge (5 ans) et par sexe (métropole, 2005-2015)](../results/reponse62.png)
+
 | Indicateur | Valeur |
 |------------|-------:|
 | Total tués (métropole, 2005-2015) | 44 820 |
@@ -440,6 +444,8 @@ Les tranches sont de 5 ans : 18 tranches `0-4 … 85-89` plus une tranche ouvert
 **Fichier Python :** `python/question63.py`.
 
 **Résultat :** `results/reponse63.html` (carte interactive) et `results/reponse63.txt` (tableau). Sur **757 263** accidents métropolitains cumulés répartis sur 96 départements, le classement est :
+
+![Q6.3 — Aperçu statique de la carte Folium : accidents cumulés par département, top 10 en rouge (métropole, 2005-2015). La carte interactive est dans `results/reponse63.html`.](../results/reponse63_apercu.png)
 
 | Rang | Dép. | Nom | Nb accidents |
 |-----:|:----:|-----|-------------:|
@@ -480,6 +486,8 @@ Les tranches sont de 5 ans : 18 tranches `0-4 … 85-89` plus une tranche ouvert
 
 **Résultat :** `results/reponse64.png` (heatmap) et `results/reponse64.txt` (trace). Sur **733 867** accidents métropolitains exploitables (cumul 2005-2015), les couples les plus fréquents sont :
 
+![Q6.4 — Heatmap des accidents selon les conditions atmosphériques (`atm`) × état de la surface (`surf`), échelle logarithmique (métropole, 2005-2015)](../results/reponse64.png)
+
 | Conditions atm. | État surface | Nb accidents | Part |
 |-----------------|--------------|-------------:|-----:|
 | Normale | Normale | 560 189 | 76,3 % |
@@ -514,6 +522,8 @@ Les tranches sont de 5 ans : 18 tranches `0-4 … 85-89` plus une tranche ouvert
 
 **Résultat :** `results/reponse65.gif` — animation de **11 images** (2005→2015), 600×600 px, 800 ms par image, boucle infinie. Le décompte métropolitain par année décroît régulièrement :
 
+![Q6.5 — Première image (2005) du GIF animé `results/reponse65.gif` : accidents par département, cercles proportionnels (métropole)](../results/reponse65_frame.png)
+
 | Année | Accidents métropole | | Année | Accidents métropole |
 |------:|--------------------:|-|------:|--------------------:|
 | 2005 | 84 525 | | 2011 | 65 024 |
@@ -535,4 +545,12 @@ Les tranches sont de 5 ans : 18 tranches `0-4 … 85-89` plus une tranche ouvert
 
 # Conclusion / synthèse
 
-*(à rédiger en fin de projet — bilan qualité des données, limites, pistes d'amélioration)*
+**Qualité des données.** L'intégrité référentielle du jeu BAAC 2005-2015 (Groupe 1) est globalement très bonne. Le lien *usager → véhicule* est quasi parfait (22 violations sur 1 742 583 usagers, soit 0,0013 %), et le lien inverse *véhicule → usager* ne présente que 1,47 % de véhicules sans usager (19 580 cas), majoritairement explicables par les conducteurs en fuite. Les contrôles facultatifs *lieu ↔ accident* (Q2.3) et *accident → lieu unique* (Q2.4) confirment cette cohérence. Le seul attribut véritablement fragile au sens de la saisie est le sens de circulation (`senc`) ; les taux d'absence élevés de `obs`/`obsm`/`choc`/`occutc` (Q4.1) traduisent surtout des « sans objet » légitimes (code `0`) et non des défauts de remplissage.
+
+**Cohérence inter-attributs.** Les incohérences logiques recherchées (Q5) restent marginales : luminosité × heure (Q5.1), obstacle mobile × point de choc (Q5.2) et années de naissance impossibles (Q5.3, 41 cas sur 1,74 M) ne remettent pas en cause l'exploitabilité du jeu. Ces contrôles valident la fiabilité d'ensemble plus qu'ils ne révèlent des anomalies massives.
+
+**Enseignements analytiques.** Les visualisations (Q6) dégagent des structures conformes aux connaissances de la sécurité routière : distribution horaire bimodale calée sur les déplacements domicile-travail (pic 17h-18h), surmortalité des hommes jeunes (15-29 ans, 75,7 % des tués), concentration des accidents dans les départements urbains denses (Paris ≈ 1,7× le 2ᵉ), et baisse tendancielle de −33 % du nombre d'accidents corporels entre 2005 et 2015.
+
+**Limites.** Tous les décomptes géographiques et temporels sont **volumétriques** : ils mesurent une exposition absolue, non un risque rapporté à la population, au trafic ou aux véhicules-km — données absentes du BAAC. Les cartes (Q6.3/6.5) reposent sur des **centroïdes** départementaux, schématiques par rapport à un vrai fond cartographique.
+
+**Pistes d'amélioration.** Normaliser les effectifs (accidents pour 100 000 habitants), enrichir avec un fond `geopandas` pour des cartes choroplèthes, et croiser gravité × infrastructure pour cibler les configurations les plus meurtrières.
