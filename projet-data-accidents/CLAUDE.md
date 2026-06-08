@@ -42,10 +42,11 @@ python python/questionXY.py
 
 # Build the PDF report (from report/)
 cd report
-python build_tex.py   # regenerate dossier.tex from dossier.md (after editing the .md)
-make                  # compile dossier.tex → dossier.pdf (pdflatex)
+make                  # compile dossier.tex → dossier.pdf (pdflatex, double pass)
 make clean            # remove .aux/.log/.toc/.out
 ```
+
+The report is now edited **directly in `report/dossier.tex`** — there is no Markdown source and no generation step anymore (see Architecture).
 
 No test suite, no linter configured. The only build is the LaTeX report (`report/Makefile`, pdflatex). `pyproject.toml` declares no dependencies yet — `pandas`, `folium`, `matplotlib` will be added as questions require them.
 
@@ -59,10 +60,9 @@ The repository structure is **prescribed by the project spec** (`docs/Projet Dat
 - `python/` — one script per question, named `questionXY.py` (e.g. `question22.py` for question 2.2). Naming is graded.
 - `python/common.py` — shared paths (`DATA`, `RAW`, `UTF8`, `ENRICHED`, `RESULTS`) and the year range constants. Scripts should import from here rather than hard-coding paths.
 - `results/` — execution traces and generated files, named `reponseXY.*` (matching naming).
-- `report/dossier.md` — the report itself, written in Markdown at the repo root of `report/`. Edit this file directly as questions are completed.
-- `report/dossier.tex` — the LaTeX version of the report, **a committed artifact** generated from `dossier.md` by `report/build_tex.py`. Targets **pdflatex** (Unicode handled via `\DeclareUnicodeCharacter`, front-matter folded into a title page + auto TOC).
-- `report/build_tex.py` — one-shot Markdown→LaTeX converter (stdlib only). Run `python build_tex.py` from `report/` after editing `dossier.md` to regenerate `dossier.tex`. It is **not** wired into the Makefile.
-- `report/Makefile` — the LaTeX builder. `make` compiles `dossier.tex → dossier.pdf` (pdflatex, double pass for the TOC); `make clean` removes aux files. It only compiles the `.tex`; it does **not** regenerate it from the `.md`. Build prereqs: `texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-lang-french`.
+- `report/dossier.tex` — **the report itself**, the single source of truth, written and edited **directly in LaTeX**. Targets **pdflatex** (Unicode handled via `\DeclareUnicodeCharacter`). The preamble defines the styling: title page (with optional `logo_sorbonne.png` via `\IfFileExists`), coloured section titles (`titlesec`), running headers (`fancyhdr`), and the `agentbox` (`tcolorbox`) used to frame each "Travail avec l'agent — Claude Code" block. There is **no Markdown source** and **no generation step** — the former `dossier.md` + `build_tex.py` Markdown→TeX pipeline has been dropped; edit `dossier.tex` by hand.
+- `report/logo_sorbonne.png` — title-page logo. Optional: the title page compiles without it (`\IfFileExists`), the logo appears once the file is present.
+- `report/Makefile` — the LaTeX builder. `make` compiles `dossier.tex → dossier.pdf` (pdflatex, double pass for the TOC); `make clean` removes aux files. Build prereqs: `texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-lang-french texlive-latex-extra texlive-pictures` (the last two provide `tcolorbox`, `titlesec`, `pdflscape` and the `pgf`/`tikz` backend `tcolorbox` depends on).
 
 ### Data pipeline
 
