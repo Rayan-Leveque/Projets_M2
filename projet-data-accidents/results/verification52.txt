@@ -1,0 +1,9 @@
+Vérification Q5.2 — incohérence obsm × choc (pandas)
+========================================================================
+Critère : obsm ∈ {1,2,4,5,6,9} (obstacle mobile heurté) ET choc = « 0 - Aucun ».
+
+Incohérences pandas : 39648 | réponse : 39648
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — mêmes 39648 incohérences par les deux méthodes.

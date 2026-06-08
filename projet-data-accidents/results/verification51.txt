@@ -1,0 +1,9 @@
+Vérification Q5.1 — incohérence lum × hrmn (pandas, bornes saisonnières)
+========================================================================
+Incohérences trouvées par pandas       : 12034
+Incohérences dans reponse51_complet.csv : 12034
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — mêmes 12034 accidents incohérents par
+           les deux méthodes (csv.reader et pandas).

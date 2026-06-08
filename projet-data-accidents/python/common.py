@@ -82,3 +82,26 @@ CENTROIDES_DEPARTEMENTS: dict[str, tuple[float, float]] = {
     "90": (47.65, 6.95), "91": (48.55, 2.25), "92": (48.85, 2.25),
     "93": (48.90, 2.45), "94": (48.80, 2.45), "95": (49.10, 2.15),
 }
+
+
+class Trace:
+    """Petit utilitaire partagé par les scripts de vérification.
+
+    Chaque appel `trace("...")` affiche la ligne à l'écran ET la mémorise ;
+    `trace.ecrire()` enregistre l'ensemble dans results/<nom>. On obtient
+    ainsi à la fois un retour console pendant l'exécution et un fichier de
+    trace identique (results/verificationXY.txt) à joindre au dossier.
+    """
+
+    def __init__(self, nom: str):
+        self.chemin = RESULTS / nom
+        self._lignes: list[str] = []
+
+    def __call__(self, ligne: str = "") -> None:
+        print(ligne)
+        self._lignes.append(ligne)
+
+    def ecrire(self) -> None:
+        RESULTS.mkdir(parents=True, exist_ok=True)
+        self.chemin.write_text("\n".join(self._lignes) + "\n", encoding="utf-8")
+        print(f"\nTrace écrite dans {self.chemin}")

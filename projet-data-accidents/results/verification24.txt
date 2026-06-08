@@ -1,0 +1,29 @@
+Vérification Q2.4 — un et un seul lieu par accident (méthode pandas)
+========================================================================
+Pour chaque année : nb_lieux = lieux.groupby('Num_Acc').size(), reporté
+sur chaque accident. Violation si nb_lieux != 1 (0 = sans lieu, ≥2 = multi).
+
+année     accidents  sans lieu   ≥2 lieux   violations
+------------------------------------------------------------------------
+2005          87026          0          0            0
+2006          82993          0          0            0
+2007          83850          0          0            0
+2008          76767          0          0            0
+2009          74409          0          0            0
+2010          69379          0          0            0
+2011          66974          0          0            0
+2012          62250          0          0            0
+2013          58397          0          0            0
+2014          59854          0          0            0
+2015          58654          0          0            0
+------------------------------------------------------------------------
+TOTAL        780553                                  0
+
+Recoupement avec results/reponse24_violations.csv
+------------------------------------------------------------------------
+Lignes de violation — pandas : 0 | réponse : 0
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — aucune violation par les deux méthodes :
+           chaque accident a exactement un lieu.

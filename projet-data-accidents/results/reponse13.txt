@@ -2,8 +2,8 @@ Question 1.3 — Enrichissement des codes énumérés
 ============================================================
 
 Période : 2005-2015 (Groupe 1)
-Source       : /home/rayan/bench-claude/data/utf8
-Destination  : /home/rayan/bench-claude/data/enriched
+Source       : /home/rayan/Documents/Projets_M2/projet-data-accidents/data/utf8
+Destination  : /home/rayan/Documents/Projets_M2/projet-data-accidents/data/enriched
 
 Nombre de fichiers enrichis : 44
 

@@ -1,0 +1,19 @@
+Vérification Q4.1 — taux de valeurs absentes véhicules (pandas)
+========================================================================
+Total véhicules (pandas) : 1331465
+
+colonne     manquants (pandas)    taux_%     réponse   ==?
+------------------------------------------------------------------------
+Num_Acc                      0     0.00%           0     ✓
+senc                   1296378    97.36%     1296378     ✓
+catv                         0     0.00%           0     ✓
+occutc                 1322304    99.31%     1322304     ✓
+obs                    1159679    87.10%     1159679     ✓
+obsm                    292866    22.00%      292866     ✓
+choc                     88711     6.66%       88711     ✓
+manv                    106486     8.00%      106486     ✓
+num_veh                      0     0.00%           0     ✓
+------------------------------------------------------------------------
+
+RÉSULTAT : ✓ VÉRIFIÉ — pandas retrouve exactement les nb_manquants
+           de reponse41.txt sur les 9 colonnes (total 1331465).

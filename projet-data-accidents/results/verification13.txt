@@ -1,0 +1,60 @@
+Vérification Q1.3 — enrichissement code → libellé (pandas)
+========================================================================
+--- caracteristiques ---
+  lignes : enriched=780553  utf8=780553  (=)
+    lum      valeurs hors mapping : ✓
+    agg      valeurs hors mapping : ✓
+    int      valeurs hors mapping : ✓
+    atm      valeurs hors mapping : ✓
+    col      valeurs hors mapping : ✓
+
+--- lieux ---
+  lignes : enriched=780553  utf8=780553  (=)
+    catr     valeurs hors mapping : ✓
+    circ     valeurs hors mapping : ✓
+    vosp     valeurs hors mapping : ✓
+    prof     valeurs hors mapping : ✓
+    plan     valeurs hors mapping : ✓
+    surf     valeurs hors mapping : ✓
+    infra    valeurs hors mapping : ✓
+    situ     valeurs hors mapping : ✓
+
+--- vehicules ---
+  lignes : enriched=1331465  utf8=1331465  (=)
+    senc     valeurs hors mapping : ✓
+    catv     valeurs hors mapping : ✓
+    obs      valeurs hors mapping : ✓
+    obsm     valeurs hors mapping : ✓
+    choc     valeurs hors mapping : ✓
+    manv     valeurs hors mapping : ✓
+
+--- usagers ---
+  lignes : enriched=1742583  utf8=1742583  (=)
+    catu     valeurs hors mapping : ✓
+    grav     valeurs hors mapping : ✓
+    sexe     valeurs hors mapping : ✓
+    trajet   valeurs hors mapping : ✓
+    locp     valeurs hors mapping : ✓
+    actp     valeurs hors mapping : ✓
+    etatp    valeurs hors mapping : ✓
+
+Focus catv (vehicules)
+------------------------------------------------------------------------
+Nombre de libellés catv distincts obtenus : 33
+Codes catv enrichis non zero-paddés sur 2 chiffres : 0
+  · 01 - Bicyclette
+  · 02 - Cyclomoteur < 50 cm³
+  · 03 - Voiturette
+  · 04 - Référence plus utilisée (scooter immatriculé)
+  · 05 - Référence plus utilisée (motocyclette)
+  · 06 - Référence plus utilisée (side-car)
+  · 07 - VL seul
+  · 08 - VL + caravane
+  · 09 - VL + remorque
+  · 10 - VU seul (1,5T < PTAC ≤ 3,5T)
+  · 11 - VU + caravane
+  · 12 - VU + remorque
+  … (+21 autres)
+
+RÉSULTAT : ✓ VÉRIFIÉ — aucune ligne perdue, aucune valeur énumérée
+           hors mapping, codes catv bien paddés sur 2 chiffres.

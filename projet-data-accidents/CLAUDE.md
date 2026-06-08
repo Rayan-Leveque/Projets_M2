@@ -37,8 +37,11 @@ The student is **doing all coding solo** and treats **facultative questions as i
 ## Commands
 
 ```bash
-# Run a question script (from repo root, paths inside scripts are relative to ../)
-python python/questionXY.py
+# Run a question (answer) script — uv manages the venv + deps
+uv run python python/questionXY.py
+
+# Run a verification script (independent pandas cross-check of the answer)
+uv run python python/verificationXY.py
 
 # Build the PDF report (from report/)
 cd report
@@ -48,7 +51,11 @@ make clean            # remove .aux/.log/.toc/.out
 
 The report is now edited **directly in `report/dossier.tex`** — there is no Markdown source and no generation step anymore (see Architecture).
 
-No test suite, no linter configured. The only build is the LaTeX report (`report/Makefile`, pdflatex). `pyproject.toml` declares no dependencies yet — `pandas`, `folium`, `matplotlib` will be added as questions require them.
+No test suite, no linter configured. The only build is the LaTeX report (`report/Makefile`, pdflatex). Python deps are managed by **uv** (`uv.lock`); `pyproject.toml` declares `pandas`, `folium`, `matplotlib`. Run scripts with `uv run python …` (system `python3` does not see the venv).
+
+### Verification scripts (graded — spec §1.4.1 / "moitié des points")
+
+Each answered question `questionXY.py` has a companion **`python/verificationXY.py`** that **re-computes the result by an independent method (pandas DataFrames)** and cross-checks it against the answer's output (`results/reponseXY.*`), writing a trace to **`results/verificationXY.txt`** with a `conforme` / divergence verdict. The deliberate design: answers read CSV line-by-line with `csv.reader`; verifications recompute with pandas (`merge`/anti-join, `value_counts`, `groupby`) — agreement of the two engines is the verification. The shared `common.Trace` helper writes each trace to screen + file. All 17 verifications (Q1.1→Q6.5; Q0.0 download is not a graded question) currently report `conforme`. Each question entry in `dossier.tex` references its verification script via a `\textbf{Vérification (pandas) :}` line.
 
 ## Architecture
 

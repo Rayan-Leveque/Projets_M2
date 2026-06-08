@@ -14,8 +14,8 @@ Toutes les questions sont traitées, **y compris les facultatives** (2.3, 2.4, 5
 │   ├── raw/         Fichiers d'origine téléchargés (caracteristiques, lieux, vehicules, usagers)
 │   ├── utf8/        Fichiers ré-encodés UTF-8, séparateur ',' (sortie Q1.1)
 │   └── enriched/    Fichiers avec libellés des domaines énumérés (sortie Q1.3)
-├── python/       Programmes Python (un fichier questionXY.py par question)
-├── results/      Traces d'exécution, fichiers reponseXY.*, visualisations, cartes
+├── python/       questionXY.py (réponse, csv.reader) + verificationXY.py (vérif pandas)
+├── results/      reponseXY.* (réponses) + verificationXY.txt (traces de vérification)
 └── report/       `dossier.tex` (source LaTeX, éditée à la main) → `dossier.pdf` (livrable final)
 ```
 
@@ -41,6 +41,13 @@ Chemins relatifs depuis `python/` : `../data`, `../results`. Voir `python/common
 Pour chaque question X.Y du sujet :
 - code  → `python/questionXY.py`
 - sortie → `results/reponseXY.*`
+- vérification → `python/verificationXY.py` → trace `results/verificationXY.txt`
+
+Les scripts `questionXY.py` calculent la réponse en lisant les CSV ligne à ligne
+(`csv.reader`) ; les scripts `verificationXY.py` **recalculent le même résultat
+indépendamment avec pandas** (DataFrames, `merge`/`groupby`/`value_counts`) et le
+recoupent à la sortie de la réponse — l'accord des deux méthodes constitue la
+vérification (spec §1.4.1). Exécution : `uv run python python/verificationXY.py`.
 
 ## Questions à traiter
 

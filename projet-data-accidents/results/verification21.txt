@@ -1,0 +1,32 @@
+Vérification Q2.1 — usagers → vehicules (méthode pandas, anti-join)
+======================================================================
+Méthode indépendante de question21.py (csv + set) : pour chaque année,
+usagers.merge(vehicules, how='left', indicator=True) ; les lignes
+'left_only' sont les usagers sans véhicule correspondant.
+
+année      usagers   couples véh.   violations
+----------------------------------------------------------------------
+2005        197498         149764            2
+2006        187085         142300            5
+2007        188457         144130           11
+2008        170960         131048            4
+2009        165962         126347            0
+2010        154192         117743            0
+2011        148543         113854            0
+2012        138628         105814            0
+2013        128694          98925            0
+2014        132186         101762            0
+2015        130378          99778            0
+----------------------------------------------------------------------
+TOTAL      1742583                          22
+
+Recoupement avec results/reponse21_violations.csv
+----------------------------------------------------------------------
+Lignes de violation — pandas : 22 | réponse : 22
+Couples (Num_Acc, num_veh) distincts — pandas : 13 | réponse : 13
+Couples présents dans la réponse mais pas retrouvés par pandas : 0
+Couples trouvés par pandas mais absents de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — les deux méthodes (csv/set et pandas/merge)
+           produisent exactement les mêmes lignes de violation
+           (22 lignes, 13 couples distincts).

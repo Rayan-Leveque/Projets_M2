@@ -1,0 +1,28 @@
+Vérification Q2.2 — vehicules → ≥ 1 usager (méthode pandas, anti-join)
+========================================================================
+Pour chaque année : vehicules.merge(usagers, how='left', indicator).
+Les lignes 'left_only' sont les véhicules sans usager rattaché.
+
+année     véhicules  couples usagers   violations
+------------------------------------------------------------------------
+2005         149764           147779         1987
+2006         142300           140264         2040
+2007         144130           141975         2158
+2008         131048           129052         2000
+2009         126347           124708         1639
+2010         117743           116141         1602
+2011         113854           112211         1643
+2012         105814           104217         1597
+2013          98925            97348         1577
+2014         101762           100063         1699
+2015          99778            98140         1638
+------------------------------------------------------------------------
+TOTAL       1331465                         19580
+
+Recoupement avec results/reponse22_violations.csv
+------------------------------------------------------------------------
+Lignes de violation — pandas : 19580 | réponse : 19580
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — mêmes 19580 violations par les deux méthodes.

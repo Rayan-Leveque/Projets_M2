@@ -1,0 +1,14 @@
+Vérification Q1.1 — fichiers utf8/ : encodage UTF-8 + séparateur ','
+========================================================================
+Pour chaque fichier : (1) décodage UTF-8 complet, (2) lecture pandas
+sep=',' et contrôle du nombre de colonnes attendu par type.
+
+--- caracteristiques (16 colonnes attendues) ---
+--- lieux (18 colonnes attendues) ---
+--- vehicules (9 colonnes attendues) ---
+--- usagers (12 colonnes attendues) ---
+
+Fichiers conformes : 44 / 44
+
+RÉSULTAT : ✓ VÉRIFIÉ — les 44 fichiers utf8/ sont en UTF-8 et
+           séparés par ',' avec le bon nombre de colonnes.

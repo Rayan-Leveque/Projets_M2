@@ -1,0 +1,13 @@
+Vérification Q6.4 — heatmap atm × surf (pandas)
+========================================================================
+contrôle                                    pandas     réponse   ==?
+------------------------------------------------------------------------
+accidents exploités                         733867      733867     ✓
+atm ignorés                                     21          21     ✓
+surf ignorés                                 23375       23375     ✓
+couple le plus fréquent (effectif)          560189      560189     ✓
+------------------------------------------------------------------------
+Couple le plus fréquent (pandas) : 1 - Normale × 1 - Normale
+
+RÉSULTAT : ✓ VÉRIFIÉ — totaux exploités/ignorés et couple dominant
+           identiques à reponse64.txt.

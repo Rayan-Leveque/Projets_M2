@@ -1,0 +1,21 @@
+Vérification Q5.3 — année de naissance impossible (pandas)
+========================================================================
+Critère : an_nais renseignée et numérique, mais > 2015 ou < 1900.
+
+Incohérences pandas : 41 | réponse : 41
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+Échantillon des cas trouvés par pandas :
+  2005  Num_Acc=200500003366  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500006218  num_veh=A01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500007379  num_veh=A01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500010227  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500015680  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500018076  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500022036  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500034480  num_veh=B01  an_nais=1898  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500034919  num_veh=B01  an_nais=1897  (Âge invraisemblable (< 1900))
+  2005  Num_Acc=200500047296  num_veh=A01  an_nais=1898  (Âge invraisemblable (< 1900))
+
+RÉSULTAT : ✓ VÉRIFIÉ — mêmes 41 incohérences par les deux méthodes.

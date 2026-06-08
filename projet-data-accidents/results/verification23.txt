@@ -1,0 +1,29 @@
+Vérification Q2.3 — lieux → caracteristiques (méthode pandas, anti-join)
+========================================================================
+Pour chaque année : lieux.merge(caracteristiques, how='left', indicator)
+sur Num_Acc. Les lignes 'left_only' sont des lieux sans accident parent.
+
+année        lieux   accidents   violations
+------------------------------------------------------------------------
+2005         87026       87026            0
+2006         82993       82993            0
+2007         83850       83850            0
+2008         76767       76767            0
+2009         74409       74409            0
+2010         69379       69379            0
+2011         66974       66974            0
+2012         62250       62250            0
+2013         58397       58397            0
+2014         59854       59854            0
+2015         58654       58654            0
+------------------------------------------------------------------------
+TOTAL       780553                        0
+
+Recoupement avec results/reponse23_violations.csv
+------------------------------------------------------------------------
+Lignes de violation — pandas : 0 | réponse : 0
+Présentes dans la réponse, pas retrouvées par pandas : 0
+Trouvées par pandas, absentes de la réponse          : 0
+
+RÉSULTAT : ✓ VÉRIFIÉ — aucune violation par les deux méthodes :
+           tout lieu référence bien un accident existant.

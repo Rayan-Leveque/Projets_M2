@@ -1,0 +1,22 @@
+Vérification Q3.1 — répartition % attributs usagers (pandas)
+========================================================================
+Total usagers (pandas) : 1742583
+
+attribut    modalités   somme eff.  = total ?   eff. == réponse ?
+------------------------------------------------------------------------
+catu                4      1742583          ✓                   ✓
+grav                4      1742583          ✓                   ✓
+sexe                2      1742583          ✓                   ✓
+trajet              8      1742583          ✓                   ✓
+secu               26      1742583          ✓                   ✓
+locp               10      1742583          ✓                   ✓
+actp                9      1742583          ✓                   ✓
+etatp               5      1742583          ✓                   ✓
+------------------------------------------------------------------------
+
+Lecture : « somme eff. = total » confirme que chaque usager compte pour
+exactement une modalité (bon dénominateur) ; « eff. == réponse » confirme
+que pandas retrouve exactement les mêmes effectifs que question31.py.
+
+RÉSULTAT : ✓ VÉRIFIÉ — distributions pandas identiques à reponse31.txt
+           sur les 8 attributs, dénominateur = 1742583.
