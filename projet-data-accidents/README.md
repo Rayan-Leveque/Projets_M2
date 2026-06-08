@@ -16,8 +16,23 @@ Toutes les questions sont traitées, **y compris les facultatives** (2.3, 2.4, 5
 │   └── enriched/    Fichiers avec libellés des domaines énumérés (sortie Q1.3)
 ├── python/       Programmes Python (un fichier questionXY.py par question)
 ├── results/      Traces d'exécution, fichiers reponseXY.*, visualisations, cartes
-└── report/       `dossier.md` (source) → `dossier.pdf` (livrable final, généré via pandoc/typst)
+└── report/       `dossier.md` (source) → `dossier.tex` → `dossier.pdf` (livrable final, build LaTeX)
 ```
+
+## Génération du rapport PDF
+
+Le livrable `report/dossier.pdf` est produit par une chaîne LaTeX :
+
+```bash
+cd report
+python build_tex.py     # (re)génère dossier.tex depuis dossier.md
+make                    # compile dossier.tex → dossier.pdf (pdflatex, double passe)
+make clean              # supprime les fichiers auxiliaires (.aux/.log/.toc/.out)
+```
+
+- `dossier.tex` est un **artefact versionné** : le `Makefile` se contente de le compiler, il ne le régénère pas depuis le `.md` (lancer `build_tex.py` à la main après modification du `.md`).
+- Moteur : **pdflatex**. Prérequis (Debian/Ubuntu) :
+  `sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-lang-french`
 
 Chemins relatifs depuis `python/` : `../data`, `../results`. Voir `python/common.py`.
 

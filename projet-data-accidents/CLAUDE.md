@@ -39,9 +39,15 @@ The student is **doing all coding solo** and treats **facultative questions as i
 ```bash
 # Run a question script (from repo root, paths inside scripts are relative to ../)
 python python/questionXY.py
+
+# Build the PDF report (from report/)
+cd report
+python build_tex.py   # regenerate dossier.tex from dossier.md (after editing the .md)
+make                  # compile dossier.tex → dossier.pdf (pdflatex)
+make clean            # remove .aux/.log/.toc/.out
 ```
 
-No build, no test suite, no linter configured. `pyproject.toml` declares no dependencies yet — `pandas`, `folium`, `matplotlib` will be added as questions require them.
+No test suite, no linter configured. The only build is the LaTeX report (`report/Makefile`, pdflatex). `pyproject.toml` declares no dependencies yet — `pandas`, `folium`, `matplotlib` will be added as questions require them.
 
 ## Architecture
 
@@ -53,7 +59,10 @@ The repository structure is **prescribed by the project spec** (`docs/Projet Dat
 - `python/` — one script per question, named `questionXY.py` (e.g. `question22.py` for question 2.2). Naming is graded.
 - `python/common.py` — shared paths (`DATA`, `RAW`, `UTF8`, `ENRICHED`, `RESULTS`) and the year range constants. Scripts should import from here rather than hard-coding paths.
 - `results/` — execution traces and generated files, named `reponseXY.*` (matching naming).
-- `report/dossier.md` — the report itself, written in Markdown at the repo root of `report/`. Compiled to PDF at the end via pandoc or typst (LaTeX as fallback if styling needs it). Edit this file directly as questions are completed.
+- `report/dossier.md` — the report itself, written in Markdown at the repo root of `report/`. Edit this file directly as questions are completed.
+- `report/dossier.tex` — the LaTeX version of the report, **a committed artifact** generated from `dossier.md` by `report/build_tex.py`. Targets **pdflatex** (Unicode handled via `\DeclareUnicodeCharacter`, front-matter folded into a title page + auto TOC).
+- `report/build_tex.py` — one-shot Markdown→LaTeX converter (stdlib only). Run `python build_tex.py` from `report/` after editing `dossier.md` to regenerate `dossier.tex`. It is **not** wired into the Makefile.
+- `report/Makefile` — the LaTeX builder. `make` compiles `dossier.tex → dossier.pdf` (pdflatex, double pass for the TOC); `make clean` removes aux files. It only compiles the `.tex`; it does **not** regenerate it from the `.md`. Build prereqs: `texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-lang-french`.
 
 ### Data pipeline
 
