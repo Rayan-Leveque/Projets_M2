@@ -42,6 +42,18 @@
 \definecolor{agentborder}{HTML}{3B82F6}
 \definecolor{sectioncolor}{HTML}{1E3A5F}
 
+% --- Couleurs des étiquettes de rubrique (une couleur par rubrique) -------
+% Chaque rubrique d'une réponse à une question porte sa propre couleur, pour
+% les repérer d'un coup d'œil au lieu d'un simple gras uniforme.
+\definecolor{labrappel}{HTML}{1E3A5F}    % bleu nuit  — l'énoncé
+\definecolor{labfichier}{HTML}{6D28D9}   % violet     — le code Python
+\definecolor{labverif}{HTML}{0A7B34}     % vert       — la vérification pandas
+\definecolor{labresultat}{HTML}{B45309}  % ambre      — le résultat / la sortie
+\definecolor{labanalyse}{HTML}{0E7490}   % teal       — l'analyse manuelle
+\definecolor{labcomment}{HTML}{475569}   % gris ardoise — la synthèse
+% Étiquette de rubrique : gras + couleur dédiée.
+\newcommand{\rub}[2]{\textbf{\textcolor{#1}{#2}}}
+
 % --- Boîte « Travail avec l'agent » --------------------------------------
 % Équivalent visuel des boîtes « Prompt » du template : ici le travail
 % n'a pas reposé sur des prompts copiables mais sur l'agent Claude Code,
@@ -159,7 +171,7 @@ Cette approche est honnête sur le workflow réel, et l'analyse de la stratégie
 \subsection*{Question 0.0 — Téléchargement des données BAAC}
 \addcontentsline{toc}{subsection}{Question 0.0 — Téléchargement des données BAAC}
 
-\textbf{Rappel de la question :} récupérer les fichiers caracteristiques, lieux, vehicules, usagers pour les années 2005–2015, depuis \href{https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/}{data.gouv.fr}, ainsi que le PDF de description des bases.
+\rub{labrappel}{Rappel de la question :} récupérer les fichiers caracteristiques, lieux, vehicules, usagers pour les années 2005–2015, depuis \href{https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/}{data.gouv.fr}, ainsi que le PDF de description des bases.
 
 \begin{agentbox}
 \begin{itemize}
@@ -168,29 +180,29 @@ Cette approche est honnête sur le workflow réel, et l'analyse de la stratégie
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/download\_data.py} \emph{(hors barème — script utilitaire de setup, pas une réponse à une question notée)}.
+\rub{labfichier}{Fichier Python :} \texttt{python/download\_data.py} \emph{(hors barème — script utilitaire de setup, pas une réponse à une question notée)}.
 
-\textbf{Résultat :} \textasciitilde{}44 fichiers CSV + 1 PDF déposés dans \texttt{data/raw/}.
+\rub{labresultat}{Résultat :} \textasciitilde{}44 fichiers CSV + 1 PDF déposés dans \texttt{data/raw/}.
 
-\textbf{Vérifications.} \texttt{ls data/raw/ | wc -l} confirme le compte attendu (4 types × 11 ans + 1 PDF). Échantillonnage manuel : ouverture de 2-3 CSV pour confirmer qu'ils correspondent bien au type annoncé.
+\rub{labanalyse}{Vérifications.} \texttt{ls data/raw/ | wc -l} confirme le compte attendu (4 types × 11 ans + 1 PDF). Échantillonnage manuel : ouverture de 2-3 CSV pour confirmer qu'ils correspondent bien au type annoncé.
 
 \clearpage
 \subsection*{Question 1.1 — Conversion UTF-8, séparateur \texttt{,}}
 \addcontentsline{toc}{subsection}{Question 1.1 — Conversion UTF-8, séparateur \texttt{,}}
 
-\textbf{Rappel de la question.} Par précaution, transformer le codage de tous les fichiers de données au format UTF-8 et s'assurer que le séparateur est bien \texttt{,}.
+\rub{labrappel}{Rappel de la question.} Par précaution, transformer le codage de tous les fichiers de données au format UTF-8 et s'assurer que le séparateur est bien \texttt{,}.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : 4 types × 11 ans = 44 fichiers dans \texttt{data/raw/}, sortie attendue dans \texttt{data/utf8/} avec nommage \texttt{\{type\}\_\{année\}.csv}, code en français, boucles explicites, prints de progression.
-\item \textbf{Stratégie validée} : (1) détection d'encodage par \texttt{chardet} sur un échantillon de 200 ko, (2) détection de séparateur en comptant \texttt{,}, \texttt{;} et \texttt{\textbackslash{}t} dans la ligne d'en-tête, (3) relecture via \texttt{csv.reader} et réécriture via \texttt{csv.writer} (qui gère proprement le quoting si une virgule apparaît dans un champ texte).
-\item \textbf{Itération principale} : avant exécution, j'ai inspecté manuellement quelques fichiers (\texttt{file -b}, \texttt{od -c}) pour confirmer ce que la détection allait trouver — c'est ce qui m'a fait découvrir le cas particulier de \texttt{caracteristiques\_2009.csv} (séparateur tabulation au lieu de virgule), qui justifie la détection automatique du séparateur plutôt qu'un simple \texttt{read/write} UTF-8.
+\item \textbf{Contexte} : 44 fichiers \texttt{data/raw/} → \texttt{data/utf8/} (nommage \texttt{\{type\}\_\{année\}.csv}), code en français.
+\item \textbf{Décision} : détection automatique de l'encodage (\texttt{chardet}) \emph{et} du séparateur plutôt qu'une conversion UTF-8 en dur ; relecture/réécriture via \texttt{csv.reader}/\texttt{csv.writer} pour un quoting propre.
+\item \textbf{Itération} : l'inspection manuelle préalable (\texttt{file}, \texttt{od -c}) a révélé \texttt{caracteristiques\_2009.csv} en séparateur tabulation — c'est ce cas qui justifie la détection automatique du séparateur.
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question11.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question11.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification11.py} → \texttt{results/verification11.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification11.py} → \texttt{results/verification11.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> for f in utf8.glob("*.csv"):          # 44 fichiers
@@ -207,9 +219,9 @@ caracteristiques        11           11
 # conforme : 44/44 fichiers UTF-8, sep ',', bon nb de colonnes
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse11.txt} (44 fichiers convertis, 0 manquant). Synthèse des encodages détectés : 34 fichiers déjà en UTF-8 (lieux, vehicules, usagers de toutes années), 9 fichiers en \texttt{iso-8859-1} (caracteristiques 2005, 2007–2015), 1 fichier en \texttt{windows-1252} (caracteristiques 2006). Séparateurs : 43 fichiers en \texttt{,}, 1 fichier en tabulation (caracteristiques 2009).
+\rub{labresultat}{Résultat :} \texttt{results/reponse11.txt} (44 fichiers convertis, 0 manquant). Synthèse des encodages détectés : 34 fichiers déjà en UTF-8 (lieux, vehicules, usagers de toutes années), 9 fichiers en \texttt{iso-8859-1} (caracteristiques 2005, 2007–2015), 1 fichier en \texttt{windows-1252} (caracteristiques 2006). Séparateurs : 43 fichiers en \texttt{,}, 1 fichier en tabulation (caracteristiques 2009).
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Comptes de lignes} : \texttt{wc -l} sur les fichiers source et cible donne le même résultat pour chaque fichier (ex. 87 027 lignes pour \texttt{caracteristiques\_2005.csv} source et cible) — preuve qu'aucune ligne n'a été perdue.
@@ -219,26 +231,25 @@ caracteristiques        11           11
 \item \emph{Quoting CSV} : le passage par \texttt{csv.writer} garantit que si un champ contient \texttt{,}, il sera entouré de guillemets — c'est plus robuste qu'un simple \texttt{replace('\textbackslash{}\textbackslash{}t', ',')}.
 \end{itemize}
 
-\textbf{Commentaires.} La diversité d'encodages (3 encodages distincts) et le séparateur tabulation isolé en 2009 confirment que la précaution demandée par l'énoncé est nécessaire : sans cette étape, un script Q2+ qui lirait \texttt{caracteristiques\_2009.csv} en supposant \texttt{utf-8 + ,} casserait silencieusement (lignes considérées comme une seule colonne).
+\rub{labcomment}{Commentaires.} La diversité d'encodages (3 encodages distincts) et le séparateur tabulation isolé en 2009 confirment que la précaution demandée par l'énoncé est nécessaire : sans cette étape, un script Q2+ qui lirait \texttt{caracteristiques\_2009.csv} en supposant \texttt{utf-8 + ,} casserait silencieusement (lignes considérées comme une seule colonne).
 
 \clearpage
 \subsection*{Question 1.2 — Vérification de structure et tableaux récapitulatifs}
 \addcontentsline{toc}{subsection}{Question 1.2 — Vérification de structure et tableaux récapitulatifs}
 
-\textbf{Rappel de la question.} Vérifier par programme que pour chaque type de fichier (caractéristiques, lieux, véhicules, usagers), les fichiers des différentes années ont une structure conforme à la documentation. Produire 4 tableaux récapitulatifs avec le nombre de lignes par année et le cumul pour chaque type.
+\rub{labrappel}{Rappel de la question.} Vérifier par programme que pour chaque type de fichier (caractéristiques, lieux, véhicules, usagers), les fichiers des différentes années ont une structure conforme à la documentation. Produire 4 tableaux récapitulatifs avec le nombre de lignes par année et le cumul pour chaque type.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : entrée dans \texttt{data/utf8/} (sortie de Q1.1), schéma de référence pour les 4 types de fichiers tel qu'observé dans la doc BAAC + les en-têtes 2005-2015 (caracteristiques 16 colonnes, lieux 18, vehicules 9, usagers 12).
-\item \textbf{Sortie attendue} : \texttt{results/reponse12.txt} avec 4 tableaux formatés (année, nb\_lignes, nb\_colonnes, cumul) plus une synthèse des écarts.
-\item \textbf{Choix d'implémentation} : \texttt{csv.reader} ligne à ligne pour le comptage (au lieu de \texttt{pandas} — un script qui lit du CSV proprement avec la lib standard est plus pédagogique pour la soutenance), comparaison des en-têtes par ensemble \emph{et} par ordre pour distinguer trois types d'anomalies (colonne manquante, colonne inattendue, ordre incorrect).
-\item \textbf{Itération mineure} : avant lancement, j'ai inspecté manuellement les en-têtes via \texttt{head -1} sur les 44 fichiers pour confirmer que le schéma resterait stable sur toute la période — c'est ce qui m'a permis d'écrire un schéma unique par type plutôt qu'un schéma par (type, année).
+\item \textbf{Contexte} : entrée \texttt{data/utf8/}, schéma de référence par type tiré de la doc BAAC et des en-têtes 2005-2015 (caracteristiques 16 colonnes, lieux 18, vehicules 9, usagers 12).
+\item \textbf{Choix} : comptage \texttt{csv.reader} ligne à ligne (plus pédagogique que \texttt{pandas} pour la soutenance), comparaison des en-têtes par ensemble \emph{et} par ordre — pour distinguer colonne manquante, colonne inattendue et ordre incorrect.
+\item \textbf{Itération} : inspection préalable des 44 en-têtes (\texttt{head -1}) confirmant un schéma stable sur la période, d'où un schéma unique par type plutôt que par (type, année).
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question12.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question12.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification12.py} → \texttt{results/verification12.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification12.py} → \texttt{results/verification12.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> df = pd.read_csv(f, dtype=str)
@@ -254,9 +265,9 @@ caracteristiques        16     11/11        780553
 # conforme : en-tete exact (colonnes+ordre) pour les 44 fichiers
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse12.txt}. Cumul par type pour 2005-2015 : caracteristiques \textbf{780 553}, lieux \textbf{780 553} (cohérent avec caracteristiques — 1 ligne lieu par accident), vehicules \textbf{1 331 465}, usagers \textbf{1 742 583}. Cumul global : \textbf{4 635 154 lignes} de données. Aucun écart de schéma : les 44 fichiers ont exactement les colonnes attendues, dans le bon ordre.
+\rub{labresultat}{Résultat :} \texttt{results/reponse12.txt}. Cumul par type pour 2005-2015 : caracteristiques \textbf{780 553}, lieux \textbf{780 553} (cohérent avec caracteristiques — 1 ligne lieu par accident), vehicules \textbf{1 331 465}, usagers \textbf{1 742 583}. Cumul global : \textbf{4 635 154 lignes} de données. Aucun écart de schéma : les 44 fichiers ont exactement les colonnes attendues, dans le bon ordre.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Cohérence avec Q1.1} : Q1.1 comptait \texttt{nb\_lignes} en incluant l'en-tête (87 027 pour \texttt{caracteristiques\_2005.csv}), Q1.2 compte les lignes de données seules (87 026). L'écart constant de 1 ligne par fichier confirme qu'aucune ligne de données n'a été perdue lors de la conversion UTF-8.
@@ -265,27 +276,25 @@ caracteristiques        16     11/11        780553
 \item \emph{Schéma stable sur 11 ans} : aucune colonne ajoutée ou retirée entre 2005 et 2015 pour les 4 types — la doc BAAC dont on s'est servi décrit donc bien la totalité du périmètre du Groupe 1.
 \end{itemize}
 
-\textbf{Commentaires.} L'absence d'écart de schéma est une bonne nouvelle pour la suite : les scripts Q2+ pourront supposer un en-tête fixe par type. À noter que la baisse du nombre d'accidents sur la période (87 k en 2005 → 58 k en 2015, soit −33 \%) est visible directement dans le cumul des \texttt{caracteristiques} ; c'est cohérent avec la tendance nationale connue de baisse de l'accidentologie routière, et cela sera repris en Q6.1 (analyse temporelle).
+\rub{labcomment}{Commentaires.} L'absence d'écart de schéma est une bonne nouvelle pour la suite : les scripts Q2+ pourront supposer un en-tête fixe par type. À noter que la baisse du nombre d'accidents sur la période (87 k en 2005 → 58 k en 2015, soit −33 \%) est visible directement dans le cumul des \texttt{caracteristiques} ; c'est cohérent avec la tendance nationale connue de baisse de l'accidentologie routière, et cela sera repris en Q6.1 (analyse temporelle).
 
 \clearpage
 \subsection*{Question 1.3 — Enrichissement avec libellés des domaines énumérés}
 \addcontentsline{toc}{subsection}{Question 1.3 — Enrichissement avec libellés des domaines énumérés}
 
-\textbf{Rappel de la question.} Pour tous les fichiers obtenus en 1.1, générer une nouvelle version où toutes les valeurs des domaines énumérés sont complétées avec le libellé correspondant (ex. \texttt{1} pour \texttt{lum} devient \texttt{1 - Plein jour}). Vérifier la transformation, en portant une attention particulière à \texttt{catv} (catégorie de véhicule).
+\rub{labrappel}{Rappel de la question.} Pour tous les fichiers obtenus en 1.1, générer une nouvelle version où toutes les valeurs des domaines énumérés sont complétées avec le libellé correspondant (ex. \texttt{1} pour \texttt{lum} devient \texttt{1 - Plein jour}). Vérifier la transformation, en portant une attention particulière à \texttt{catv} (catégorie de véhicule).
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : 26 colonnes énumérées réparties sur les 4 types de fichiers (\texttt{lum, agg, int, atm, col} pour caracteristiques ; \texttt{catr, circ, vosp, prof, plan, surf, infra, situ} pour lieux ; \texttt{senc, catv, obs, obsm, choc, manv} pour vehicules ; \texttt{catu, grav, sexe, trajet, locp, actp, etatp} pour usagers). Sortie attendue dans \texttt{data/enriched/} (même nommage), au format \texttt{code - libellé}.
-\item \textbf{Source des libellés} : la doc PDF ONISR 2005-2018 et \texttt{docs/schema\_baac.md}.
-\item \textbf{Choix d'implémentation} : un dictionnaire Python par colonne énumérée (clé = code en chaîne, valeur = libellé français), un dispatch \texttt{MAPPINGS[type][colonne]}, et un parcours \texttt{csv.reader} / \texttt{csv.writer} ligne à ligne.
-\item \textbf{Itération principale} : la première version traitait toutes les colonnes comme du texte trim simple, mais les codes \texttt{catv}, \texttt{obs}, \texttt{manv} sont stockés zero-paddés sur 2 chiffres dans les fichiers (\texttt{07}, \texttt{01}, \texttt{30}...) — j'ai donc ajouté un \texttt{normaliser\_code()} qui applique \texttt{zfill(2)} uniquement à ces 3 colonnes avant lookup.
-\item \textbf{Décision validée} : ne \textbf{pas} enrichir les valeurs absentes (\texttt{''}, \texttt{'.'}, \texttt{-1}) ni les codes hors mapping — on les laisse à l'identique pour les analyser proprement en Q4 (taux d'absents) plutôt que de fabriquer un faux libellé.
+\item \textbf{Contexte} : 26 colonnes énumérées sur les 4 types, sortie \texttt{data/enriched/} au format \texttt{code - libellé}, libellés tirés de la doc PDF ONISR 2005-2018 et de \texttt{docs/schema\_baac.md}.
+\item \textbf{Implémentation} : un dictionnaire par colonne (code → libellé), dispatch \texttt{MAPPINGS[type][colonne]}, parcours \texttt{csv.reader}/\texttt{csv.writer} ligne à ligne.
+\item \textbf{Itération clé} : les codes \texttt{catv}, \texttt{obs}, \texttt{manv} sont zero-paddés sur 2 chiffres (\texttt{07}, \texttt{01}, \texttt{30}…), d'où l'ajout d'un \texttt{normaliser\_code()} (\texttt{zfill(2)}) avant lookup. Décision validée : ne \textbf{pas} enrichir les valeurs absentes (\texttt{''}, \texttt{'.'}, \texttt{-1}) ni les codes hors mapping — conservés bruts pour l'analyse en Q4.
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question13.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question13.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification13.py} → \texttt{results/verification13.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification13.py} → \texttt{results/verification13.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> ok = col.str.contains(" - ") | col.isin(MARQUEURS)  # enrichi/absent
@@ -300,9 +309,9 @@ caracteristiques       780553           780553             0
 # conforme : aucune ligne perdue, 0 valeur hors mapping, catv 33 libelles
 \end{lstlisting}
 
-\textbf{Résultat :} 44 fichiers enrichis dans \texttt{data/enriched/} (rapport détaillé dans \texttt{results/reponse13.txt}). Cumul sur 2005-2015 : \textasciitilde{}21,4 millions de cellules enrichies. Sur la colonne \textbf{\texttt{catv}} (1 331 465 lignes véhicules), \textbf{100 \% des codes rencontrés sont répertoriés} (33 codes distincts, du plus fréquent \texttt{07 - VL seul} à 825 576 occurrences au plus rare \texttt{11 - VU + caravane} à 17 occurrences). Aucun code \texttt{catv} n'est donc orphelin du mapping — le piège mentionné dans le sujet est neutralisé.
+\rub{labresultat}{Résultat :} 44 fichiers enrichis dans \texttt{data/enriched/} (rapport détaillé dans \texttt{results/reponse13.txt}). Cumul sur 2005-2015 : \textasciitilde{}21,4 millions de cellules enrichies. Sur la colonne \textbf{\texttt{catv}} (1 331 465 lignes véhicules), \textbf{100 \% des codes rencontrés sont répertoriés} (33 codes distincts, du plus fréquent \texttt{07 - VL seul} à 825 576 occurrences au plus rare \texttt{11 - VU + caravane} à 17 occurrences). Aucun code \texttt{catv} n'est donc orphelin du mapping — le piège mentionné dans le sujet est neutralisé.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Comptage de lignes} : \texttt{wc -l} sur source vs cible donne le même résultat (ex. 69 380 lignes pour \texttt{caracteristiques\_2010.csv} source et cible) — aucune ligne perdue.
@@ -312,7 +321,7 @@ caracteristiques       780553           780553             0
 \item \emph{Cellules "hors mapping"} : 1,67 M cellules au total (essentiellement \texttt{senc=0} pour les 2 années où le sens de circulation est non renseigné, \texttt{manv=00}, et \texttt{circ/prof/plan/surf/situ=0} dans \texttt{lieux}). Toutes correspondent au code \texttt{0} non documenté dans la doc PDF mais utilisé en pratique comme marqueur "non renseigné". Décision : on les laisse à \texttt{0} brut. Cela sera repris en Q4 (où on les compte comme absentes) et en Q5 (où elles n'interfèrent pas avec les contrôles d'incohérence).
 \end{itemize}
 
-\textbf{Commentaires.} L'enrichissement remplit deux rôles : (1) rendre les fichiers \texttt{data/enriched/} directement lisibles par un humain (utile en debug et pour générer les tableaux narratifs des questions ultérieures), (2) servir de base unique aux Q2-Q6 — toutes ces questions liront depuis \texttt{data/enriched/} plutôt que \texttt{data/utf8/}, ce qui garantit que les répartitions calculées en Q3.1 et les vérifications de cohérence en Q5 utiliseront exactement les mêmes libellés que ceux qui apparaîtront dans le rapport. Le format \texttt{code - libellé} (plutôt que le libellé seul) préserve la possibilité de retrier ou regrouper sur le code numérique d'origine si nécessaire — c'est moins coûteux que de re-décoder en sens inverse.
+\rub{labcomment}{Commentaires.} L'enrichissement remplit deux rôles : (1) rendre les fichiers \texttt{data/enriched/} directement lisibles par un humain (utile en debug et pour générer les tableaux narratifs des questions ultérieures), (2) servir de base unique aux Q2-Q6 — toutes ces questions liront depuis \texttt{data/enriched/} plutôt que \texttt{data/utf8/}, ce qui garantit que les répartitions calculées en Q3.1 et les vérifications de cohérence en Q5 utiliseront exactement les mêmes libellés que ceux qui apparaîtront dans le rapport. Le format \texttt{code - libellé} (plutôt que le libellé seul) préserve la possibilité de retrier ou regrouper sur le code numérique d'origine si nécessaire — c'est moins coûteux que de re-décoder en sens inverse.
 
 \section*{2. Étude de la qualité des données}
 \addcontentsline{toc}{section}{2. Étude de la qualité des données}
@@ -324,20 +333,19 @@ caracteristiques       780553           780553             0
 \subsubsection*{Question 2.1 — Usager → Véhicule}
 \addcontentsline{toc}{subsubsection}{Question 2.1 — Usager → Véhicule}
 
-\textbf{Rappel de la question.} Vérifier par programme que chaque usager fait référence à un véhicule présent dans les véhicules. Les données incohérentes doivent être listées dans un fichier dédié, analysées et commentées.
+\rub{labrappel}{Rappel de la question.} Vérifier par programme que chaque usager fait référence à un véhicule présent dans les véhicules. Les données incohérentes doivent être listées dans un fichier dédié, analysées et commentées.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : entrée dans \texttt{data/enriched/} (sortie de Q1.3), clé de jointure \texttt{(Num\_Acc, num\_veh)} — un usager pointe vers le véhicule auquel il est rattaché (conducteur/passager) ou qui l'a heurté (piéton).
-\item \textbf{Sortie attendue} : \texttt{results/reponse21.txt} (résumé annuel + analyse) et \texttt{results/reponse21\_violations.csv} (liste exhaustive des violations avec colonnes \texttt{annee, Num\_Acc, num\_veh}).
-\item \textbf{Choix d'implémentation} : traitement année par année — pour chaque année on charge l'ensemble des couples \texttt{(Num\_Acc, num\_veh)} du fichier \texttt{vehicules\_\{annee\}.csv} dans un \texttt{set} Python, puis on parcourt \texttt{usagers\_\{annee\}.csv} ligne à ligne en testant l'appartenance. Le set est en O(1) à la lecture, le tout coûte O(n) sur les \textasciitilde{}1,7 M usagers et tient largement en mémoire (\textasciitilde{}150 k clés par année).
-\item \textbf{Itération mineure} : avant d'écrire le code, j'ai inspecté les en-têtes des deux fichiers (\texttt{head -1}) pour confirmer que \texttt{num\_veh} est bien la colonne de jointure et qu'elle existe des deux côtés ; les en-têtes confirment \texttt{Num\_Acc, …, num\_veh} côté vehicules et \texttt{Num\_Acc, …, num\_veh} côté usagers — la jointure est directe sans renommage.
+\item \textbf{Contexte} : entrée \texttt{data/enriched/}, clé de jointure \texttt{(Num\_Acc, num\_veh)} — un usager pointe vers son véhicule (conducteur/passager) ou celui qui l'a heurté (piéton).
+\item \textbf{Choix} : traitement année par année — les couples \texttt{(Num\_Acc, num\_veh)} de \texttt{vehicules} chargés dans un \texttt{set} Python (test d'appartenance en O(1)), puis parcours de \texttt{usagers} ligne à ligne.
+\item \textbf{Itération} : inspection préalable des en-têtes (\texttt{head -1}) confirmant que \texttt{num\_veh} existe des deux côtés — jointure directe sans renommage.
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question21.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question21.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification21.py} → \texttt{results/verification21.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification21.py} → \texttt{results/verification21.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> f = usagers.merge(vehicules, on=["Num_Acc","num_veh"],
@@ -360,9 +368,9 @@ caracteristiques       780553           780553             0
 # conforme : 22 violations / 13 couples distincts (identique a reponse21_violations.csv)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse21.txt} + \texttt{results/reponse21\_violations.csv}. Sur \textbf{1 742 583 usagers} cumulés sur 2005-2015, \textbf{22 violations} détectées, soit \textbf{0,0013 \%} — toutes concentrées sur 2005-2008 (2, 5, 11, 4 violations respectivement) ; \textbf{à partir de 2009 l'intégrité est parfaite} (0 violation chaque année). Aucune violation n'est dûe à un \texttt{num\_veh} vide : il s'agit à chaque fois d'un identifiant non vide pointant vers un véhicule inexistant pour le \texttt{Num\_Acc} concerné.
+\rub{labresultat}{Résultat :} \texttt{results/reponse21.txt} + \texttt{results/reponse21\_violations.csv}. Sur \textbf{1 742 583 usagers} cumulés sur 2005-2015, \textbf{22 violations} détectées, soit \textbf{0,0013 \%} — toutes concentrées sur 2005-2008 (2, 5, 11, 4 violations respectivement) ; \textbf{à partir de 2009 l'intégrité est parfaite} (0 violation chaque année). Aucune violation n'est dûe à un \texttt{num\_veh} vide : il s'agit à chaque fois d'un identifiant non vide pointant vers un véhicule inexistant pour le \texttt{Num\_Acc} concerné.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Cohérence des totaux} : la somme des \texttt{nb\_usagers} par année (1 742 583) coïncide exactement avec le cumul calculé en Q1.2 — preuve que toutes les lignes sont bien balayées.
@@ -371,26 +379,25 @@ caracteristiques       780553           780553             0
 \item \emph{Échantillon vs exhaustif} : le fichier CSV contient bien les 22 violations (\texttt{wc -l reponse21\_violations.csv} = 23 = 22 + en-tête).
 \end{itemize}
 
-\textbf{Commentaires.} Le taux de violations (0,0013 \%) est négligeable et ne biaise aucune analyse statistique ultérieure. La concentration sur 2005-2008 puis disparition totale à partir de 2009 suggère soit un durcissement du contrôle d'intégrité dans la chaîne de saisie BAAC autour de 2008-2009, soit un nettoyage rétroactif partiel des fichiers récents. Les violations restantes seront simplement ignorées dans les questions suivantes ; la liste exhaustive reste disponible dans \texttt{reponse21\_violations.csv} pour qui voudrait les exclure explicitement par jointure.
+\rub{labcomment}{Commentaires.} Le taux de violations (0,0013 \%) est négligeable et ne biaise aucune analyse statistique ultérieure. La concentration sur 2005-2008 puis disparition totale à partir de 2009 suggère soit un durcissement du contrôle d'intégrité dans la chaîne de saisie BAAC autour de 2008-2009, soit un nettoyage rétroactif partiel des fichiers récents. Les violations restantes seront simplement ignorées dans les questions suivantes ; la liste exhaustive reste disponible dans \texttt{reponse21\_violations.csv} pour qui voudrait les exclure explicitement par jointure.
 
 \clearpage
 \subsubsection*{Question 2.2 — Véhicule → ≥ 1 Usager}
 \addcontentsline{toc}{subsubsection}{Question 2.2 — Véhicule → ≥ 1 Usager}
 
-\textbf{Rappel de la question.} Vérifier par programme que chaque véhicule décrit dans les véhicules est associé à au moins un usager. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
+\rub{labrappel}{Rappel de la question.} Vérifier par programme que chaque véhicule décrit dans les véhicules est associé à au moins un usager. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : c'est le contrôle réciproque de Q2.1 — même clé de jointure \texttt{(Num\_Acc, num\_veh)}, mais on inverse le sens (on parcourt \texttt{vehicules\_*.csv} et on vérifie l'existence côté \texttt{usagers\_*.csv}).
-\item \textbf{Sortie attendue} : \texttt{results/reponse22.txt} (résumé annuel + analyse) et \texttt{results/reponse22\_violations.csv} (\texttt{annee, Num\_Acc, num\_veh}).
-\item \textbf{Choix d'implémentation} : structure miroir de \texttt{question21.py} — pour chaque année on charge l'ensemble des couples \texttt{(Num\_Acc, num\_veh)} du fichier \texttt{usagers\_\{annee\}.csv} dans un \texttt{set}, puis on parcourt \texttt{vehicules\_\{annee\}.csv} ligne à ligne en testant l'appartenance. Le set côté usagers est un peu plus lourd (\textasciitilde{}140 k clés/année vs \textasciitilde{}120 k pour vehicules) mais cela tient largement en mémoire.
-\item \textbf{Itération principale} : avant de rédiger l'analyse, j'ai voulu \emph{valider la cause supposée} — j'ai regardé manuellement le premier cas du CSV de violations (accident \texttt{200500000170}, 2005) : côté \texttt{vehicules}, on a un cycliste \texttt{A01} et un VU \texttt{B02} ; côté \texttt{usagers}, seul le cycliste apparaît comme conducteur. Le VU n'a aucun usager rattaché — c'est exactement la signature d'une fuite. L'analyse écrite en partie 3 du rapport mentionne donc explicitement ce scénario plutôt que de parler vaguement d'"erreurs de saisie".
+\item \textbf{Contexte} : contrôle réciproque de Q2.1 — même clé \texttt{(Num\_Acc, num\_veh)}, sens inversé (on parcourt \texttt{vehicules}, on vérifie l'existence côté \texttt{usagers}).
+\item \textbf{Choix} : structure miroir de \texttt{question21.py} — les couples \texttt{usagers} dans un \texttt{set}, puis parcours de \texttt{vehicules}.
+\item \textbf{Itération} : validation manuelle de la cause supposée sur le 1\textsuperscript{er} cas (accident \texttt{200500000170}) — un VU \texttt{B02} sans aucun usager rattaché, signature d'une fuite ; l'analyse nomme explicitement ce scénario plutôt que de parler vaguement d'« erreurs de saisie ».
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question22.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question22.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification22.py} → \texttt{results/verification22.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification22.py} → \texttt{results/verification22.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> f = vehicules.merge(usagers, on=["Num_Acc","num_veh"],
@@ -413,9 +420,9 @@ caracteristiques       780553           780553             0
 # conforme : 19 580 vehicules sans usager (identique)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse22.txt} + \texttt{results/reponse22\_violations.csv}. Sur \textbf{1 331 465 véhicules} cumulés sur 2005-2015, \textbf{19 580 véhicules sans usager} (1,4706 \%), répartis de manière régulière sur toute la période (1577 à 2158 par année, sans rupture franche entre les années anciennes et récentes — contrairement à Q2.1). Aucun \texttt{num\_veh} vide côté véhicules : la clé est toujours bien renseignée, le problème ne vient pas de la saisie de l'identifiant mais bien de l'absence d'un usager rattaché.
+\rub{labresultat}{Résultat :} \texttt{results/reponse22.txt} + \texttt{results/reponse22\_violations.csv}. Sur \textbf{1 331 465 véhicules} cumulés sur 2005-2015, \textbf{19 580 véhicules sans usager} (1,4706 \%), répartis de manière régulière sur toute la période (1577 à 2158 par année, sans rupture franche entre les années anciennes et récentes — contrairement à Q2.1). Aucun \texttt{num\_veh} vide côté véhicules : la clé est toujours bien renseignée, le problème ne vient pas de la saisie de l'identifiant mais bien de l'absence d'un usager rattaché.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Cohérence des totaux} : la somme des \texttt{nb\_vehicules} (1 331 465) coïncide exactement avec le cumul \texttt{vehicules} calculé en Q1.2 — preuve que toutes les lignes sont bien balayées.
@@ -424,26 +431,25 @@ caracteristiques       780553           780553             0
 \item \emph{Réciprocité} : le contrôle Q2.1 portait sur \texttt{usagers → vehicules} (22 violations) ; ici c'est l'inverse \texttt{vehicules → usagers} (19 580 violations). Les deux ne couvrent pas le même problème — Q2.1 attrape les usagers fantômes (saisie incorrecte du \texttt{num\_veh}), Q2.2 attrape les véhicules fantômes (conducteur absent du PV).
 \end{itemize}
 
-\textbf{Commentaires.} Les 19 580 violations ne sont \textbf{pas} des erreurs de qualité à supprimer : elles portent une information réelle (un véhicule a été impliqué dans l'accident, mais son conducteur n'a pas pu être identifié). Cette interprétation est confirmée à la fois par l'inspection manuelle du premier cas et par la stationnarité temporelle du taux. Décision pour la suite : ces véhicules restent comptabilisés dans toutes les analyses centrées sur les véhicules (Q3.1 sur les attributs énumérés \texttt{vehicules}, Q4.1 sur les valeurs absentes véhicules, Q6 si répartition par catégorie de véhicule), mais ils n'apparaîtront évidemment pas dans les analyses centrées sur les usagers (gravité, âge, sexe, sécurité). À noter que ce ratio (\textasciitilde{}1,5 \% de véhicules sans conducteur identifié) est lui-même un indicateur intéressant pour la conclusion : la base BAAC capture ainsi indirectement le taux de délit de fuite.
+\rub{labcomment}{Commentaires.} Les 19 580 violations ne sont \textbf{pas} des erreurs de qualité à supprimer : elles portent une information réelle (un véhicule a été impliqué dans l'accident, mais son conducteur n'a pas pu être identifié). Cette interprétation est confirmée à la fois par l'inspection manuelle du premier cas et par la stationnarité temporelle du taux. Décision pour la suite : ces véhicules restent comptabilisés dans toutes les analyses centrées sur les véhicules (Q3.1 sur les attributs énumérés \texttt{vehicules}, Q4.1 sur les valeurs absentes véhicules, Q6 si répartition par catégorie de véhicule), mais ils n'apparaîtront évidemment pas dans les analyses centrées sur les usagers (gravité, âge, sexe, sécurité). À noter que ce ratio (\textasciitilde{}1,5 \% de véhicules sans conducteur identifié) est lui-même un indicateur intéressant pour la conclusion : la base BAAC capture ainsi indirectement le taux de délit de fuite.
 
 \clearpage
 \subsubsection*{Question 2.3 \emph{(facultative)} — Lieu → Accident}
 \addcontentsline{toc}{subsubsection}{Question 2.3 \emph{(facultative)} — Lieu → Accident}
 
-\textbf{Rappel de la question.} Vérifier par programme que chaque lieu fait référence à un accident présent dans les caractéristiques. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
+\rub{labrappel}{Rappel de la question.} Vérifier par programme que chaque lieu fait référence à un accident présent dans les caractéristiques. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : même logique d'intégrité référentielle que Q2.1/Q2.2 mais sur la clé \texttt{Num\_Acc} seule — chaque ligne de \texttt{lieux\_\{annee\}.csv} doit pointer vers un accident effectivement présent dans \texttt{caracteristiques\_\{annee\}.csv}.
-\item \textbf{Sortie attendue} : \texttt{results/reponse23.txt} (résumé annuel + analyse) et \texttt{results/reponse23\_violations.csv} (\texttt{annee, Num\_Acc}).
-\item \textbf{Choix d'implémentation} : structure miroir de \texttt{question22.py} — pour chaque année on charge l'ensemble des \texttt{Num\_Acc} du fichier \texttt{caracteristiques\_\{annee\}.csv} dans un \texttt{set}, puis on parcourt \texttt{lieux\_\{annee\}.csv} ligne à ligne en testant l'appartenance. La clé étant ici un seul champ (et non un couple), le set est plus léger (\textasciitilde{}60-90 k clés/année).
-\item \textbf{Itération mineure} : j'ai ajouté le même sous-décompte « dont \texttt{Num\_Acc} vide » que dans Q2.1/Q2.2 pour distinguer une clé manquante d'une vraie référence cassée — il reste à 0, ce qui confirme que tous les \texttt{Num\_Acc} côté lieux sont bien renseignés.
+\item \textbf{Contexte} : intégrité référentielle sur la clé \texttt{Num\_Acc} seule — chaque ligne de \texttt{lieux} doit pointer vers un accident présent dans \texttt{caracteristiques}.
+\item \textbf{Choix} : miroir de \texttt{question22.py} — les \texttt{Num\_Acc} de \texttt{caracteristiques} dans un \texttt{set}, puis parcours de \texttt{lieux}.
+\item \textbf{Itération} : sous-décompte « dont \texttt{Num\_Acc} vide » (resté à 0) pour distinguer une clé manquante d'une vraie référence cassée.
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question23.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question23.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification23.py} → \texttt{results/verification23.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification23.py} → \texttt{results/verification23.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> f = lieux.merge(caracteristiques, on="Num_Acc",
@@ -466,9 +472,9 @@ caracteristiques       780553           780553             0
 # conforme : 0 lieu orphelin (identique)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse23.txt} + \texttt{results/reponse23\_violations.csv}. Sur \textbf{780 553 lieux} cumulés sur 2005-2015, \textbf{0 violation} (0,0000 \%) : chaque lieu référence un accident existant. Fait notable révélé par le récapitulatif : pour \textbf{chaque} année, le nombre de lieux est \textbf{strictement égal} au nombre d'accidents distincts (87 026 = 87 026 en 2005, …, 58 654 = 58 654 en 2015). Le fichier \texttt{reponse23\_violations.csv} ne contient que son en-tête.
+\rub{labresultat}{Résultat :} \texttt{results/reponse23.txt} + \texttt{results/reponse23\_violations.csv}. Sur \textbf{780 553 lieux} cumulés sur 2005-2015, \textbf{0 violation} (0,0000 \%) : chaque lieu référence un accident existant. Fait notable révélé par le récapitulatif : pour \textbf{chaque} année, le nombre de lieux est \textbf{strictement égal} au nombre d'accidents distincts (87 026 = 87 026 en 2005, …, 58 654 = 58 654 en 2015). Le fichier \texttt{reponse23\_violations.csv} ne contient que son en-tête.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Égalité lieux = accidents} : l'identité parfaite entre \texttt{nb\_lieux} et \texttt{nb\_accidents} chaque année est un signal fort — non seulement chaque lieu pointe vers un accident existant (le contrôle demandé), mais il y a \textbf{exactement un lieu par accident}. Cela préfigure le résultat de Q2.4 (relation 1-à-1 accident → lieu) et sera confirmé dans ce sens-là.
@@ -477,25 +483,24 @@ caracteristiques       780553           780553             0
 \item \emph{Fichier exhaustif} : \texttt{wc -l reponse23\_violations.csv} = 1 (en-tête seul), cohérent avec 0 violation.
 \end{itemize}
 
-\textbf{Commentaires.} Le résultat est celui attendu par le modèle de données BAAC : le fichier \texttt{lieux} décrit la voirie de l'accident à raison d'une ligne par \texttt{Num\_Acc}, en relation 1-à-1 avec \texttt{caracteristiques}. Contrairement à Q2.2 (où les véhicules « fantômes » portaient une information réelle de fuite), il n'y a ici aucune anomalie à interpréter : l'intégrité est parfaite et aucune donnée n'est à exclure pour la suite. L'égalité observée \texttt{lieux = accidents} chaque année est l'apport principal de cette question — elle garantit aux analyses spatiales ultérieures (Q6 cartographie, Q3 attributs de voirie) qu'une jointure \texttt{caracteristiques ⋈ lieux} sur \texttt{Num\_Acc} ne créera ni perte ni duplication de lignes.
+\rub{labcomment}{Commentaires.} Le résultat est celui attendu par le modèle de données BAAC : le fichier \texttt{lieux} décrit la voirie de l'accident à raison d'une ligne par \texttt{Num\_Acc}, en relation 1-à-1 avec \texttt{caracteristiques}. Contrairement à Q2.2 (où les véhicules « fantômes » portaient une information réelle de fuite), il n'y a ici aucune anomalie à interpréter : l'intégrité est parfaite et aucune donnée n'est à exclure pour la suite. L'égalité observée \texttt{lieux = accidents} chaque année est l'apport principal de cette question — elle garantit aux analyses spatiales ultérieures (Q6 cartographie, Q3 attributs de voirie) qu'une jointure \texttt{caracteristiques ⋈ lieux} sur \texttt{Num\_Acc} ne créera ni perte ni duplication de lignes.
 
 \clearpage
 \subsubsection*{Question 2.4 \emph{(facultative)} — Accident → un seul Lieu}
 \addcontentsline{toc}{subsubsection}{Question 2.4 \emph{(facultative)} — Accident → un seul Lieu}
 
-\textbf{Rappel de la question.} Vérifier par programme que chaque accident décrit dans les caractéristiques se déroule bien sur un et un seul lieu. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
+\rub{labrappel}{Rappel de la question.} Vérifier par programme que chaque accident décrit dans les caractéristiques se déroule bien sur un et un seul lieu. Si des données incohérentes existent, elles doivent être toutes listées dans un fichier dédié, analysées et commentées.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : c'est le pendant « cardinalité » de Q2.3. Q2.3 vérifiait le sens lieux → caracteristiques (aucun lieu orphelin) ; ici on vérifie le sens inverse \textbf{et le nombre} de lieux par accident — chaque \texttt{Num\_Acc} des caractéristiques doit posséder exactement une ligne dans \texttt{lieux\_\{annee\}.csv}.
-\item \textbf{Sortie attendue} : \texttt{results/reponse24.txt} (résumé annuel + analyse) et \texttt{results/reponse24\_violations.csv} (\texttt{Num\_Acc, nb\_lieux, annee}).
-\item \textbf{Choix d'implémentation} : plutôt qu'un simple \texttt{set} comme en Q2.3, on construit pour chaque année un \texttt{collections.Counter} qui compte le nombre d'occurrences de chaque \texttt{Num\_Acc} dans \texttt{lieux\_\{annee\}.csv}, puis on parcourt \texttt{caracteristiques\_\{annee\}.csv} en lisant ce compteur. La distinction des deux types d'anomalie a guidé la conception : on sépare explicitement \texttt{nb\_lieux == 0} (accident \textbf{sans lieu}) de \texttt{nb\_lieux >= 2} (accident sur \textbf{plusieurs lieux}), car ils traduisent des défauts de saisie différents (ligne manquante vs doublon de clé). Le \texttt{Counter} renvoyant 0 pour une clé absente, le cas « sans lieu » est détecté naturellement sans traitement particulier.
+\item \textbf{Contexte} : pendant « cardinalité » de Q2.3 — chaque \texttt{Num\_Acc} de \texttt{caracteristiques} doit posséder exactement une ligne dans \texttt{lieux} (on vérifie le \textbf{nombre} de lieux, pas seulement l'existence).
+\item \textbf{Choix} : un \texttt{collections.Counter} du nombre d'occurrences de chaque \texttt{Num\_Acc} dans \texttt{lieux}, puis lecture par parcours de \texttt{caracteristiques}. On sépare explicitement \texttt{nb\_lieux == 0} (accident \textbf{sans lieu}) de \texttt{nb\_lieux >= 2} (\textbf{plusieurs lieux}) — deux défauts de saisie distincts (ligne manquante vs doublon de clé).
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question24.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question24.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification24.py} → \texttt{results/verification24.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification24.py} → \texttt{results/verification24.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> nb = carac["Num_Acc"].map(lieux.groupby("Num_Acc").size())
@@ -517,9 +522,9 @@ caracteristiques       780553           780553             0
 # conforme : 0 violation : 1 lieu par accident (identique)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse24.txt} + \texttt{results/reponse24\_violations.csv}. Sur \textbf{780 553 accidents} cumulés sur 2005-2015, \textbf{0 violation} (0,0000 \%) : chaque accident se déroule sur un et un seul lieu — 0 accident sans lieu, 0 accident sur plusieurs lieux, et ce pour \textbf{chacune} des 11 années. Le fichier \texttt{reponse24\_violations.csv} ne contient que son en-tête.
+\rub{labresultat}{Résultat :} \texttt{results/reponse24.txt} + \texttt{results/reponse24\_violations.csv}. Sur \textbf{780 553 accidents} cumulés sur 2005-2015, \textbf{0 violation} (0,0000 \%) : chaque accident se déroule sur un et un seul lieu — 0 accident sans lieu, 0 accident sur plusieurs lieux, et ce pour \textbf{chacune} des 11 années. Le fichier \texttt{reponse24\_violations.csv} ne contient que son en-tête.
 
-\textbf{Vérifications.}
+\rub{labanalyse}{Vérifications.}
 
 \begin{itemize}
 \item \emph{Bijection accident ⟷ lieu établie} : combiné à Q2.3 (tout lieu pointe vers un accident existant), ce résultat ferme les deux sens de la relation. Q2.3 montrait déjà l'égalité \texttt{nb\_lieux == nb\_accidents} chaque année ; Q2.4 prouve que cette égalité globale n'est pas une compensation entre accidents sans lieu et accidents multi-lieux, mais bien une correspondance terme à terme (1-à-1).
@@ -528,7 +533,7 @@ caracteristiques       780553           780553             0
 \item \emph{Fichier exhaustif} : \texttt{wc -l reponse24\_violations.csv} = 1 (en-tête seul), cohérent avec 0 violation.
 \end{itemize}
 
-\textbf{Commentaires.} Le résultat confirme le modèle de données BAAC : le fichier \texttt{lieux} décrit la voirie de l'accident à raison d'une ligne et une seule par \texttt{Num\_Acc}. Réuni à Q2.3, ce contrôle établit formellement la \textbf{bijection} entre \texttt{caracteristiques} et \texttt{lieux}. Aucune donnée incohérente n'est à lister ni à exclure pour la suite. L'apport pratique est une garantie forte pour les questions ultérieures : une jointure \texttt{caracteristiques ⋈ lieux} sur \texttt{Num\_Acc} ne provoquera \textbf{ni perte ni duplication} de lignes — les analyses spatiales (Q6 cartographie) et les analyses d'attributs de voirie (Q3) peuvent fusionner les deux fichiers sans précaution particulière sur la cardinalité.
+\rub{labcomment}{Commentaires.} Le résultat confirme le modèle de données BAAC : le fichier \texttt{lieux} décrit la voirie de l'accident à raison d'une ligne et une seule par \texttt{Num\_Acc}. Réuni à Q2.3, ce contrôle établit formellement la \textbf{bijection} entre \texttt{caracteristiques} et \texttt{lieux}. Aucune donnée incohérente n'est à lister ni à exclure pour la suite. L'apport pratique est une garantie forte pour les questions ultérieures : une jointure \texttt{caracteristiques ⋈ lieux} sur \texttt{Num\_Acc} ne provoquera \textbf{ni perte ni duplication} de lignes — les analyses spatiales (Q6 cartographie) et les analyses d'attributs de voirie (Q3) peuvent fusionner les deux fichiers sans précaution particulière sur la cardinalité.
 
 \subsection*{2.2. Domaines énumérés}
 \addcontentsline{toc}{subsection}{2.2. Domaines énumérés}
@@ -537,20 +542,19 @@ caracteristiques       780553           780553             0
 \subsubsection*{Question 3.1 — Répartition \% des attributs énumérés (usagers)}
 \addcontentsline{toc}{subsubsection}{Question 3.1 — Répartition \% des attributs énumérés (usagers)}
 
-\textbf{Rappel de la question.} Faire un programme qui détaille la répartition en \% des valeurs pour tous les attributs énumérés du fichier des usagers, et commenter le résultat. Les attributs énumérés concernés sont \texttt{catu}, \texttt{grav}, \texttt{sexe}, \texttt{trajet}, \texttt{secu}, \texttt{locp}, \texttt{actp}, \texttt{etatp}.
+\rub{labrappel}{Rappel de la question.} Faire un programme qui détaille la répartition en \% des valeurs pour tous les attributs énumérés du fichier des usagers, et commenter le résultat. Les attributs énumérés concernés sont \texttt{catu}, \texttt{grav}, \texttt{sexe}, \texttt{trajet}, \texttt{secu}, \texttt{locp}, \texttt{actp}, \texttt{etatp}.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : entrée dans \texttt{data/enriched/} (sortie de Q1.3), répartition cumulée sur toute la période 2005-2015 (Groupe 1), dénominateur du pourcentage = nombre total d'usagers (chaque ligne fournit exactement une valeur par attribut), affichage trié par \% décroissant, code en français.
-\item \textbf{Choix d'implémentation} : un \texttt{Counter} par attribut alimenté en un seul parcours \texttt{csv.reader} ligne à ligne (pas de \texttt{pandas} — un comptage à la lib standard reste plus lisible pour la soutenance).
-\item \textbf{Itération principale} : une subtilité a été identifiée avant rédaction en inspectant l'en-tête et un échantillon des fichiers enrichis (\texttt{head -3 usagers\_2005.csv}). Sept des huit attributs (\texttt{catu}, \texttt{grav}, \texttt{sexe}, \texttt{trajet}, \texttt{locp}, \texttt{actp}, \texttt{etatp}) ont déjà été \textbf{enrichis} en Q1.3 et apparaissent donc sous la forme \texttt{code - libellé} (ex. \texttt{1 - Conducteur}) ; mais \texttt{secu} n'a \textbf{pas} été enrichi car c'est un champ à \textbf{2 caractères} (1er = équipement de sécurité, 2e = utilisation) qui ne se décode pas par un simple dictionnaire à une clé. L'agent l'a donc traité comme une \textbf{chaîne brute} (\texttt{"11"}, \texttt{"12"}, \texttt{"21"}…, conformément au piège signalé par le sujet : ne pas le lire comme un entier — \texttt{"01"} ≠ \texttt{"1"}) et lui a adjoint, au seul moment de l'affichage, un décodage lisible via deux tables (\texttt{SECU\_EQUIPEMENT}, \texttt{SECU\_USAGE}).
-\item \textbf{Décision validée} : ne pas masquer les valeurs absentes (\texttt{''}, \texttt{'.'}, \texttt{-1}) ni les codes hors documentation — ils sont comptés et affichés explicitement pour pouvoir être commentés (et réutilisés en Q4).
+\item \textbf{Contexte} : entrée \texttt{data/enriched/}, répartition cumulée 2005-2015, dénominateur = nombre total d'usagers (une valeur par attribut et par ligne), affichage trié par \% décroissant.
+\item \textbf{Choix} : un \texttt{Counter} par attribut en un seul parcours \texttt{csv.reader}.
+\item \textbf{Itération clé} : 7 des 8 attributs sont déjà enrichis en Q1.3 (\texttt{code - libellé}) ; mais \texttt{secu} ne l'est pas car c'est un champ à \textbf{2 caractères} (équipement + utilisation) indécodable par un dictionnaire à une clé. Il est donc traité en \textbf{chaîne brute} (\texttt{"01"} ≠ \texttt{"1"}, piège du sujet) avec décodage à l'affichage via \texttt{SECU\_EQUIPEMENT}/\texttt{SECU\_USAGE}. Valeurs absentes comptées et affichées explicitement (réutilisées en Q4).
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question31.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question31.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification31.py} → \texttt{results/verification31.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification31.py} → \texttt{results/verification31.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> recap = usagers[attr].value_counts()     # par modalite
@@ -569,7 +573,7 @@ attribut  modalites  somme_eff = total
 # conforme : effectifs identiques a reponse31.txt, denominateur 1742583
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse31.txt} (un tableau par attribut, trié par \% décroissant, sur \textbf{1 742 583 usagers} cumulés). Principaux constats :
+\rub{labresultat}{Résultat :} \texttt{results/reponse31.txt} (un tableau par attribut, trié par \% décroissant, sur \textbf{1 742 583 usagers} cumulés). Principaux constats :
 
 \begin{itemize}
 \item \textbf{\texttt{catu}} : 74,52 \% conducteurs, 17,04 \% passagers, 8,27 \% piétons, 0,17 \% piétons en roller/trottinette (4 valeurs documentées, aucune absente).
@@ -580,7 +584,7 @@ attribut  modalites  somme_eff = total
 \item \textbf{\texttt{locp} / \texttt{actp} / \texttt{etatp}} (attributs \emph{piéton}) : très majoritairement \texttt{0} (« sans objet » : 92,39 \% / 91,90 \% / 92,00 \%), ce qui est cohérent puisque seuls 8,27 \% des usagers sont des piétons. Les valeurs non nulles sont toutes documentées (passage piéton, traversant, seul/accompagné…), avec < 0,15 \% d'absents par attribut.
 \end{itemize}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation du total} : pour chaque attribut, la somme des effectifs affichés vaut bien 1 742 583 (chaque usager compte une fois), ce qui valide le dénominateur commun et garantit que la somme des pourcentages fait 100 \%.
@@ -589,7 +593,7 @@ attribut  modalites  somme_eff = total
 \item \emph{Lecture métier} : la prédominance des conducteurs masculins, le pic « promenade-loisirs », et surtout le port quasi systématique de ceinture/casque chez les usagers indemnes ou légèrement blessés sont conformes aux tendances connues de l'accidentologie française.
 \end{itemize}
 
-\textbf{Commentaires.} Le résultat est exploitable tel quel pour les analyses ultérieures. Deux points appellent une vigilance pour la suite : (1) le champ \texttt{secu} mélange des codes non documentés (notamment \texttt{00}, \textasciitilde{}3,9 \%) et des codes tronqués à un caractère, à traiter comme « non renseignés » plutôt que comme une vraie modalité ; (2) le marqueur \texttt{0} de \texttt{trajet}, \texttt{locp}, \texttt{actp}, \texttt{etatp} n'est pas une donnée manquante au sens strict mais un « non renseigné / sans objet » documenté — distinction importante pour Q4 (taux de valeurs absentes) où ces \texttt{0} ne devront pas être confondus avec des cellules vides.
+\rub{labcomment}{Commentaires.} Le résultat est exploitable tel quel pour les analyses ultérieures. Deux points appellent une vigilance pour la suite : (1) le champ \texttt{secu} mélange des codes non documentés (notamment \texttt{00}, \textasciitilde{}3,9 \%) et des codes tronqués à un caractère, à traiter comme « non renseignés » plutôt que comme une vraie modalité ; (2) le marqueur \texttt{0} de \texttt{trajet}, \texttt{locp}, \texttt{actp}, \texttt{etatp} n'est pas une donnée manquante au sens strict mais un « non renseigné / sans objet » documenté — distinction importante pour Q4 (taux de valeurs absentes) où ces \texttt{0} ne devront pas être confondus avec des cellules vides.
 
 \subsection*{2.3. Valeurs absentes}
 \addcontentsline{toc}{subsection}{2.3. Valeurs absentes}
@@ -598,19 +602,19 @@ attribut  modalites  somme_eff = total
 \subsubsection*{Question 4.1 — Taux de valeurs absentes (véhicules)}
 \addcontentsline{toc}{subsubsection}{Question 4.1 — Taux de valeurs absentes (véhicules)}
 
-\textbf{Rappel de la question.} Faire un programme qui mesure le taux de valeurs absentes pour chaque champ du fichier des véhicules et interpréter les résultats.
+\rub{labrappel}{Rappel de la question.} Faire un programme qui mesure le taux de valeurs absentes pour chaque champ du fichier des véhicules et interpréter les résultats.
 
 \begin{agentbox}
 \begin{itemize}
-\item \textbf{Contexte donné à l'agent} : entrée dans \texttt{data/enriched/}, cumul sur toute la période 2005-2015 (Groupe 1), dénominateur du taux = nombre total de véhicules, code en français, sortie \texttt{results/reponse41.txt} (tableau \texttt{colonne, nb\_manquants, taux\_\%} + interprétation). Le point central de la discussion a porté sur la \textbf{définition d'une valeur absente}. Conformément à la convention BAAC (\texttt{schema\_baac.md §2}), on retient comme marqueurs : cellule vide \texttt{''}, point \texttt{'.'}, \texttt{'-1'}, et le zéro sous ses différentes largeurs \texttt{'0'/'00'/'000'}. Une subtilité a été traitée avant rédaction en inspectant l'en-tête et un échantillon (\texttt{head -3 vehicules\_2005.csv}) : cinq colonnes (\texttt{catv}, \texttt{obs}, \texttt{obsm}, \texttt{choc}, \texttt{manv}) ont été \textbf{enrichies} en Q1.3 et apparaissent sous la forme \texttt{code - libellé} (ex. \texttt{07 - VL seul}), alors que \texttt{senc}, \texttt{occutc}, \texttt{num\_veh} et \texttt{Num\_Acc} sont restées brutes. Le test d'absence isole donc le \textbf{code} (partie avant \texttt{« - »}) pour les colonnes enrichies, et porte sur la valeur brute sinon.
-\item \textbf{Décision assumée et signalée dans l'énoncé} : le code \texttt{'0'} n'a pas le même sens partout — il est compté mécaniquement comme absent, mais l'interprétation distingue le « non renseigné » du « sans objet » documenté (cf. point de vigilance ci-dessous).
-\item \textbf{Implémentation à la librairie standard} : un simple compteur d'absences par colonne alimenté en un seul parcours \texttt{csv.reader} (pas de \texttt{pandas}), pour rester lisible à la soutenance.
+\item \textbf{Contexte} : entrée \texttt{data/enriched/}, cumul 2005-2015, dénominateur = nombre total de véhicules, sortie « colonne, nb\_manquants, taux\_\% » + interprétation.
+\item \textbf{Décision clé (définition d'une absence)} : selon la convention BAAC (\texttt{schema\_baac.md §2}), marqueurs retenus = vide \texttt{''}, \texttt{'.'}, \texttt{'-1'} et le zéro \texttt{'0'/'00'/'000'}. Pour les 5 colonnes enrichies en Q1.3 (\texttt{catv, obs, obsm, choc, manv}), le test isole le \textbf{code} (avant \texttt{« - »}) ; sinon il porte sur la valeur brute. \texttt{'0'} est compté mécaniquement comme absent, mais l'interprétation distingue « non renseigné » et « sans objet » documenté.
+\item \textbf{Implémentation} : un compteur d'absences par colonne en un seul parcours \texttt{csv.reader}.
 \end{itemize}
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question41.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question41.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification41.py} → \texttt{results/verification41.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification41.py} → \texttt{results/verification41.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> code = col.str.split(" - ").str[0]       # code avant " - "
@@ -631,7 +635,7 @@ num_veh             0    0.00
 # conforme : nb_manquants identiques a reponse41.txt colonne par colonne
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse41.txt} (tableau trié par taux décroissant, sur \textbf{1 331 465 véhicules} cumulés). Taux de valeurs absentes par champ :
+\rub{labresultat}{Résultat :} \texttt{results/reponse41.txt} (tableau trié par taux décroissant, sur \textbf{1 331 465 véhicules} cumulés). Taux de valeurs absentes par champ :
 
 \begin{center}
 \begin{tabular}{l r r l}
@@ -653,7 +657,7 @@ num_veh             0    0.00
 
 Seuils d'interprétation appliqués : \texttt{< 5 \%} bien renseigné, \texttt{5-15 \%} prudence, \texttt{> 15 \%} fragile.
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Identifiants intacts} : \texttt{Num\_Acc} et \texttt{num\_veh} (clés de jointure) sont à 0 \% d'absence, ce qui est attendu et cohérent avec Q2.1/Q2.2 où ces clés ont permis des jointures sans clé manquante.
@@ -664,7 +668,7 @@ Seuils d'interprétation appliqués : \texttt{< 5 \%} bien renseigné, \texttt{5
 \item \emph{\texttt{catv} (0 \%)} : l'attribut le mieux renseigné, ce qui est rassurant car beaucoup d'analyses (Q3, Q6) en dépendent.
 \end{itemize}
 
-\textbf{Commentaires.} La convention « \texttt{0} = absent » est volontairement \textbf{stricte} : pour les champs où \texttt{0} est documenté (\texttt{obs}, \texttt{obsm}, \texttt{choc}, \texttt{occutc}), un taux élevé signale surtout du « sans objet » et non un défaut de remplissage — ces champs restent exploitables à condition de \textbf{distinguer \texttt{0} des autres valeurs} lors des analyses ultérieures. Le seul champ réellement préoccupant en termes de saisie est \texttt{senc}, dont l'absence n'est pas un « sans objet » légitime. Ce résultat prolonge directement la vigilance soulevée en Q3.1 : le marqueur \texttt{0} ne doit jamais être confondu avec une cellule vide, et le sens de l'absence dépend de la sémantique propre à chaque attribut.
+\rub{labcomment}{Commentaires.} La convention « \texttt{0} = absent » est volontairement \textbf{stricte} : pour les champs où \texttt{0} est documenté (\texttt{obs}, \texttt{obsm}, \texttt{choc}, \texttt{occutc}), un taux élevé signale surtout du « sans objet » et non un défaut de remplissage — ces champs restent exploitables à condition de \textbf{distinguer \texttt{0} des autres valeurs} lors des analyses ultérieures. Le seul champ réellement préoccupant en termes de saisie est \texttt{senc}, dont l'absence n'est pas un « sans objet » légitime. Ce résultat prolonge directement la vigilance soulevée en Q3.1 : le marqueur \texttt{0} ne doit jamais être confondu avec une cellule vide, et le sens de l'absence dépend de la sémantique propre à chaque attribut.
 
 \subsection*{2.4. Cohérence inter-attributs}
 \addcontentsline{toc}{subsection}{2.4. Cohérence inter-attributs}
@@ -673,21 +677,19 @@ Seuils d'interprétation appliqués : \texttt{< 5 \%} bien renseigné, \texttt{5
 \subsubsection*{Question 5.1 — Incohérence \texttt{lum} × \texttt{hrmn}}
 \addcontentsline{toc}{subsubsection}{Question 5.1 — Incohérence \texttt{lum} × \texttt{hrmn}}
 
-\textbf{Rappel de la question.} Compter les accidents pour lesquels la luminosité déclarée (\texttt{lum}) contredit l'heure de l'accident (\texttt{hrmn}), afficher les 10 premiers cas, générer le rapport complet dans un fichier, puis commenter.
+\rub{labrappel}{Rappel de la question.} Compter les accidents pour lesquels la luminosité déclarée (\texttt{lum}) contredit l'heure de l'accident (\texttt{hrmn}), afficher les 10 premiers cas, générer le rapport complet dans un fichier, puis commenter.
 
 \begin{agentbox}
-Contexte donné : lecture de \texttt{data/enriched/}, cumul sur 2005-2015 (Groupe 1), code en français, deux sorties (\texttt{results/reponse51.txt} pour le résumé + 10 cas + commentaires, et \texttt{results/reponse51\_complet.csv} pour le rapport exhaustif). Deux points ont été tranchés avant rédaction par \textbf{inspection des données} (et non par hypothèse) :
-
 \begin{itemize}
-\item \emph{Format de \texttt{hrmn}} : un \texttt{python3} jetable sur les 11 fichiers a montré que \texttt{hrmn} est un entier \texttt{HHMM} \textbf{non zéro-paddé} — les longueurs valent 1 à 4 chiffres (\texttt{"230"} = 02 h 30, \texttt{"800"} = 08 h 00, \texttt{"1900"} = 19 h 00). La suggestion initiale \texttt{int(hrmn[:2])} aurait donné une heure fausse pour tout accident avant 10 h (\texttt{"800"[:2]} = \texttt{80}). On a donc retenu \textbf{\texttt{int(hrmn) // 100}}, correct pour toutes les largeurs. La même inspection confirme \textbf{0 cellule vide ou non numérique} sur les 780 553 accidents ; la garde sur les \texttt{hrmn} invalides est conservée par robustesse mais ne filtre rien ici.
-\item \emph{Définition de l'incohérence} : on ne signale que les cas \textbf{francs}, avec des bornes \textbf{dépendant de la saison} (déduite du mois) pour neutraliser les faux positifs liés au lever/coucher du soleil très variables. Pour chaque saison, une plage « plein jour plausible » et une plage « cœur de journée » (où il fait forcément jour) : hiver 8–17 h / 10–16 h, printemps 7–20 h / 9–17 h, été 6–21 h / 8–18 h, automne 7–20 h / 9–17 h. Plein jour déclaré hors de la plage de jour de sa saison → incohérent ; nuit (\texttt{3}/\texttt{4}/\texttt{5}) déclarée dans le cœur de journée → incohérent. Le crépuscule/aube (\texttt{2 - …}) est \textbf{exclu} du test, car c'est par nature une luminosité d'heure intermédiaire qu'aucune borne ne peut qualifier sans connaître la date exacte. Implémentation à la librairie standard (\texttt{csv.reader}, un seul parcours par année), sans pandas.
+\item \textbf{Contexte} : lecture \texttt{data/enriched/}, cumul 2005-2015, deux sorties (résumé + 10 cas ; rapport exhaustif CSV). Deux points tranchés par \textbf{inspection des données}, non par hypothèse.
+\item \textbf{Format \texttt{hrmn}} : un \texttt{python3} jetable montre que \texttt{hrmn} est un entier \texttt{HHMM} \textbf{non zéro-paddé} (1 à 4 chiffres : \texttt{"800"} = 08 h 00). \texttt{int(hrmn[:2])} donnerait une heure fausse avant 10 h ; on retient \textbf{\texttt{int(hrmn) // 100}}. 0 cellule vide sur les 780 553 accidents.
+\item \textbf{Incohérence saisonnière} : bornes dépendant de la saison (déduite du mois) pour neutraliser les faux positifs du lever/coucher (hiver 8-17 h / 10-16 h … été 6-21 h / 8-18 h). Plein jour hors plage de jour → incohérent ; nuit (\texttt{3}/\texttt{4}/\texttt{5}) en cœur de journée → incohérent ; le crépuscule/aube (\texttt{2}) est \textbf{exclu}.
 \end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question51.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question51.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification51.py} → \texttt{results/verification51.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification51.py} → \texttt{results/verification51.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> # bornes par saison ; heure = int(hrmn) // 100
@@ -701,7 +703,7 @@ Nuit déclarée mais heure en pleine journée 5292
 # conforme : 12034 incoherences (identique au recompute pandas saisonnier)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse51.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse51\_complet.csv} (12 034 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{hrmn}, \texttt{heure}, \texttt{saison}, \texttt{lum}, \texttt{motif}). Bilan sur \textbf{780 553} accidents datés :
+\rub{labresultat}{Résultat :} \texttt{results/reponse51.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse51\_complet.csv} (12 034 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{hrmn}, \texttt{heure}, \texttt{saison}, \texttt{lum}, \texttt{motif}). Bilan sur \textbf{780 553} accidents datés :
 
 \begin{center}
 \begin{tabular}{l r}
@@ -718,7 +720,7 @@ dont « nuit déclarée en pleine journée » & 5 292 \\
 
 Extrait des 10 premiers cas : \texttt{200500000322} à 22 h 15 codé « 1 - Plein jour » (erreur nette), \texttt{200500000165} à 13 h 30 codé « 3 - Nuit sans éclairage public », etc.
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Format horaire validé} : extraction par \texttt{int(hrmn)//100} vérifiée sur des cas limites (\texttt{"645"}→6, \texttt{"2215"}→22) ; comptage des lignes du CSV (\texttt{wc -l} = 12 035 = 12 034 + en-tête) cohérent avec le total affiché.
@@ -726,27 +728,25 @@ Extrait des 10 premiers cas : \texttt{200500000322} à 22 h 15 codé « 1 - Plei
 \item \emph{Asymétrie modérée} : 6 742 cas « plein jour la nuit » contre 5 292 « nuit en plein jour ». Les bornes \textbf{saisonnières} ont précisément pour but d'éliminer les faux positifs des heures charnières (un accident « plein jour » à 6 h–7 h ou à 20 h est jugé cohérent en été, incohérent en hiver) : les cas restants sont donc \textbf{francs} dans les deux sens, d'où un écart bien plus équilibré qu'avec des bornes fixes.
 \end{itemize}
 
-\textbf{Commentaires.} Le taux de 1,54 \% mêle deux populations qu'on ne peut pas séparer à partir des seuls champs \texttt{lum} et \texttt{hrmn} : de \textbf{vraies erreurs de saisie} (luminosité ou heure mal reportée — ex. 22 h en « plein jour ») et des \textbf{situations réelles mais rares} (tunnel, brouillard très dense, éclipse). Le choix de bornes \textbf{saisonnières} prudentes privilégie la précision (peu de faux positifs, même aux heures charnières) au prix d'un rappel non exhaustif. Le rapport complet \texttt{reponse51\_complet.csv} permet d'inspecter chaque cas individuellement, et prolonge la démarche de contrôle qualité engagée en Q4 et Q5 : les incohérences inter-attributs restent marginales mais bien réelles.
+\rub{labcomment}{Commentaires.} Le taux de 1,54 \% mêle deux populations qu'on ne peut pas séparer à partir des seuls champs \texttt{lum} et \texttt{hrmn} : de \textbf{vraies erreurs de saisie} (luminosité ou heure mal reportée — ex. 22 h en « plein jour ») et des \textbf{situations réelles mais rares} (tunnel, brouillard très dense, éclipse). Le choix de bornes \textbf{saisonnières} prudentes privilégie la précision (peu de faux positifs, même aux heures charnières) au prix d'un rappel non exhaustif. Le rapport complet \texttt{reponse51\_complet.csv} permet d'inspecter chaque cas individuellement, et prolonge la démarche de contrôle qualité engagée en Q4 et Q5 : les incohérences inter-attributs restent marginales mais bien réelles.
 
 \clearpage
 \subsubsection*{Question 5.2 — Autre incohérence inter-attributs (\texttt{obsm} × \texttt{choc})}
 \addcontentsline{toc}{subsubsection}{Question 5.2 — Autre incohérence inter-attributs (\texttt{obsm} × \texttt{choc})}
 
-\textbf{Rappel de la question.} Identifier une situation différente (autre que \texttt{lum} × \texttt{hrmn}) où il peut y avoir des incohérences inter-attributs, compter les lignes en incohérence, afficher les 10 premières et générer le rapport complet dans un fichier, puis commenter.
+\rub{labrappel}{Rappel de la question.} Identifier une situation différente (autre que \texttt{lum} × \texttt{hrmn}) où il peut y avoir des incohérences inter-attributs, compter les lignes en incohérence, afficher les 10 premières et générer le rapport complet dans un fichier, puis commenter.
 
 \begin{agentbox}
-Situation retenue : la contradiction entre l'\textbf{obstacle mobile heurté} (\texttt{obsm}) et le \textbf{point de choc initial} (\texttt{choc}), deux attributs de la table \emph{vehicules}. Si \texttt{obsm} désigne un obstacle mobile effectivement heurté mais que \texttt{choc} = « 0 - Aucun », il y a contradiction : on ne peut pas heurter quelque chose sans point d'impact sur le véhicule. Deux points ont été tranchés par \textbf{inspection des données} avant rédaction :
-
 \begin{itemize}
-\item \emph{Valeurs « aucun » et cellules vides} : un \texttt{python3} jetable sur les 11 fichiers \emph{vehicules} a listé toutes les modalités. La valeur « aucun » se repère au préfixe \texttt{« 0 - »} (format enrichi). Les cellules vides (551 \texttt{obsm}, 218 \texttt{choc} sur \textasciitilde{}1,3 M de lignes) sont \textbf{ignorées} : champ non renseigné → ligne non testable. Une ligne n'est comptée comme « testée » que si \texttt{obsm} \textbf{et} \texttt{choc} sont tous deux renseignés.
-\item \emph{Asymétrie de la règle} : on ne signale que le cas « obstacle mobile heurté \textbf{sans} point de choc ». Le cas inverse (un \texttt{choc} renseigné mais \texttt{obsm} = « 0 - Aucun ») n'est \textbf{pas} une incohérence, car le véhicule a pu heurter un obstacle \textbf{fixe} (mur, glissière, arbre…), codé dans \texttt{obs} et non dans \texttt{obsm}. Implémentation à la librairie standard (\texttt{csv.reader}, un seul parcours par année), sans pandas, dans la continuité de Q5.1.
+\item \textbf{Situation retenue} : contradiction \texttt{obsm} (obstacle mobile heurté) × \texttt{choc} (point de choc initial), deux attributs de la table \emph{vehicules} — un obstacle mobile heurté avec \texttt{choc} = « 0 - Aucun » est impossible.
+\item \textbf{Décisions (inspection préalable)} : « aucun » repéré au préfixe \texttt{« 0 - »} ; cellules vides ignorées — une ligne n'est testée que si \texttt{obsm} \textbf{et} \texttt{choc} sont renseignés.
+\item \textbf{Règle asymétrique} : on ne signale que « obstacle mobile heurté \textbf{sans} point de choc ». Le cas inverse (\texttt{choc} renseigné, \texttt{obsm} = « 0 - Aucun ») n'est \textbf{pas} une incohérence : collision possible contre un obstacle \textbf{fixe}, codé dans \texttt{obs}.
 \end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question52.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question52.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification52.py} → \texttt{results/verification52.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification52.py} → \texttt{results/verification52.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> obstacle = obsm.str[0].isin(list("124569"))
@@ -769,7 +769,7 @@ annee  incoherences
 # conforme : 39648 incoherences obsm x choc (identique)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse52.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse52\_complet.csv} (39 648 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{num\_veh}, \texttt{obsm}, \texttt{choc}). Bilan sur \textbf{1 330 827} lignes véhicules testées :
+\rub{labresultat}{Résultat :} \texttt{results/reponse52.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse52\_complet.csv} (39 648 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{num\_veh}, \texttt{obsm}, \texttt{choc}). Bilan sur \textbf{1 330 827} lignes véhicules testées :
 
 \begin{center}
 \begin{tabular}{l r}
@@ -788,7 +788,7 @@ dont animaux / rail (5, 6, 4) & 288 \\
 
 Extrait des 10 premiers cas : \texttt{200500000004} (véhicule B02) déclare « 2 - Véhicule » heurté mais \texttt{choc} = « 0 - Aucun » ; \texttt{200500000696} (A01) déclare « 1 - Piéton » heurté sans point de choc, etc.
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Comptage cohérent} : \texttt{wc -l reponse52\_complet.csv} = 39 649 = 39 648 + en-tête, conforme au total affiché.
@@ -796,34 +796,24 @@ Extrait des 10 premiers cas : \texttt{200500000004} (véhicule B02) déclare « 
 \item \emph{Taux faible (2,98 \%)} : la grande majorité des couples (\texttt{obsm}, \texttt{choc}) sont concordants. Le remplissage de ces deux champs par les forces de l'ordre est globalement fiable.
 \end{itemize}
 
-\textbf{Commentaires.} Les 39 648 incohérences s'expliquent presque toujours par un \textbf{oubli de saisie sur le champ \texttt{choc}} (laissé à sa valeur par défaut « 0 - Aucun ») alors que \texttt{obsm} a, lui, été correctement renseigné. La règle a été délibérément rendue \textbf{asymétrique} pour éviter les faux positifs : un point de choc sans obstacle mobile est parfaitement légitime (collision contre un obstacle fixe). Le rapport complet \texttt{reponse52\_complet.csv} identifie chaque ligne fautive par son \texttt{Num\_Acc} et son \texttt{num\_veh}, ce qui permet de remonter au véhicule précis et de croiser avec les autres tables. La démarche prolonge le contrôle qualité inter-attributs amorcé en Q5.1 sur un autre couple de champs.
+\rub{labcomment}{Commentaires.} Les 39 648 incohérences s'expliquent presque toujours par un \textbf{oubli de saisie sur le champ \texttt{choc}} (laissé à sa valeur par défaut « 0 - Aucun ») alors que \texttt{obsm} a, lui, été correctement renseigné. La règle a été délibérément rendue \textbf{asymétrique} pour éviter les faux positifs : un point de choc sans obstacle mobile est parfaitement légitime (collision contre un obstacle fixe). Le rapport complet \texttt{reponse52\_complet.csv} identifie chaque ligne fautive par son \texttt{Num\_Acc} et son \texttt{num\_veh}, ce qui permet de remonter au véhicule précis et de croiser avec les autres tables. La démarche prolonge le contrôle qualité inter-attributs amorcé en Q5.1 sur un autre couple de champs.
 
 \clearpage
 \subsubsection*{Question 5.3 \emph{(facultative)} — Troisième incohérence (\texttt{an\_nais} × période)}
 \addcontentsline{toc}{subsubsection}{Question 5.3 \emph{(facultative)} — Troisième incohérence (\texttt{an\_nais} × période)}
 
-\textbf{Rappel de la question.} Identifier une troisième situation, différente des deux précédentes, où il peut y avoir des incohérences inter-attributs ; compter les lignes en incohérence, afficher les 10 premières et générer le rapport complet dans un fichier, puis commenter.
+\rub{labrappel}{Rappel de la question.} Identifier une troisième situation, différente des deux précédentes, où il peut y avoir des incohérences inter-attributs ; compter les lignes en incohérence, afficher les 10 premières et générer le rapport complet dans un fichier, puis commenter.
 
 \begin{agentbox}
-Situation retenue : une \textbf{année de naissance impossible} au regard de la \textbf{période d'étude}. Dans la table \emph{usagers}, l'attribut \texttt{an\_nais} est confronté à la fenêtre 2005-2015 (Groupe 1), implicitement portée par l'année du fichier. Une ligne est jugée incohérente si \texttt{an\_nais} est renseignée mais désigne une naissance matériellement impossible :
-
 \begin{itemize}
-\item \texttt{an\_nais > 2015} → l'usager naîtrait \emph{après} l'accident le plus tardif de la fenêtre (impossible d'être victime avant d'être né) ;
-\item \texttt{an\_nais < 1900} → l'usager aurait plus de 105 ans au moment des faits (valeur quasi certainement erronée).
+\item \textbf{Situation retenue} : \texttt{an\_nais} (table \emph{usagers}) confrontée à une \textbf{contrainte externe}, la période d'étude. Incohérent si \texttt{an\_nais > 2015} (naissance après l'accident) ou \texttt{< 1900} (plus de 105 ans).
+\item \textbf{Décisions (inspection préalable)} : valeurs manquantes (vide, « 0 », « 00 », « . », non numérique) \textbf{ignorées} — les inclure gonflerait le compte. Bornes volontairement \textbf{larges} pour ne retenir que les cas francs et ne pas qualifier d'« incohérent » un centenaire réel.
 \end{itemize}
-
-Deux points ont été tranchés par \textbf{inspection des données} avant rédaction :
-
-\begin{itemize}
-\item \emph{Valeurs manquantes} : un \texttt{python3} jetable sur les fichiers \emph{usagers} a confirmé que \texttt{an\_nais} est soit vide, soit une année. Les codes de valeur manquante (cellule vide, « 0 », « 00 », « . ») et toute valeur non numérique sont \textbf{ignorés} : non-réponse → ligne non testable. Les y inclure gonflerait artificiellement le compte.
-\item \emph{Bornes volontairement larges} : on ne retient que les cas \textbf{francs} — la naissance dans le futur (strictement impossible) et l'âge > 105 ans (extrême). On évite ainsi de qualifier d'« incohérent » un centenaire réel. Implémentation à la librairie standard (\texttt{csv.reader}, un seul parcours par année), sans pandas, dans la continuité de Q5.1 et Q5.2.
-\end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question53.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question53.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification53.py} → \texttt{results/verification53.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification53.py} → \texttt{results/verification53.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> an = usagers["an_nais"].astype(int)
@@ -841,7 +831,7 @@ annee      Num_Acc num_veh an_nais                                              
 # conforme : 41 annees de naissance impossibles (identique)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse53.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse53\_complet.csv} (41 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{num\_veh}, \texttt{an\_nais}, \texttt{motif}). Bilan sur \textbf{1 740 264} lignes usagers testées :
+\rub{labresultat}{Résultat :} \texttt{results/reponse53.txt} (résumé + 10 premiers cas + commentaires) et \texttt{results/reponse53\_complet.csv} (41 lignes, colonnes \texttt{annee}, \texttt{Num\_Acc}, \texttt{num\_veh}, \texttt{an\_nais}, \texttt{motif}). Bilan sur \textbf{1 740 264} lignes usagers testées :
 
 \begin{center}
 \begin{tabular}{l r}
@@ -858,7 +848,7 @@ dont naissance antérieure à 1900 & 41 \\
 
 Extrait des 10 premiers cas : \texttt{200500003366} (véhicule B01) avec \texttt{an\_nais} = 1898, \texttt{200500034919} (B01) avec \texttt{an\_nais} = 1897, etc. — tous des millésimes antérieurs à 1900.
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Comptage cohérent} : \texttt{wc -l reponse53\_complet.csv} = 42 = 41 + en-tête, conforme au total affiché.
@@ -866,32 +856,27 @@ Extrait des 10 premiers cas : \texttt{200500003366} (véhicule B01) avec \texttt
 \item \emph{Taux infime (0,002 \%)} : la qualité de remplissage de \texttt{an\_nais} est excellente. Sur 1,74 M d'usagers, à peine 41 valeurs sont matériellement impossibles.
 \end{itemize}
 
-\textbf{Commentaires.} Ces 41 incohérences relèvent d'\textbf{erreurs de saisie ou de relevé} (inversion de chiffres, millésime fantaisiste type 1898). Le contrôle complète utilement Q5.1 (\texttt{lum} × \texttt{hrmn}, table \emph{caractéristiques}) et Q5.2 (\texttt{obsm} × \texttt{choc}, table \emph{vehicules}) en portant cette fois sur la table \emph{usagers} et en confrontant un attribut non pas à un autre champ de la même ligne, mais à une \textbf{contrainte externe} (la période d'étude) — ce qui élargit la notion d'incohérence inter-attributs. Le rapport complet \texttt{reponse53\_complet.csv} identifie chaque ligne fautive par son \texttt{Num\_Acc} et son \texttt{num\_veh}, permettant de remonter à l'usager précis.
-
+\rub{labcomment}{Commentaires.} Ces 41 incohérences relèvent d'\textbf{erreurs de saisie ou de relevé} (inversion de chiffres, millésime fantaisiste type 1898). Le contrôle complète utilement Q5.1 (\texttt{lum} × \texttt{hrmn}, table \emph{caractéristiques}) et Q5.2 (\texttt{obsm} × \texttt{choc}, table \emph{vehicules}) en portant cette fois sur la table \emph{usagers} et en confrontant un attribut non pas à un autre champ de la même ligne, mais à une \textbf{contrainte externe} (la période d'étude) — ce qui élargit la notion d'incohérence inter-attributs. Le rapport complet \texttt{reponse53\_complet.csv} identifie chaque ligne fautive par son \texttt{Num\_Acc} et son \texttt{num\_veh}, permettant de remonter à l'usager précis.
+\clearpage
 \section*{3. Requêtage et visualisation}
 \addcontentsline{toc}{section}{3. Requêtage et visualisation}
 
-\clearpage
 \subsubsection*{Question 6.1 — Accidents par tranche horaire d'1h}
 \addcontentsline{toc}{subsubsection}{Question 6.1 — Accidents par tranche horaire d'1h}
 
-\textbf{Rappel de la question.} Afficher le nombre d'accidents par tranche horaire d'une heure.
+\rub{labrappel}{Rappel de la question.} Afficher le nombre d'accidents par tranche horaire d'une heure.
 
 \begin{agentbox}
-La donnée source est l'heure de survenue \texttt{hrmn} de la table \emph{caractéristiques} (\texttt{data/enriched/}), cumulée sur toute la fenêtre 2005-2015 (Groupe 1) et restreinte à la France métropolitaine via \texttt{normaliser\_dep} (exclusion des DOM et des départements non métropolitains). Deux points ont été tranchés avant rédaction :
-
 \begin{itemize}
-\item \emph{Extraction de l'heure} : \texttt{hrmn} est au format HHMM \textbf{sans zéro de tête} — « 1900 » vaut 19h00, mais « 300 » vaut 3h00 et « 30 » vaut 0h30. Découper les deux premiers caractères (\texttt{int(hrmn[:2])}) serait donc \textbf{faux} pour toute valeur à moins de 4 chiffres (« 300 » donnerait 30h). L'heure est obtenue de façon fiable par division entière : \texttt{int(hrmn) // 100}.
-\item \emph{Valeurs manquantes} : les \texttt{hrmn} vides ou non numériques sont \textbf{ignorées} (heure non testable). En pratique le décompte affiche \textbf{0 valeur ignorée} : \texttt{hrmn} est intégralement renseignée sur la période.
+\item \textbf{Contexte} : heure de survenue \texttt{hrmn} (table \emph{caractéristiques}, \texttt{data/enriched/}), cumul 2005-2015 restreint à la métropole via \texttt{normaliser\_dep} (exclusion DOM).
+\item \textbf{Décision} : \texttt{hrmn} au format HHMM \textbf{sans zéro de tête} — \texttt{int(hrmn[:2])} serait faux à moins de 4 chiffres (« 300 » → 30 h) ; l'heure est obtenue par \textbf{\texttt{int(hrmn) // 100}}. 0 valeur ignorée : \texttt{hrmn} intégralement renseignée.
+\item \textbf{Outil} : première question à graphique — \texttt{matplotlib} ajouté au projet (\texttt{uv add matplotlib}), rendu hors écran (\texttt{matplotlib.use("Agg")}).
 \end{itemize}
-
-Le rendu matplotlib est configuré en mode hors écran (\texttt{matplotlib.use("Agg")}) pour écrire directement le PNG sans interface graphique. Implémentation à la librairie standard (\texttt{csv.reader}, un seul parcours par année), dans la continuité des questions précédentes. C'est la première question imposant un graphique : la dépendance \texttt{matplotlib} a été ajoutée au projet (\texttt{uv add matplotlib}).
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question61.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question61.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification61.py} → \texttt{results/verification61.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification61.py} → \texttt{results/verification61.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> h = caracteristiques.loc[metropole, "hrmn"].astype(int) // 100
@@ -911,7 +896,7 @@ Le rendu matplotlib est configuré en mode hors écran (\texttt{matplotlib.use("
 # conforme : 24 tranches identiques a question61.py (total 757263)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse61.png} — graphique en barres verticales bleues (axe x = heure 0-23, axe y = nombre d'accidents), titre « Accidents par tranche horaire (2005-2015) », grille horizontale, taille 12×6 pouces. Bilan sur \textbf{757 263} accidents métropolitains :
+\rub{labresultat}{Résultat :} \texttt{results/reponse61.png} — graphique en barres verticales bleues (axe x = heure 0-23, axe y = nombre d'accidents), titre « Accidents par tranche horaire (2005-2015) », grille horizontale, taille 12×6 pouces. Bilan sur \textbf{757 263} accidents métropolitains :
 
 \begin{figure}[h]
 \centering
@@ -934,7 +919,7 @@ Cumul nuit profonde (0h-5h) & 58 185 (≈ 7,7 \%) \\
 \end{tabular}
 \end{center}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation du total} : la somme des 24 tranches (757 263) coïncide exactement avec le total des accidents métropolitains cumulés sur la période, et aucune valeur n'est perdue (0 ignorée). L'histogramme couvre bien les 24 heures.
@@ -942,30 +927,25 @@ Cumul nuit profonde (0h-5h) & 58 185 (≈ 7,7 \%) \\
 \item \emph{Robustesse de l'extraction} : un contrôle sur des valeurs courtes (« 300 », « 30 ») confirme que \texttt{int(hrmn) // 100} les classe correctement (3h et 0h), là où un découpage de chaîne aurait produit des heures aberrantes.
 \end{itemize}
 
-\textbf{Commentaires.} Le graphique met en évidence que les accidents ne sont pas répartis uniformément dans la journée : ils suivent l'intensité du trafic. Le pic du soir (17h-18h) dépasse celui du matin, ce qui s'explique classiquement par un trafic de retour plus étalé, une fatigue de fin de journée et une luminosité déclinante en partie de l'année. Les heures nocturnes (0h-5h) concentrent peu d'accidents en valeur absolue (≈ 7,7 \% du total) — mais ce volume faible ne préjuge pas de leur gravité, qui sera examinée dans les questions suivantes.
+\rub{labcomment}{Commentaires.} Le graphique met en évidence que les accidents ne sont pas répartis uniformément dans la journée : ils suivent l'intensité du trafic. Le pic du soir (17h-18h) dépasse celui du matin, ce qui s'explique classiquement par un trafic de retour plus étalé, une fatigue de fin de journée et une luminosité déclinante en partie de l'année. Les heures nocturnes (0h-5h) concentrent peu d'accidents en valeur absolue (≈ 7,7 \% du total) — mais ce volume faible ne préjuge pas de leur gravité, qui sera examinée dans les questions suivantes.
 
 \clearpage
 \subsubsection*{Question 6.2 — Tués cumulés par tranche d'âge et sexe}
 \addcontentsline{toc}{subsubsection}{Question 6.2 — Tués cumulés par tranche d'âge et sexe}
 
-\textbf{Rappel de la question.} Fournir un graphique présentant le nombre de tués cumulé sur la période du projet par tranche d'âge (de 5 années) et par sexe.
+\rub{labrappel}{Rappel de la question.} Fournir un graphique présentant le nombre de tués cumulé sur la période du projet par tranche d'âge (de 5 années) et par sexe.
 
 \begin{agentbox}
-La donnée source est la table \emph{usagers} (\texttt{data/enriched/}), cumulée sur 2005-2015 (Groupe 1). Trois points ont été tranchés avant rédaction :
-
 \begin{itemize}
-\item \emph{Définition d'un tué} : on filtre \texttt{grav == "2 - Tué"} (le label exact des fichiers enrichis). Le sexe est lu sur \texttt{sexe} (« 1 - Masculin » / « 2 - Féminin »).
-\item \emph{Calcul de l'âge} : \texttt{age = annee\_fichier - an\_nais}. L'année est lue dans le nom du fichier (\texttt{usagers\_2005.csv} → 2005), qui est ici un \textbf{millésime complet à 4 chiffres} ; \texttt{an\_nais} est lui aussi un millésime complet — aucune reconstruction du siècle n'est donc nécessaire. Une \texttt{an\_nais} vide, non numérique, égale à « 0 », ou donnant un âge hors de l'intervalle plausible \textbf{[0, 120]} est ignorée (96 cas sur la période, soit 0,2 \% des tués).
-\item \emph{Filtrage métropole} : la table \emph{usagers} ne porte pas le département. Pour chaque année on récupère l'ensemble des \texttt{Num\_Acc} métropolitains via \texttt{charger\_num\_acc\_metropole} (jointure sur la table \emph{caractéristiques} + \texttt{normaliser\_dep}, qui exclut DOM et départements non métropolitains), et on ne conserve que les usagers de ces accidents — même logique de jointure que Q2.
+\item \textbf{Contexte} : table \emph{usagers} (\texttt{data/enriched/}), cumul 2005-2015. Tué = \texttt{grav == "2 - Tué"}, sexe lu sur \texttt{sexe} (« 1 - Masculin » / « 2 - Féminin »).
+\item \textbf{Décisions} : âge = \texttt{annee\_fichier - an\_nais} (millésimes complets à 4 chiffres, pas de reconstruction du siècle) ; \texttt{an\_nais} vide, « 0 » ou donnant un âge hors \textbf{[0, 120]} ignorée (96 cas, 0,2 \%). Métropole : la table \emph{usagers} ne porte pas le département → jointure sur \emph{caractéristiques} (\texttt{Num\_Acc} + \texttt{normaliser\_dep}), comme en Q2.
+\item \textbf{Graphique} : 19 tranches de 5 ans (\texttt{0-4 … 85-89} + \texttt{90+} ouverte), \textbf{barres groupées} H/F, rendu matplotlib hors écran.
 \end{itemize}
-
-Les tranches sont de 5 ans : 18 tranches \texttt{0-4 … 85-89} plus une tranche ouverte \texttt{90+} (les âges ≥ 90 y sont regroupés), soit 19 tranches. Le graphique est en \textbf{barres groupées} : deux barres par tranche (hommes en bleu, femmes en rouge), légende et grille horizontale. Implémentation à la librairie standard (\texttt{csv.reader}, un seul parcours par année) avec rendu matplotlib hors écran (\texttt{matplotlib.use("Agg")}), dans la continuité de Q6.1.
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question62.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question62.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification62.py} → \texttt{results/verification62.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification62.py} → \texttt{results/verification62.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> tues = usagers[(usagers.grav == "2 - Tué") & metropole]
@@ -985,7 +965,7 @@ tranche  hommes  femmes
 # conforme : effectifs identiques a question62.py (H=33921, F=10899)
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse62.png} — barres groupées (axe x = tranche d'âge, 2 barres par tranche, axe y = nombre de tués cumulés), titre « Tués cumulés par tranche d'âge et par sexe (2005-2015) », taille 14×7 pouces. Bilan sur \textbf{44 820} tués métropolitains :
+\rub{labresultat}{Résultat :} \texttt{results/reponse62.png} — barres groupées (axe x = tranche d'âge, 2 barres par tranche, axe y = nombre de tués cumulés), titre « Tués cumulés par tranche d'âge et par sexe (2005-2015) », taille 14×7 pouces. Bilan sur \textbf{44 820} tués métropolitains :
 
 \begin{figure}[h]
 \centering
@@ -1008,7 +988,7 @@ Tués à l'âge non exploitable (ignorés) & 96 \\
 \end{tabular}
 \end{center}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation des effectifs} : la somme hommes + femmes des 19 tranches (44 820) coïncide avec le cumul des tués métropolitains affiché année par année, et le sexe est intégralement renseigné chez les tués (0 ignoré). Seuls 96 tués (0,2 \%) sont écartés faute d'âge exploitable.
@@ -1016,28 +996,25 @@ Tués à l'âge non exploitable (ignorés) & 96 \\
 \item \emph{Plausibilité de l'écart hommes/femmes} : les hommes représentent \textbf{75,7 \%} des tués, un déséquilibre constant sur toutes les tranches et cohérent avec les statistiques nationales de la sécurité routière (exposition au volant et profils de conduite). Un léger resserrement de l'écart apparaît aux âges élevés.
 \end{itemize}
 
-\textbf{Commentaires.} Le graphique croise deux facteurs de risque — l'âge et le sexe — et fait ressortir une population particulièrement exposée : les \textbf{hommes jeunes (15-29 ans)}, qui concentrent à eux seuls une part majeure des tués. La tranche \texttt{90+}, ouverte, reste résiduelle en valeur absolue. Ce résultat éclaire les questions de gravité : au-delà du volume d'accidents (Q6.1), c'est ici la mortalité qui est ventilée, et elle ne suit pas la même structure démographique que l'ensemble des usagers impliqués.
+\rub{labcomment}{Commentaires.} Le graphique croise deux facteurs de risque — l'âge et le sexe — et fait ressortir une population particulièrement exposée : les \textbf{hommes jeunes (15-29 ans)}, qui concentrent à eux seuls une part majeure des tués. La tranche \texttt{90+}, ouverte, reste résiduelle en valeur absolue. Ce résultat éclaire les questions de gravité : au-delà du volume d'accidents (Q6.1), c'est ici la mortalité qui est ventilée, et elle ne suit pas la même structure démographique que l'ensemble des usagers impliqués.
 
 \clearpage
 \subsubsection*{Question 6.3 — Top 10 départements (carte folium)}
 \addcontentsline{toc}{subsubsection}{Question 6.3 — Top 10 départements (carte folium)}
 
-\textbf{Rappel de la question.} Quels sont les 10 départements avec le plus d'accidents ? L'affichage se fait sur une carte de France en utilisant la bibliothèque \textbf{folium}.
+\rub{labrappel}{Rappel de la question.} Quels sont les 10 départements avec le plus d'accidents ? L'affichage se fait sur une carte de France en utilisant la bibliothèque \textbf{folium}.
 
 \begin{agentbox}
-La donnée source est la table \emph{caractéristiques} (\texttt{data/enriched/}), cumulée sur 2005-2015 (Groupe 1). Chaque ligne de ce fichier correspond à un accident (\texttt{Num\_Acc} unique par fichier-année) : le décompte par département est donc un simple comptage de lignes, sans jointure. Trois points ont été tranchés :
-
 \begin{itemize}
-\item \emph{Identification du département} : le champ \texttt{dep} des fichiers BAAC 2005-2015 est codé sur le modèle \texttt{département × 10} (ex. Paris = \texttt{750}, Nord = \texttt{590}). On le repasse au code INSEE à 2 chiffres via \texttt{normaliser\_dep}, qui gère aussi la Corse (\texttt{201 → 2A}, \texttt{202 → 2B}) et \textbf{exclut DOM et codes non métropolitains} (renvoie \texttt{None}). Seuls les départements normalisés non \texttt{None} sont comptés.
-\item \emph{Coordonnées} : les cercles sont placés sur le \textbf{centroïde} de chaque département, lu dans \texttt{CENTROIDES\_DEPARTEMENTS} (\texttt{common.py}). Le nom complet du département (pour les popups) est porté par un dictionnaire \texttt{NOMS\_DEPARTEMENTS} local au script — \texttt{common.py} n'expose que les codes, on a préféré ne pas le modifier.
-\item \emph{Lisibilité de la carte} : les \textbf{10 premiers} départements sont des \textbf{cercles rouges proportionnels} au nombre d'accidents (rayon en pixels normalisé sur le maximum, Paris, entre \textasciitilde{}8 et 40 px), avec popup détaillée et tooltip au survol ; \textbf{tous les autres} départements sont de \textbf{petits marqueurs gris discrets} (rayon 2 px), pour situer le top 10 dans l'ensemble du territoire sans surcharger. Fond de carte \texttt{CartoDB positron} (sobre), centrage \texttt{(46.5, 2.0)}, zoom 6. Implémentation : un parcours \texttt{csv.reader} par année + un \texttt{collections.Counter}, puis \texttt{folium.CircleMarker}.
+\item \textbf{Contexte} : table \emph{caractéristiques} (\texttt{data/enriched/}), cumul 2005-2015 ; 1 ligne = 1 accident, donc décompte par département par simple comptage (\texttt{collections.Counter}), sans jointure.
+\item \textbf{Décision (département)} : \texttt{dep} est codé \texttt{département × 10} (Paris \texttt{750}, Nord \texttt{590}), repassé au code INSEE via \texttt{normaliser\_dep}, qui gère la Corse (\texttt{201 → 2A}, \texttt{202 → 2B}) et \textbf{exclut DOM / non-métropole} (\texttt{None}).
+\item \textbf{Carte folium} : top 10 en \textbf{cercles rouges proportionnels} (popup + tooltip), tous les autres départements en petits marqueurs gris discrets ; fond \texttt{CartoDB positron}, centrage \texttt{(46.5, 2.0)}, zoom 6.
 \end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question63.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question63.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification63.py} → \texttt{results/verification63.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification63.py} → \texttt{results/verification63.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> recap = (caracteristiques["dep"].map(normaliser_dep)
@@ -1059,7 +1036,7 @@ La donnée source est la table \emph{caractéristiques} (\texttt{data/enriched/}
 # conforme : meme top 10 (departement + effectif) que reponse63.txt
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse63.html} (carte interactive) et \texttt{results/reponse63.txt} (tableau). Sur \textbf{757 263} accidents métropolitains cumulés répartis sur 96 départements, le classement est :
+\rub{labresultat}{Résultat :} \texttt{results/reponse63.html} (carte interactive) et \texttt{results/reponse63.txt} (tableau). Sur \textbf{757 263} accidents métropolitains cumulés répartis sur 96 départements, le classement est :
 
 \begin{figure}[h]
 \centering
@@ -1086,7 +1063,7 @@ La donnée source est la table \emph{caractéristiques} (\texttt{data/enriched/}
 \end{tabular}
 \end{center}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation des effectifs} : la somme des comptes par département (757 263) coïncide avec le cumul affiché année par année par le script, et le nombre de départements représentés (\textbf{96} = 95 + Corse \texttt{2A}/\texttt{2B}) confirme que le \texttt{20} corse a bien été éclaté et qu'aucun DOM n'est compté.
@@ -1094,30 +1071,27 @@ La donnée source est la table \emph{caractéristiques} (\texttt{data/enriched/}
 \item \emph{Vérification de la carte} : ouverture du \texttt{.html}, contrôle visuel du placement des cercles sur les bons départements, de la proportionnalité des rayons (Paris le plus gros), et du contenu des popups (nom + effectif).
 \end{itemize}
 
-\textbf{Commentaires.} Le décompte est \textbf{brut} (volume d'accidents), non rapporté à la population ou au trafic : il mesure donc l'exposition absolue, pas un risque par habitant. Les départements urbains denses ressortent logiquement en tête. Une normalisation (accidents pour 100 000 habitants ou par véhicule-km) donnerait un classement très différent et ferait remonter des départements ruraux ou de transit — piste possible pour la question libre Q6.4.
+\rub{labcomment}{Commentaires.} Le décompte est \textbf{brut} (volume d'accidents), non rapporté à la population ou au trafic : il mesure donc l'exposition absolue, pas un risque par habitant. Les départements urbains denses ressortent logiquement en tête. Une normalisation (accidents pour 100 000 habitants ou par véhicule-km) donnerait un classement très différent et ferait remonter des départements ruraux ou de transit — piste possible pour la question libre Q6.4.
 
 \clearpage
 \subsubsection*{Question 6.4 — Question libre}
 \addcontentsline{toc}{subsubsection}{Question 6.4 — Question libre}
 
-\textbf{Rappel de la question.} Question libre à définir, utilisant \textbf{au moins deux types de table} (parmi \emph{caractéristiques}, \emph{lieux}, \emph{véhicules}, \emph{usagers}) et \textbf{un type d'affichage non utilisé précédemment} (camembert exclu).
+\rub{labrappel}{Rappel de la question.} Question libre à définir, utilisant \textbf{au moins deux types de table} (parmi \emph{caractéristiques}, \emph{lieux}, \emph{véhicules}, \emph{usagers}) et \textbf{un type d'affichage non utilisé précédemment} (camembert exclu).
 
 *\emph{Question retenue : }Comment les accidents se répartissent-ils selon les conditions atmosphériques (\texttt{atm}) croisées avec l'état de la surface de la route (\texttt{surf}) ?**\emph{ Les deux variables sont }a priori* corrélées (la pluie mouille la chaussée, la neige l'enneige) mais pas confondues — on attend des cellules « hors diagonale » instructives (pluie sur chaussée déjà verglacée, temps normal sur chaussée mouillée résiduelle, etc.).
 
 \begin{agentbox}
 \begin{itemize}
-\item \emph{Choix des tables (contrainte ≥ 2)} : \texttt{atm} vit dans la table \textbf{caractéristiques}, \texttt{surf} dans la table \textbf{lieux}. Les deux sont jointes accident par accident via la clé \textbf{\texttt{Num\_Acc}} : on lit d'abord caractéristiques pour mémoriser \texttt{Num\_Acc → atm} (en ne retenant que la métropole via \texttt{normaliser\_dep} sur \texttt{dep}), puis on parcourt lieux et, pour chaque \texttt{Num\_Acc} présent dans ce dictionnaire, on incrémente la cellule \texttt{(atm, surf)}. Filtrer dès la première table garantit que seuls les accidents métropolitains alimentent la matrice.
-\item \emph{Choix de l'affichage (autre que les précédents, camembert exclu)} : une \textbf{heatmap} (carte de chaleur) \texttt{atm} × \texttt{surf}, affichage inédit dans le dossier (Q6.1 barres, Q6.2 barres groupées, Q6.3 carte folium). \texttt{seaborn} n'étant pas dans les dépendances du projet, la heatmap est tracée directement avec \textbf{\texttt{matplotlib.imshow}} (palette \texttt{YlOrRd}), chaque cellule étant annotée de son effectif.
-\item \emph{Échelle de couleur} : la modalité (\texttt{Normale}, \texttt{Normale}) écrase tout (76 \% des accidents). Une échelle \textbf{logarithmique} (\texttt{LogNorm}) a été choisie pour que les contrastes des modalités rares (neige, verglas, brouillard) restent lisibles — sans elle, toute la grille hors coin supérieur gauche apparaît d'une teinte uniforme.
-\item \emph{Étiquettes} : les libellés sont \textbf{abrégés aux deux premiers mots} (\texttt{abreger}). Un seul mot ne suffisait pas (collisions « Pluie légère »/« Pluie forte » et « Temps éblouissant »/« Temps couvert ») ; deux mots distinguent toutes les modalités tout en gardant des axes courts.
-\item \emph{Valeurs manquantes} : \texttt{atm} vide est ignoré (21 accidents) ; \texttt{surf} vide \textbf{ou égal à \texttt{0}} (sentinelle « non renseigné » du BAAC) est ignoré (23 375 accidents). Les modalités sont figées dans l'ordre du référentiel (1→9) pour une grille stable d'une exécution à l'autre.
+\item \textbf{Tables (contrainte ≥ 2)} : \texttt{atm} (\emph{caractéristiques}) × \texttt{surf} (\emph{lieux}), jointes par \texttt{Num\_Acc} ; filtrage métropole dès la première table (\texttt{normaliser\_dep}) pour ne nourrir la matrice que d'accidents métropolitains.
+\item \textbf{Affichage (inédit, camembert exclu)} : \textbf{heatmap} \texttt{atm} × \texttt{surf} via \texttt{matplotlib.imshow} (\texttt{seaborn} hors dépendances), cellules annotées. Échelle \textbf{logarithmique} (\texttt{LogNorm}) car (\texttt{Normale}, \texttt{Normale}) écrase tout (76 \%) — sinon toute la grille apparaît uniforme.
+\item \textbf{Détails} : libellés \textbf{abrégés aux deux premiers mots} (un seul provoquait des collisions « Pluie légère »/« forte ») ; \texttt{atm} vide (21) et \texttt{surf} vide ou \texttt{0} (23 375) ignorés ; modalités figées dans l'ordre du référentiel.
 \end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question64.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question64.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification64.py} → \texttt{results/verification64.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification64.py} → \texttt{results/verification64.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> f = lieux.merge(carac_metropole, on="Num_Acc")
@@ -1133,7 +1107,7 @@ top_couple_effectif  560189
 # conforme : identiques a reponse64.txt ; couple dominant 1 - Normale x 1 - Normale
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse64.png} (heatmap) et \texttt{results/reponse64.txt} (trace). Sur \textbf{733 867} accidents métropolitains exploitables (cumul 2005-2015), les couples les plus fréquents sont :
+\rub{labresultat}{Résultat :} \texttt{results/reponse64.png} (heatmap) et \texttt{results/reponse64.txt} (trace). Sur \textbf{733 867} accidents métropolitains exploitables (cumul 2005-2015), les couples les plus fréquents sont :
 
 \begin{figure}[h]
 \centering
@@ -1155,7 +1129,7 @@ Temps couvert & Mouillée & 12 277 & 1,7 \% \\
 \end{tabular}
 \end{center}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation des effectifs} : le total exploité (733 867) = total métropolitain de Q6.3 (757 263) − les 23 396 accidents écartés pour \texttt{atm}/\texttt{surf} non renseignés (21 + 23 375). Cohérent.
@@ -1164,29 +1138,25 @@ Temps couvert & Mouillée & 12 277 & 1,7 \% \\
 \item \emph{Contrôle visuel} : ouverture du PNG, vérification que les libellés d'axes sont distincts, que l'échelle log rend les modalités rares visibles, et que les annotations chiffrées correspondent à la trace texte.
 \end{itemize}
 
-\textbf{Commentaires.} L'écrasante domination de (\texttt{Normale}, \texttt{Normale}) reflète simplement le fait que la plupart des trajets se font par beau temps sur route sèche : la heatmap mesure des \textbf{volumes}, pas un sur-risque. Pour en déduire un risque relatif il faudrait rapporter chaque cellule à l'exposition (temps passé dans chaque condition météo/surface), donnée absente du BAAC. La lecture pertinente est donc \textbf{comparative entre conditions dégradées} : à conditions rares, la chaussée mouillée concentre l'essentiel des accidents pluvieux, et l'enneigement/verglas forme un bloc cohérent neige↔surface, ce qui valide la qualité du croisement des deux tables.
+\rub{labcomment}{Commentaires.} L'écrasante domination de (\texttt{Normale}, \texttt{Normale}) reflète simplement le fait que la plupart des trajets se font par beau temps sur route sèche : la heatmap mesure des \textbf{volumes}, pas un sur-risque. Pour en déduire un risque relatif il faudrait rapporter chaque cellule à l'exposition (temps passé dans chaque condition météo/surface), donnée absente du BAAC. La lecture pertinente est donc \textbf{comparative entre conditions dégradées} : à conditions rares, la chaussée mouillée concentre l'essentiel des accidents pluvieux, et l'enneigement/verglas forme un bloc cohérent neige↔surface, ce qui valide la qualité du croisement des deux tables.
 
 \clearpage
 \subsubsection*{Question 6.5 \emph{(facultative)} — Carte animée par année}
 \addcontentsline{toc}{subsubsection}{Question 6.5 \emph{(facultative)} — Carte animée par année}
 
-\textbf{Rappel de la question.} Reprendre la question 6.3 et en faire un \textbf{GIF animé} de la carte, \textbf{année par année}.
+\rub{labrappel}{Rappel de la question.} Reprendre la question 6.3 et en faire un \textbf{GIF animé} de la carte, \textbf{année par année}.
 
 \begin{agentbox}
 \begin{itemize}
-\item \emph{Choix de la bibliothèque de tracé} : folium produit du HTML interactif, inadapté à un GIF. Chaque image de l'animation a donc été tracée avec \textbf{matplotlib} (backend \texttt{Agg}, sans fenêtre), enregistrée en PNG, puis les 11 PNG ont été empilés en GIF avec \textbf{Pillow} (\texttt{Image.save(..., save\_all=True, append\_images=..., duration=800, loop=0)}). Ces deux dépendances sont déjà présentes dans le projet (matplotlib pour Q6.4, Pillow tiré par matplotlib).
-\item \emph{Positions des cercles} : faute de fond de carte vectoriel, chaque département est placé à son \textbf{centroïde} (\texttt{CENTROIDES\_DEPARTEMENTS}, couples \emph{lat/lon} déjà utilisés en Q6.3). En traçant \texttt{x = lon}, \texttt{y = lat} avec \texttt{set\_aspect("equal")}, la silhouette de l'Hexagone (Corse comprise) se reconstitue sans tracé de frontières.
-\item \emph{Échelle comparable d'une image à l'autre — décision clé} : si l'on normalisait les rayons année par année, toutes les frames se ressembleraient et l'animation ne montrerait \textbf{aucune évolution}. On parcourt donc d'abord \textbf{toutes} les années pour calculer le \textbf{maximum global} (un département, une année : \textbf{8 591} accidents, Paris 2005), puis l'aire de chaque cercle est rapportée à ce maximum unique. Les cercles rétrécissent ainsi visiblement de 2005 à 2015.
-\item \emph{Cadre fixe} : bornes des axes figées sur la métropole (lon −5,5→10, lat 41→51,5) et axes masqués, pour que les frames se superposent sans « sauter ».
-\item \emph{Aire ∝ effectif} : le paramètre \texttt{s} de \texttt{scatter} étant une \textbf{aire} (points²), on le prend proportionnel au nombre d'accidents (« cercles proportionnels »).
-\item \emph{Nettoyage} : les 11 PNG intermédiaires (\texttt{\_carte\_AAAA.png}) sont \textbf{supprimés} après l'assemblage ; seul le GIF subsiste.
+\item \textbf{Bibliothèque} : folium produit du HTML, inadapté à un GIF → chaque frame tracée en \textbf{matplotlib} (\texttt{Agg}) puis les 11 PNG empilés en GIF avec \textbf{Pillow} (\texttt{duration=800, loop=0}). Dépendances déjà présentes (Pillow tiré par matplotlib).
+\item \textbf{Tracé} : départements placés à leur \textbf{centroïde} (\texttt{CENTROIDES\_DEPARTEMENTS}) ; \texttt{x=lon, y=lat} + \texttt{set\_aspect("equal")} reconstitue la silhouette de l'Hexagone sans frontières. Cadre fixe (lon −5,5→10, lat 41→51,5), aire \texttt{s} de \texttt{scatter} ∝ effectif.
+\item \textbf{Décision clé (échelle comparable)} : normaliser les rayons année par année masquerait l'évolution ; on calcule donc le \textbf{maximum global} (Paris 2005, \textbf{8 591} accidents) et on y rapporte tous les cercles, qui rétrécissent visiblement de 2005 à 2015. PNG intermédiaires supprimés après assemblage.
 \end{itemize}
-
 \end{agentbox}
 
-\textbf{Fichier Python :} \texttt{python/question65.py}.
+\rub{labfichier}{Fichier Python :} \texttt{python/question65.py}.
 
-\textbf{Vérification (pandas)} --- \texttt{python/verification65.py} → \texttt{results/verification65.txt} :
+\rub{labverif}{Vérification (pandas)} --- \texttt{python/verification65.py} → \texttt{results/verification65.txt} :
 
 \begin{lstlisting}[style=pyblock]
 >>> recap = (caracteristiques["dep"].map(normaliser_dep)
@@ -1209,7 +1179,7 @@ Temps couvert & Mouillée & 12 277 & 1,7 \% \\
 # conforme : comptes par departement identiques annee par annee
 \end{lstlisting}
 
-\textbf{Résultat :} \texttt{results/reponse65.gif} — animation de \textbf{11 images} (2005→2015), 600×600 px, 800 ms par image, boucle infinie. Le décompte métropolitain par année décroît régulièrement :
+\rub{labresultat}{Résultat :} \texttt{results/reponse65.gif} — animation de \textbf{11 images} (2005→2015), 600×600 px, 800 ms par image, boucle infinie. Le décompte métropolitain par année décroît régulièrement :
 
 \begin{figure}[h]
 \centering
@@ -1232,7 +1202,7 @@ Temps couvert & Mouillée & 12 277 & 1,7 \% \\
 \end{tabular}
 \end{center}
 
-\textbf{Vérifications réalisées + analyse.}
+\rub{labanalyse}{Vérifications réalisées + analyse.}
 
 \begin{itemize}
 \item \emph{Conservation des effectifs} : la somme des 11 totaux annuels (757 263) coïncide avec le cumul métropolitain de Q6.3, et chaque total annuel est réaffiché par le script — aucune ligne perdue ni dupliquée.
@@ -1240,7 +1210,7 @@ Temps couvert & Mouillée & 12 277 & 1,7 \% \\
 \item \emph{Contrôle visuel} : ouverture de la première (2005) et de la dernière (2015) frame. La silhouette de la France est reconnaissable, \textbf{Paris} (75) forme le gros amas sombre central, la \textbf{Corse} apparaît détachée en bas à droite, et les cercles \textbf{rétrécissent nettement} entre 2005 et 2015 — l'animation traduit donc bien la baisse continue des accidents.
 \end{itemize}
 
-\textbf{Commentaires.} L'animation met en évidence la \textbf{baisse tendancielle} du nombre d'accidents corporels sur la décennie (−33 \% entre 2005 et 2015), cohérente avec le renforcement des politiques de sécurité routière. La représentation reste \textbf{volumétrique} (mêmes réserves qu'en Q6.3 : pas de normalisation par population/trafic) et \textbf{schématique} (centroïdes plutôt qu'un vrai fond cartographique) : son intérêt est la lecture dynamique de l'évolution, pas la précision géographique. Un fond \texttt{geopandas}/contours départementaux donnerait un rendu choroplèthe plus fin, au prix d'une dépendance supplémentaire non requise par le sujet.
+\rub{labcomment}{Commentaires.} L'animation met en évidence la \textbf{baisse tendancielle} du nombre d'accidents corporels sur la décennie (−33 \% entre 2005 et 2015), cohérente avec le renforcement des politiques de sécurité routière. La représentation reste \textbf{volumétrique} (mêmes réserves qu'en Q6.3 : pas de normalisation par population/trafic) et \textbf{schématique} (centroïdes plutôt qu'un vrai fond cartographique) : son intérêt est la lecture dynamique de l'évolution, pas la précision géographique. Un fond \texttt{geopandas}/contours départementaux donnerait un rendu choroplèthe plus fin, au prix d'une dépendance supplémentaire non requise par le sujet.
 
 \section*{Conclusion / synthèse}
 \addcontentsline{toc}{section}{Conclusion / synthèse}
