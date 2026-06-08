@@ -25,3 +25,9 @@ results/*.png
 results/*.gif
 !results/.gitkeep
 
+# Artefacts de compilation LaTeX (le .tex et le .pdf restent versionnés)
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+
