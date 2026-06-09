@@ -2,10 +2,10 @@ spring:
   application:
     name: Mimo Games
   datasource:
-    url: ${MIMO_DB_URL:jdbc:h2:mem:games;DB_CLOSE_DELAY=-1}
-    username: ${MIMO_DB_USER:sa}
-    password: ${MIMO_DB_PASSWORD:}
-    driverClassName: org.h2.Driver
+    url: ${MIMO_DB_URL:jdbc:mysql://localhost:3306/mimo_games?createDatabaseIfNotExist=true}
+    username: ${MIMO_DB_USER:root}
+    password: ${MIMO_DB_PASSWORD:password}
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     open-in-view: false
     show-sql: true
@@ -15,11 +15,6 @@ spring:
   sql:
     init:
       mode: always
-  h2:
-    console:
-      enabled: true
-
-#http://localhost:8080/h2-console
 
 logging:
   level:
